@@ -1,0 +1,188 @@
+.project-container {
+      margin: 5%;
+      margin-top: 7%;
+      padding: 0 30px; /* wider horizontal padding */
+    }
+
+    @font-face {
+        font-family: 'SofiaProBold';
+        src: url('assets/fonts/sofiaprobold.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'SofiaProRegular';
+        src: url('assets/fonts/sofiaproregular.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+
+
+    .title-desc-wrapper {
+  display: flex;
+  flex-wrap: nowrap;      /* NO wrap by default */
+  gap: 120px;
+  align-items: center;    /* vertical center */
+  margin-bottom: 3%;
+  padding: 3%;
+}
+
+    .project-title {
+  white-space: nowrap; /* no wrapping of title */
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: 'SofiaProBold';
+  margin: 0;
+}
+
+    .project-description {
+      flex: 1;
+      font-size: 1.1rem;
+      font-family: 'SofiaProRegular';
+      line-height: 1.5;
+      color: #868686;
+      text-align: left;
+      max-width: 1500px; /* optional max width */
+      
+    }
+
+    .software-icons-wrapper {
+      display: flex;
+      margin-top: 30px; /* small vertical space below title */
+      margin-bottom: 30px;
+    }
+
+
+    
+    .software-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+   
+
+    .software-icons img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .main-image {
+      width: 100%;
+      margin-bottom: 40px;
+      
+    }
+
+.image-row {
+  display: grid;
+  gap: 32px; /* space between images */
+  margin-bottom: 32px; /* space between rows */
+}
+
+.image-row img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0px; /* optional: nice styling */
+}
+
+.left-column, .right-column {
+  align-self: center;
+}
+
+.left-column {
+  flex-shrink: 0; /* prevent shrinking */
+}
+
+@media (max-width: 420px) {
+  .title-desc-wrapper {
+    flex-wrap: wrap;     /* allow wrapping */
+    gap: 20px;           /* smaller gap */
+  }
+
+  .right-column {
+    flex-basis: 100%;    /* full width below left column */
+    min-width: 100%;     /* force full width */
+  }
+}
+
+.extra-description {
+  flex: 1;
+  margin: 40px auto;       /* adds space above/below and centers it */
+  padding: 0 20px;  
+  font-size: 1.1rem;
+  font-family: 'SofiaProRegular';
+  line-height: 1.5;
+  color: #868686;
+  text-align: center;
+  max-width: 1500px; /* optional max width */
+  
+}
+
+.lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  flex-direction: column;
+}
+
+.lightbox.hidden {
+  display: none;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 50px; /* moved further from right edge */
+  font-size: 3.5rem; /* bigger close button */
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lightbox-nav {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 100px; /* more padding from edges */
+  box-sizing: border-box;
+  transform: translateY(-50%); /* vertically center the nav */
+}
+
+.nav-arrow {
+  font-size: 15rem; /* bigger arrows */
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s;
+}
+
+.nav-arrow:hover {
+  opacity: 0.7;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#lightbox-close, #prev-img, #next-img {
+  cursor: pointer;
+}
+
+
+
+

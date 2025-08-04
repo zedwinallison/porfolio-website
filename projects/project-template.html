@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Project</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../projectstyle.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="project-container">
+    <div class="title-desc-wrapper">
+      <div class="left-column">
+        <h1 class="project-title" id="project-title"></h1>
+
+        <div class="software-icons-wrapper">
+          <div class="software-icons" id="software-icons"></div>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <p class="project-description" id="project-description"></p>
+      </div>
+    </div>
+
+    <!-- Main images / gallery -->
+    <div id="image-gallery"></div>
+
+    <!-- Optional extra description paragraph -->
+    <p id="extra-description" class="extra-description"></p>
+
+
+    <div id="lightbox" class="hidden" style="position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center; z-index:2000;">
+    <button id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">×</button>
+    <button id="prev-img" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">‹</button>
+    <img id="lightbox-img" src="" alt="Large view" style="max-width:90vw; max-height:90vh; border-radius:8px;"/>
+    <button id="next-img" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">›</button>
+</div>
+
+
+  </main>
+
+  
+  <script type="module">
+  // Load navbar
+  fetch('../../components/navbar.html')
+    .then(res => res.text())
+    .then(html => document.getElementById('navbar-container').innerHTML = html);
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const slug = urlParams.get('slug');
+
+  const allImages = []; // Store all gallery images for lightbox navigation
+
+  // Load Project Data
+  fetch('../../assets/projects.json')
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+      return res.json();
+    })
+    .then(projects => {
+      const project = projects.find(p => p.slug === slug);
+      if (!project) {
+        document.getElementById('project-title').textContent = "Project Not Found";
+        return;
+      }
+
+      // Set page title and content
+      document.title = project.title;
+      document.getElementById('project-title').textContent = project.title;
+      document.getElementById('project-description').textContent = project.description || '';
+
+      // Load program icons
+      const iconContainer = document.getElementById('software-icons');
+      iconContainer.innerHTML = '';
+      (project.programs || []).forEach(prog => {
+        const img = document.createElement('img');
+        img.src = `../../assets/programs/${prog}.png`;
+        img.alt = prog;
+        iconContainer.appendChild(img);
+      });
+
+      // Load image gallery and add click listeners for lightbox
+      const gallery = document.getElementById('image-gallery');
+      gallery.innerHTML = '';
+      project.rows.forEach(row => {
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'image-row';
+        rowDiv.style.gridTemplateColumns = `repeat(${row.columns}, 1fr)`;
+
+        row.images.forEach(imgPath => {
+          const img = document.createElement('img');
+          img.src = imgPath;
+          img.alt = '';
+          img.dataset.index = allImages.length; // store index for lightbox
+          rowDiv.appendChild(img);
+
+          // Add click event to open lightbox at this image
+          img.addEventListener('click', () => openLightbox(parseInt(img.dataset.index)));
+          allImages.push(imgPath);
+        });
+
+        gallery.appendChild(rowDiv);
+      });
+
+      // Set extra closing paragraph if present
+      document.getElementById('extra-description').textContent = project.closing || '';
+    })
+    .catch(e => {
+      console.error('Fetch error:', e);
+      document.getElementById('project-title').textContent = "Failed to load project data";
+    });
+
+  // Lightbox variables and functions
+  let currentIndex = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('prev-img');
+  const nextBtn = document.getElementById('next-img');
+
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImg.src = allImages[currentIndex];
+    lightbox.classList.remove('hidden');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % allImages.length;
+    lightboxImg.src = allImages[currentIndex];
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+    lightboxImg.src = allImages[currentIndex];
+  }
+
+  // Event listeners for lightbox controls
+  closeBtn.addEventListener('click', closeLightbox);
+  nextBtn.addEventListener('click', showNext);
+  prevBtn.addEventListener('click', showPrev);
+
+  // Clicking outside image closes lightbox
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+  });
+</script>
+
+</body>
+</html>

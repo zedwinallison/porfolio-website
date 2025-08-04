@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projects</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Make sure navbar container takes up space */
+    #navbar-container {
+      min-height: 50px; /* Adjust to your navbar height */
+      margin-bottom: 20px;
+    }
+
+    /* Add padding on top of gallery */
+    .project-gallery {
+      padding-top: 7px !important;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <section class="project-gallery">
+    <div class="grid" id="project-grid"></div>
+  </section>
+
+  <script type="module">
+    // Load navbar
+    fetch('components/navbar.html')
+      .then(res => res.text())
+      .then(html => document.getElementById('navbar-container').innerHTML = html);
+
+    // Load project thumbnails
+    fetch('assets/projects.json')
+      .then(res => res.json())
+      .then(projects => {
+        const grid = document.getElementById('project-grid');
+        projects.forEach(project => {
+          const link = document.createElement('a');
+          link.href = `projects/${project.slug}/`;
+          
+          const item = document.createElement('div');
+          item.className = 'grid-item';
+
+          const img = document.createElement('img');
+          img.src = project.thumbnail;
+          img.alt = project.title;
+
+          const overlay = document.createElement('div');
+          overlay.className = 'overlay';
+          overlay.textContent = project.title;
+
+          item.appendChild(img);
+          item.appendChild(overlay);
+          link.appendChild(item);
+          grid.appendChild(link);
+        });
+      });
+  </script>
+</body>
+</html>

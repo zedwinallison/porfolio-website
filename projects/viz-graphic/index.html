@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Project</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../projectstyle.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="project-container">
+    <div class="title-desc-wrapper">
+      <div class="left-column">
+        <h1 class="project-title" id="project-title"></h1>
+
+        <div class="software-icons-wrapper">
+          <div class="software-icons" id="software-icons"></div>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <p class="project-description" id="project-description"></p>
+      </div>
+    </div>
+
+    <!-- Main images / gallery -->
+    <div id="image-gallery"></div>
+
+    <!-- Optional extra description paragraph -->
+    <p id="extra-description" class="extra-description"></p>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="hidden" style="position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center; z-index:2000;">
+      <button id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">×</button>
+      <button id="prev-img" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">‹</button>
+      <img id="lightbox-img" src="" alt="Large view" style="max-width:90vw; max-height:90vh; border-radius:8px;"/>
+      <button id="next-img" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">›</button>
+    </div>
+  </main>
+
+  <!-- Script -->
+  <script type="module">
+  window.addEventListener('DOMContentLoaded', () => {
+    // Load navbar
+    fetch('../../components/navbar.html')
+      .then(res => res.text())
+      .then(html => document.getElementById('navbar-container').innerHTML = html);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const slug = 'viz-graphic';
+
+    const allImages = []; // Store all gallery media
+
+    // Load Project Data
+    fetch('../../assets/projects.json')
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
+      .then(projects => {
+        const project = projects.find(p => p.slug === slug);
+        if (!project) {
+          document.getElementById('project-title').textContent = "Project Not Found";
+          return;
+        }
+
+        // Set page title and content
+        document.title = project.title;
+        document.getElementById('project-title').textContent = project.title;
+        document.getElementById('project-description').textContent = project.description || '';
+
+        // Load program icons
+        const iconContainer = document.getElementById('software-icons');
+        iconContainer.innerHTML = '';
+        (project.programs || []).forEach(prog => {
+          const img = document.createElement('img');
+          img.src = `../../assets/programs/${prog}.png`;
+          img.alt = prog;
+          iconContainer.appendChild(img);
+        });
+
+        // Load image/video gallery
+        const gallery = document.getElementById('image-gallery');
+        gallery.innerHTML = '';
+        project.rows.forEach(row => {
+          const rowDiv = document.createElement('div');
+          rowDiv.className = 'image-row';
+          rowDiv.style.gridTemplateColumns = `repeat(${row.columns}, 1fr)`;
+
+          row.images.forEach(mediaPath => {
+            const extension = mediaPath.split('.').pop().toLowerCase();
+            const index = allImages.length;
+            let element;
+
+            if (['mp4', 'webm'].includes(extension)) {
+              element = document.createElement('video');
+              element.src = mediaPath;
+              element.controls = false;
+              element.loop = true;
+              element.muted = true;
+              element.autoplay = true;
+              element.playsInline = true;
+            } else {
+              element = document.createElement('img');
+              element.src = mediaPath;
+              element.alt = '';
+            }
+
+            element.dataset.index = index;
+            element.style.cursor = 'pointer';
+            rowDiv.appendChild(element);
+
+            element.addEventListener('click', () => openLightbox(index));
+            allImages.push(mediaPath);
+          });
+
+          gallery.appendChild(rowDiv);
+        });
+
+        // Optional closing paragraph
+        document.getElementById('extra-description').textContent = project.closing || '';
+      })
+      .catch(e => {
+        console.error('Fetch error:', e);
+        const titleEl = document.getElementById('project-title');
+        if (titleEl) titleEl.textContent = "Failed to load project data";
+      });
+
+    // Lightbox logic
+    let currentIndex = 0;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    // Add lightbox video element dynamically
+    const lightboxVideo = document.createElement('video');
+    lightboxVideo.id = 'lightbox-video';
+    lightboxVideo.style.cssText = 'max-width:90vw; max-height:90vh; border-radius:8px; display:none;';
+    lightboxVideo.controls = true;
+    lightboxVideo.autoplay = true;
+    lightboxVideo.muted = true;
+    lightboxVideo.loop = true;
+    lightboxVideo.playsInline = true;
+    const nextBtn = document.getElementById('next-img');
+    lightbox.insertBefore(lightboxVideo, nextBtn);
+
+    function openLightbox(index) {
+      currentIndex = index;
+      const src = allImages[currentIndex];
+      const ext = src.split('.').pop().toLowerCase();
+
+      if (['mp4', 'webm'].includes(ext)) {
+        lightboxImg.style.display = 'none';
+        lightboxVideo.style.display = 'block';
+        lightboxVideo.src = src;
+      } else {
+        lightboxVideo.style.display = 'none';
+        lightboxImg.style.display = 'block';
+        lightboxImg.src = src;
+      }
+
+      lightbox.classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add('hidden');
+      lightboxVideo.pause();
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % allImages.length;
+      openLightbox(currentIndex);
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+      openLightbox(currentIndex);
+    }
+
+    // Event listeners
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    document.getElementById('next-img').addEventListener('click', showNext);
+    document.getElementById('prev-img').addEventListener('click', showPrev);
+
+    // Close on background click
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+  });
+  </script>
+</body>
+</html>

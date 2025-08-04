@@ -1,0 +1,291 @@
+[
+  {
+    "slug": "dioramas",
+    "title": "Historical 3D Dioramas",
+    "thumbnail": "projects/dioramas/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "Through these works, I hope to preserve the visual beauty of lost civilizations.",
+    "programs": ["unity", "blender", "substance-painter"],
+    "rows": [
+      {
+        "columns": 1,
+        "images": ["projects/dioramas/images/wide1.jpg"]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "projects/dioramas/images/detail1.jpg",
+          "projects/dioramas/images/detail2.jpg",
+          "projects/dioramas/images/detail3.jpg"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "fantasy-illustrations",
+    "title": "Fantasy Illustrations",
+    "thumbnail": "projects/fantasy-illustrations/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay. ",
+    "closing": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay. ",
+    "programs": ["procreate","photoshop"],
+    "rows": [
+      {
+        "columns": 3,
+        "images": [
+          "/projects/fantasy-illustrations/images/image1.png",
+          "/projects/fantasy-illustrations/images/image2.png",
+          "/projects/fantasy-illustrations/images/image3.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/fantasy-illustrations/images/image4.png",
+          "/projects/fantasy-illustrations/images/image5.png",
+          "/projects/fantasy-illustrations/images/image6.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/fantasy-illustrations/images/image7.png",
+          "/projects/fantasy-illustrations/images/image8.png",
+          "/projects/fantasy-illustrations/images/image9.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/fantasy-illustrations/images/image10.png",
+          "/projects/fantasy-illustrations/images/image11.png",
+          "/projects/fantasy-illustrations/images/image12.png"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "courtyard",
+    "title": "Courtyard Real Time Environment",
+    "thumbnail": "projects/courtyard/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "This project taught me about architectural flow, spatial storytelling, and scene composition.",
+    "programs": ["unreal", "blender", "substance-painter"],
+    "rows": [
+      {
+        "columns": 3,
+        "images": ["/projects/courtyard/images/image1.png",
+                   "/projects/courtyard/images/image2.png",
+                   "/projects/courtyard/images/image3.png"
+                  ]
+      },
+      {
+        "columns": 3,
+        "images": ["/projects/courtyard/images/image4.png",
+                   "/projects/courtyard/images/image5.png",
+                   "/projects/courtyard/images/image6.png"         
+                  ]
+      },
+{
+        "columns": 3,
+        "images": ["/projects/courtyard/images/image7.png",
+                   "/projects/courtyard/images/image8.png",
+                   "/projects/courtyard/images/image9.png"         
+                  ]
+      },
+{
+        "columns": 3,
+        "images": ["/projects/courtyard/images/image10.png",
+                   "/projects/courtyard/images/image11.png",
+                   "/projects/courtyard/images/image12.png"         
+                  ]
+      },
+{
+        "columns": 3,
+        "images": ["/projects/courtyard/images/image13.png",
+                   "/projects/courtyard/images/image14.png",
+                   "/projects/courtyard/images/image15.png"         
+                  ]
+      }
+
+    ]
+  },
+  {
+    "slug": "west-cover",
+    "title": "Western Cover Design",
+    "thumbnail": "projects/west-cover/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "",
+    "programs": ["procreate", "photoshop"],
+    "rows": [
+      {
+        "columns": 3,
+        "images": ["/projects/west-cover/images/image1.png",
+                   "/projects/west-cover/images/image2.png",
+                   "/projects/west-cover/images/image3.png"
+                  ]
+      },
+      {
+        "columns": 3,
+        "images": ["/projects/west-cover/images/image4.png",
+                   "/projects/west-cover/images/image5.png",
+                   "/projects/west-cover/images/image6.png"         
+                  ]
+      }
+    ]
+  },
+  {
+    "slug": "movie-posters",
+    "title": "Movie Posters",
+    "thumbnail": "projects/movie-posters/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "",
+    "programs": ["photoshop","illustrator"],
+    "rows": [
+      {
+        "columns": 3,
+        "images": [
+          "/projects/movie-posters/images/image1.png",
+          "/projects/movie-posters/images/image2.png",
+          "/projects/movie-posters/images/image3.png"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "character-designs",
+    "title": "Character Designs",
+    "thumbnail": "projects/character-designs/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "",
+    "programs": ["photoshop"],
+    "rows": [
+      {
+        "columns": 2,
+        "images": [
+          "/projects/character-designs/images/image1.png",
+          "/projects/character-designs/images/image2.png"     
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "reaper",
+    "title": "Reaper",
+    "thumbnail": "projects/reaper/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "",
+    "programs": ["procreate", "photoshop"],
+    "rows": [
+      {
+        "columns": 2,
+        "images": ["/projects/reaper/images/image1.png",
+                   "/projects/reaper/images/image2.png"]
+      }
+    ]
+  },
+  {
+    "slug": "old-man-comic",
+    "title": "Old Man of the Forest Comic",
+    "thumbnail": "projects/old-man-comic/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "This project emphasized sequential storytelling and panel composition.",
+    "programs": ["photoshop"],
+    "rows": [
+      {
+        "columns": 3,
+        "images": ["/projects/old-man-comic/images/image1.png",
+                   "/projects/old-man-comic/images/image2.png"]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/old-man-comic/images/image3.png",
+          "/projects/old-man-comic/images/image4.png"
+          ]
+      }
+    ]
+  },
+  {
+    "slug": "armor-paintings",
+    "title": "Armor Paintings",
+    "thumbnail": "projects/armor-paintings/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "",
+    "programs": ["procreate"],
+    "rows": [
+      {
+        "columns": 3,
+        "images": [
+          "/projects/armor-paintings/images/image1.png",
+          "/projects/armor-paintings/images/image2.png"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "viz-graphic",
+    "title": "3D Viz Center Motion Graphic",
+    "thumbnail": "projects/viz-graphic/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "",
+    "programs": ["after-effects"],
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          "/projects/viz-graphic/images/image1.gif",
+          "/projects/viz-graphics/images/image2.png"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "blender-day-1-tutorial",
+    "title": "Blender Day 1 Tutorial",
+    "thumbnail": "projects/blender-day-1-tutorial/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "",
+    "programs": ["premier"],
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "state-parks-videos",
+    "title": "Wyoming State Parks Promotional Videos",
+    "thumbnail": "projects/state-parks-videos/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "",
+    "programs": ["premier"],
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          
+        ]
+      }
+    ]
+  },
+  
+  {
+    "slug": "title-card",
+    "title": "How to Actually Make a Good Title Card",
+    "thumbnail": "projects/title-card/images/thumb.png",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "closing": "",
+    "programs": ["premier", "photoshop"],
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          
+        ]
+      }
+    ]
+  }
+]

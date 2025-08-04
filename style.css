@@ -1,0 +1,326 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  background-color: white;
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'SofiaProBold';
+  src: url('assets/fonts/sofiaprobold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SofiaProRegular';
+  src: url('assets/fonts/sofiaproregular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Navigation Bar */
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  z-index: 1000;
+  border-bottom: 1px solid #222;
+  font-family: 'SofiaProBold';
+}
+
+nav .logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+  font-family: 'SofiaProRegular';
+}
+
+nav .logo:hover {
+  color: lightgray;
+}
+
+nav .nav-links a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: gray;
+  font-weight: 500;
+  transition: color 0.3s;
+  font-family: 'SofiaProRegular';
+}
+
+nav .nav-links a:hover,
+nav .nav-links a.active {
+  color: white;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('assets/hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: white;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* Spacer */
+.spacer {
+  height: 80px;
+}
+
+/* Work preview / Grid */
+#work-preview {
+  padding: 65px 40px 40px;
+  padding-bottom: 60px;
+  background-color: white;
+  text-align: center;
+  width: 100%;
+  
+}
+
+.video-embed-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.video-embed {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+.video-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Default 4 columns */
+  gap: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Image container with overlay */
+.grid-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  cursor: pointer;
+  background: black;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.4s ease;
+  vertical-align: middle;
+}
+
+.grid-item .overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: 'SofiaProRegular';
+  opacity: 0;
+  transition: background-color 0.4s ease, opacity 0.4s ease;
+  pointer-events: none;
+  user-select: none;
+  padding: 10px;
+  text-align: center;
+}
+
+.grid-item:hover img {
+  opacity: 0.3;
+}
+
+.grid-item:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* See More Button */
+.see-more-button {
+  display: block;
+  margin: 50px auto 50px;
+  padding: 14px 30px;
+  font-size: 1.2rem;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+  text-align: center;
+  width: fit-content;
+  font-family: 'SofiaProRegular';
+}
+
+.see-more-button:hover {
+  background-color: #333;
+}
+
+/* Three.js Section */
+#threejs-section {
+  width: 100%;
+  height: 1000px;
+  background-color: #000;
+  cursor: pointer;
+  position: relative;
+}
+
+#instructions {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 14px;
+  z-index: 1001;
+  pointer-events: none;
+  user-select: none;
+  font-family: Arial, sans-serif;
+}
+
+#after-threejs {
+  width: 100%;
+  padding: 40px 10px;
+  background-color: white;
+}
+
+/* Sketchfab embed container */
+.sketchfab-embeds-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  justify-content: space-between;
+}
+
+.sketchfab-embed-wrapper {
+  flex: 1 1 0;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.sketchfab-embed-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  border-radius: 0;
+}
+
+@media (max-width: 900px) {
+  .sketchfab-embeds-container {
+    flex-direction: column;
+  }
+
+  .sketchfab-embed-wrapper {
+    margin-bottom: 20px;
+  }
+}
+
+/* Responsive nav */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav .nav-links {
+    margin-top: 10px;
+  }
+}
+
+/* Canvas Fix */
+canvas {
+  display: block;
+}
+
+.main-image {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+/* Image gallery rows */
+.image-row {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.image-row img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}

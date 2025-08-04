@@ -6,7 +6,7 @@
 
   // Set up skybox background
   const textureLoader = new THREE.TextureLoader();
-  textureLoader.load('sky.png', function (texture) {
+  textureLoader.load('assets/sky.png', function (texture) {
   texture.mapping = THREE.EquirectangularReflectionMapping;
   texture.encoding = THREE.sRGBEncoding;
   scene.background = texture;
@@ -35,7 +35,7 @@
   // Load GLB Model
   const loader = new GLTFLoader();
   loader.load(
-    'courtyard.glb',
+    'assets/courtyard.glb',
     (gltf) => {
       const model = gltf.scene;
       model.position.set(0, 0, -5);
@@ -64,7 +64,7 @@
     },
     undefined,
     (error) => {
-      console.error('Error loading blacksmith.glb:', error);
+      console.error('Error loading courtyard.glb:', error);
     }
   );
 
@@ -109,13 +109,13 @@
     requestAnimationFrame(animate);
 
     direction.set(0, 0, 0);
-    if (keys['KeyW']) direction.z -= 1;
-    if (keys['KeyS']) direction.z += 1;
-    if (keys['KeyA']) direction.x -= 1;
-    if (keys['KeyD']) direction.x += 1;
+    if (keys['KeyW']) direction.z -= .5;
+    if (keys['KeyS']) direction.z += .5;
+    if (keys['KeyA']) direction.x -= .5;
+    if (keys['KeyD']) direction.x += .5;
 
     direction.normalize();
-    velocity.copy(direction).applyAxisAngle(new THREE.Vector3(0, 1, 0), yaw).multiplyScalar(0.1);
+    velocity.copy(direction).applyAxisAngle(new THREE.Vector3(0, 1, 0), yaw).multiplyScalar(0.03);
 
     camera.position.add(velocity);
 
