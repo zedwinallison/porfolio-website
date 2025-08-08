@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About / Contact</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Fonts */
+    @font-face {
+      font-family: 'SofiaProBold';
+      src: url('assets/fonts/sofiaprobold.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'SofiaProRegular';
+      src: url('assets/fonts/sofiaproregular.otf') format('opentype');
+    }
+
+    /* Base Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'SofiaProRegular', sans-serif;
+      background-color: white;
+      color: #333;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background-color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      z-index: 1000;
+      border-bottom: 1px solid #222;
+      font-family: 'SofiaProBold';
+    }
+
+    nav .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s;
+      font-family: 'SofiaProRegular';
+    }
+
+    nav .logo:hover {
+      color: lightgray;
+    }
+
+    nav .nav-links a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: gray;
+      font-weight: 500;
+      transition: color 0.3s;
+      font-family: 'SofiaProRegular';
+    }
+
+    nav .nav-links a:hover,
+    nav .nav-links a.active {
+      color: white;
+    }
+
+    .project-container {
+      width: 90vw;
+      max-width: 1600px;
+      margin: 240px 600px 80px 450px;
+      padding: 0 40px;
+      padding-right: 150px;
+    }
+
+    .project-title {
+      white-space: nowrap;
+      font-size: 2.5rem;
+      font-weight: bold;
+      font-family: 'SofiaProBold';
+      margin: 0 0 20px 0;
+      color: black;
+    }
+
+    .about-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 60px;
+      align-items: flex-start;
+      margin-bottom: 120px;
+    }
+
+    .about-text {
+      flex: 1 1 60%;
+      min-width: 300px;
+      font-family: 'SofiaProRegular';
+      color: #868686;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 80px;
+    }
+
+    .about-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      max-height: 200px;
+      flex: 1 1 30%;
+    }
+
+    .section-title {
+      font-family: 'SofiaProBold';
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .program-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 60px;
+    }
+
+    /* Smaller program icons */
+    .program-icons img {
+      width: 40px;
+      height: 40px;
+    }
+
+    /* Contact Row */
+    .contact-icons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 200px 0;
+      flex-wrap: wrap;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .contact-email {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-email img,
+    .contact-links img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .contact-icons span {
+      font-family: 'SofiaProRegular';
+      font-size: 1.1rem;
+      color: #868686;
+    }
+
+    @media (max-width: 768px) {
+      .about-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-icons {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <div id="navbar"></div>
+  <script>
+    fetch('/components/navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+  <div class="project-container">
+    <div class="about-flex">
+      <div class="about-image">
+        <img src="assets/contact/portrait.png" alt="Portrait of Zach Allison" />
+      </div>
+
+      <div class="about-text">
+        <h1 class="project-title">About Me</h1>
+        <p>
+          Hi, I’m Zach Allison. I'm a designer, illustrator, and 3D artist in Wyoming.
+          I earned my BFA in Visual Communication Design from the University of Wyoming.
+          My work focuses on building immersive environments, telling stories, and establishing
+          worlds and atmosphere.
+        </p>
+
+        <div class="program-icons">
+          <img src="assets/programs/creative-cloud.png" alt="Creative Cloud">
+          <img src="assets/programs/blender.png" alt="Blender">
+          <img src="assets/programs/unity.png" alt="Unity">
+          <img src="assets/programs/unreal.png" alt="Unreal">
+          <img src="assets/programs/procreate.png" alt="Procreate">
+        </div>
+
+        <!-- Contact Row -->
+        <div class="contact-icons">
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/zach-allison-92575b372/" target="_blank" rel="noopener noreferrer">
+              <img src="assets/contact/linkedin.png" alt="LinkedIn" />
+            </a>
+           <!--  <a href="https://www.indeed.com/me/zach-allison" target="_blank" rel="noopener noreferrer">
+              <img src="assets/contact/indeed.png" alt="Indeed" />
+            </a>-->
+            <a href="https://www.artstation.com/zachallison" target="_blank" rel="noopener noreferrer">
+              <img src="assets/contact/artstation.png" alt="Art Station" />
+            </a>
+            <a href="https://www.instagram.com/zchllsn/" target="_blank" rel="noopener noreferrer">
+              <img src="assets/contact/instagram.png" alt="Instagram" />
+            </a>
+            
+          </div>
+
+          <div class="contact-email">
+            <img src="assets/contact/email.png" alt="Email Icon" />
+            <span>zachallison.design@gmail.com</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

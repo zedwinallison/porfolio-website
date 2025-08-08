@@ -3,7 +3,7 @@
     "slug": "dioramas",
     "title": "Historical 3D Dioramas",
     "thumbnail": "projects/dioramas/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states.  Each model is crafted with attention towards historical storytelling, lighting, and atmosphere.  For the sake of SketchFab display, each model’s lighting is fully baked.  The original Unity project is attached as well, showcasing using of particles, UI design, and model swapping interaction.  The models were created in Blender and texture in Substance Painter.",
     "closing": "Through these works, I hope to preserve the visual beauty of lost civilizations.",
     "programs": ["unity", "blender", "substance-painter"],
     "rows": [
@@ -25,8 +25,8 @@
     "slug": "fantasy-illustrations",
     "title": "Fantasy Illustrations",
     "thumbnail": "projects/fantasy-illustrations/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay. ",
-    "closing": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay. ",
+    "description": "These illustrations demonstrate a consistent visual style across 12 images, depicting 12 types of inhabitants found in a fantasy forest.  In the black-and-white ink style, legibility of form and silhouette is often a challenge.  In these works you will notice particular attention towards ensuring that nothing is lost against the black background, and strategic use of negative space to create interesting compositions.  All images are hand-drawn in Procreate.",
+    "closing": "There are several methods of shading to communicate midtones, that are strategically used to accentuate contours, implement optical flow, and communicate texture.  For example, tree bark involves parallel hatching, and stones involve basket/woven hatching.  There is particular emphasis on the thickness certain lines to communicate silhouette and visual clarity.  You'll notice some outlines of limbs, etc. are very thick to make the character more readable when objects or characters overlap.",
     "programs": ["procreate","photoshop"],
     "rows": [
       {
@@ -67,8 +67,8 @@
     "slug": "courtyard",
     "title": "Courtyard Real Time Environment",
     "thumbnail": "projects/courtyard/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
-    "closing": "This project taught me about architectural flow, spatial storytelling, and scene composition.",
+    "description": "This project showcases all aspects of 3D level design.  This is a self-contained scene with consideration of sight lines, lighting, and atmosphere.  There is a particular emphasis on modular assets, including beams, walls, and roof components to create medieval buildings, and countless props to decorate the scene, like crates, weapons, and furniture.  The scene is modeled in Blender and textured in Substance Painter.",
+    "closing": "The scene economically makes use of few polygons, and uses deliberate texturing to introduce additional detail.  There are aspects of subtle visual storytelling, such as wagon tracks in the mud, worn-down brickwork on the stones in front of the stairs, and moss growth in areas that would see less foot-traffic.  The angle of the sunlight and the effects of the bounce-lighting were considered as well for creating appealing composition.",
     "programs": ["unreal", "blender", "substance-painter"],
     "rows": [
       {
@@ -113,7 +113,7 @@
     "slug": "west-cover",
     "title": "Western Cover Design",
     "thumbnail": "projects/west-cover/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "description": "This project showcases intention combination of text and illustration in the context of a book cover.  The character is shaded using three tones, meaning which can be altered in value and color to create vastly differing appearances with consistent form and composition.  The dominance of the text, as well as the roughness, the dynamic character pose, and the vivid color all create a confrontational image with great visual interest.",
     "closing": "",
     "programs": ["procreate", "photoshop"],
     "rows": [
@@ -137,7 +137,7 @@
     "slug": "movie-posters",
     "title": "Movie Posters",
     "thumbnail": "projects/movie-posters/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "description": "These are examples of reimagined movie posters that each demonstrate a different design style.  The Godzilla poster is dynamic in composition, but flat with dominant Japanese characters and careful consideration of silhouette.  The ALIEN poster is rough and aggressive, and refuses to shy away from the grit of pencil on paper and fluid gestural drawing.  The Shining poster is minimalist, and makes use of repetition and recognizable pattern to draw a viewer in.",
     "closing": "",
     "programs": ["photoshop","illustrator"],
     "rows": [
@@ -155,7 +155,7 @@
     "slug": "character-designs",
     "title": "Character Designs",
     "thumbnail": "projects/character-designs/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "description": "These character designs demonstrate creative use of flat shading, and careful manipulation of proportion and pose to communicate personality.  The smallness of the knight’s helmet in comparison to his hands and boots gives him an imposing and brutal appearance, and makes him look sizable even without anyone beside him to compare.  The rigid, confident pose and expression of the samurai communicates calmness and determination.",
     "closing": "",
     "programs": ["photoshop"],
     "rows": [
@@ -172,7 +172,7 @@
     "slug": "reaper",
     "title": "Reaper",
     "thumbnail": "projects/reaper/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "description": "This project combines well thought-out illustration with graphic design principles.  Using a circular composition, I had to consider visual balance and optical flow.  The curve of the scythe matches the curve of the enclosing circle, and the handle visually flows into the billowing fabric of the reaper’s cloak.  The secondary handle is exactly in line with the circular border as well.  The result is an image that feels both like a logo/symbol and a dynamic illustration.",
     "closing": "",
     "programs": ["procreate", "photoshop"],
     "rows": [
@@ -187,20 +187,22 @@
     "slug": "old-man-comic",
     "title": "Old Man of the Forest Comic",
     "thumbnail": "projects/old-man-comic/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
-    "closing": "This project emphasized sequential storytelling and panel composition.",
+    "description": "This project utilizes a dark ink art style to tell a brief story about a character, The Old Man of the Forest.  This was an exercise in sequential illustration, and I created a custom typeface to give a certain level of personality, or even a voice to the narration.  The placement of text within the panel, and properly deciding which panels include text lets me control the exact pacing of the scene.  I used dynamic and varying panel layouts to add visual interest.",
+    "closing": "",
     "programs": ["photoshop"],
     "rows": [
       {
         "columns": 3,
         "images": ["/projects/old-man-comic/images/image1.png",
-                   "/projects/old-man-comic/images/image2.png"]
+                   "/projects/old-man-comic/images/image2.png",
+                   "/projects/old-man-comic/images/image3.png"]
       },
       {
         "columns": 3,
         "images": [
-          "/projects/old-man-comic/images/image3.png",
-          "/projects/old-man-comic/images/image4.png"
+          "/projects/old-man-comic/images/image4.png",
+          "/projects/old-man-comic/images/image5.png",
+          "/projects/old-man-comic/images/image6.png"
           ]
       }
     ]
@@ -209,7 +211,7 @@
     "slug": "armor-paintings",
     "title": "Armor Paintings",
     "thumbnail": "projects/armor-paintings/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "description": "These digital paintings lean into visible brushwork and impressionistic style.  Imperfections and brushstrokes extending past boundaries are encouraged, with the understanding that it mimics artifacts from photography, such as optical bloom in a camera lens.  With a style like this, refinement reaches a point of diminishing return, where photo-realism can obscure the evidence of the process, and make a final image that is much less fun explore.",
     "closing": "",
     "programs": ["procreate"],
     "rows": [
@@ -226,7 +228,7 @@
     "slug": "viz-graphic",
     "title": "3D Viz Center Motion Graphic",
     "thumbnail": "projects/viz-graphic/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "description": "This motion graphic was created to serve as an intro animation for video content posted on the YouTube channel for the 3D Viz Center at the University of Wyoming.  I wanted to make a graphic that felt fluid, smooth, and, most importantly, brief, given its role as an intro to content with substance.  The motion was tied directly to the composition of the logo, and designed to integrate seamlessly with it.  It was created in After Effects, with the ability to be placed on top of any background footage.  ",
     "closing": "",
     "programs": ["after-effects"],
     "rows": [
@@ -243,8 +245,8 @@
     "slug": "blender-day-1-tutorial",
     "title": "Blender Day 1 Tutorial",
     "thumbnail": "projects/blender-day-1-tutorial/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
-    "closing": "",
+    "description": "Make sure to set the viewer to playback in 1080p!  I created this video as an introductory lesson to introduce Blender to someone who has never touched a 3D software before.  Many skills were deployed in the creation of this video.  Writing, editing, animation, illustration, voice-over, and expertise in structuring an entertaining video.  This was not a collaborative project whatsoever, every aspect was recorded and edited by me.",
+    "closing": "The structure of this video was very well thought out.  It's important to consider the viewer's perspective, and particularly their attention when structuring and editing a video.  The first few seconds are the most important, and as they watch, their likelihood to click away steadily decreases.  For an educational video, prioritizing entertainment, comedy, and appealing visuals means that the viewer will retain more information.  You will notice the sound design in this video as well.  Great care went into using sound to capture attention, and seamlessly transition between sections in interesting ways.  This is the video that I wish I had when I was initially learning how to use Blender.",
     "programs": ["premier"],
     "rows": [
       {
@@ -259,7 +261,7 @@
     "slug": "state-parks-videos",
     "title": "Wyoming State Parks Promotional Videos",
     "thumbnail": "projects/state-parks-videos/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "description": "Make sure to set the viewer to playback in 1080p!  This set of promotional films was created on contract with Wyoming State Parks to provide information about several historic sites.  These films were directed, filmed, and edited by me, in accordance with certain information that State Parks wanted to communicate.  They are consistently styled, and fit as a set of three, with identical formatting, visuals, and sound design.",
     "closing": "",
     "programs": ["premier"],
     "rows": [
@@ -276,7 +278,7 @@
     "slug": "title-card",
     "title": "How to Actually Make a Good Title Card",
     "thumbnail": "projects/title-card/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states, emphasizing historical accuracy and environmental storytelling. Each model is meticulously crafted to highlight textures, lighting, and atmosphere that immerse viewers in the narrative behind the scenes. Through careful use of color palettes and composition, the dioramas bring ancient civilizations to life, reflecting both their grandeur and decay.",
+    "description": "Make sure to set the viewer to playback in 1080p!  This video was created as a study of title cards in film and TV.  It breaks down visual design choices, and film editing concepts/practices.  This video recorded, illustrated, animated, and edited by me.  There are no other collaborators.  This is an excellent example of capturing a viewer’s attention, and educating while providing entertainment that is engaging, visually interesting, cinematic, and comedic.",
     "closing": "",
     "programs": ["premier", "photoshop"],
     "rows": [
@@ -284,6 +286,88 @@
         "columns": 1,
         "images": [
           
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "metal-logos",
+    "title": "Commission Metal Logos",
+    "thumbnail": "projects/metal-logos/images/thumb.png",
+    "description": "This body of work includes examples from 30+ individual commissions to create  logos for heavy metal, death metal, gore grind, and other genres of metal bands.  This is a very niche style of graphic design that is fundamentally tied to music.  Each logo is the title of a band, and the letters are stretched and distorted beyond recognition.  Some are more legible than others, and it can be fun to try to decipher any letters in the more complex logos.",
+    "closing": "",
+    "programs": ["photoshop"],
+    "rows": [
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/1.png",
+          "/projects/metal-logos/images/2.png",
+          "/projects/metal-logos/images/3.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/4.png",
+          "/projects/metal-logos/images/5.png",
+          "/projects/metal-logos/images/6.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/7.png",
+          "/projects/metal-logos/images/8.png",
+          "/projects/metal-logos/images/9.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/10.png",
+          "/projects/metal-logos/images/11.png",
+          "/projects/metal-logos/images/12.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/13.png",
+          "/projects/metal-logos/images/14.png",
+          "/projects/metal-logos/images/15.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/16.png",
+          "/projects/metal-logos/images/17.png",
+          "/projects/metal-logos/images/18.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/19.png",
+          "/projects/metal-logos/images/20.png",
+          "/projects/metal-logos/images/21.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/22.png",
+          "/projects/metal-logos/images/23.png",
+          "/projects/metal-logos/images/24.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/25.png",
+          "/projects/metal-logos/images/26.png",
+          "/projects/metal-logos/images/27.png"
         ]
       }
     ]
