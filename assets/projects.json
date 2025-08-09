@@ -4,7 +4,7 @@
     "title": "Historical 3D Dioramas",
     "thumbnail": "projects/dioramas/images/thumb.png",
     "description": "This project showcases detailed diorama scenes with pristine and ruined states.  Each model is crafted with attention towards historical storytelling, lighting, and atmosphere.  For the sake of SketchFab display, each model’s lighting is fully baked.  The original Unity project is attached as well, showcasing using of particles, UI design, and model swapping interaction.  The models were created in Blender and texture in Substance Painter.",
-    "closing": "Through these works, I hope to preserve the visual beauty of lost civilizations.",
+    "closing": "",
     "programs": ["unity", "blender", "substance-painter"],
     "rows": [
       {

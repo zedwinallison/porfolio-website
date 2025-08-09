@@ -57,7 +57,7 @@
     nav .nav-links a {
       margin-left: 30px;
       text-decoration: none;
-      color: gray;
+      color: rgb(0, 0, 0);
       font-weight: 500;
       transition: color 0.3s;
       font-family: 'SofiaProRegular';
@@ -71,9 +71,8 @@
     .project-container {
       width: 90vw;
       max-width: 1600px;
-      margin: 240px 600px 80px 450px;
+      margin: 240px auto 80px auto;
       padding: 0 40px;
-      padding-right: 150px;
     }
 
     .project-title {
@@ -124,54 +123,63 @@
       margin-top: 60px;
     }
 
-    /* Smaller program icons */
     .program-icons img {
       width: 40px;
       height: 40px;
     }
 
-    /* Contact Row */
-    .contact-icons {
+    /* Contact Section at Bottom */
+    .contact-section {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .contact-email {
+      margin-bottom: 30px;
+      font-family: 'SofiaProRegular';
+      font-size: 1.1rem;
+      color: #868686;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      margin: 200px 0;
-      flex-wrap: wrap;
+      gap: 10px;
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+
+    .contact-email img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .contact-email:hover {
+      opacity: 1;
     }
 
     .contact-links {
       display: flex;
       gap: 20px;
+      justify-content: center;
     }
 
-    .contact-email {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .contact-email img,
     .contact-links img {
       width: 24px;
       height: 24px;
+      opacity: 0.5;
+      transition: opacity 0.3s;
     }
 
-    .contact-icons span {
-      font-family: 'SofiaProRegular';
-      font-size: 1.1rem;
-      color: #868686;
+    .contact-links img:hover {
+      opacity: 1;
     }
 
     @media (max-width: 768px) {
       .about-flex {
         flex-direction: column;
         align-items: center;
-      }
-
-      .contact-icons {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
       }
     }
   </style>
@@ -210,32 +218,26 @@
           <img src="assets/programs/unreal.png" alt="Unreal">
           <img src="assets/programs/procreate.png" alt="Procreate">
         </div>
-
-        <!-- Contact Row -->
-        <div class="contact-icons">
-          <div class="contact-links">
-            <a href="https://www.linkedin.com/in/zach-allison-92575b372/" target="_blank" rel="noopener noreferrer">
-              <img src="assets/contact/linkedin.png" alt="LinkedIn" />
-            </a>
-           <!--  <a href="https://www.indeed.com/me/zach-allison" target="_blank" rel="noopener noreferrer">
-              <img src="assets/contact/indeed.png" alt="Indeed" />
-            </a>-->
-            <a href="https://www.artstation.com/zachallison" target="_blank" rel="noopener noreferrer">
-              <img src="assets/contact/artstation.png" alt="Art Station" />
-            </a>
-            <a href="https://www.instagram.com/zchllsn/" target="_blank" rel="noopener noreferrer">
-              <img src="assets/contact/instagram.png" alt="Instagram" />
-            </a>
-            
-          </div>
-
-          <div class="contact-email">
-            <img src="assets/contact/email.png" alt="Email Icon" />
-            <span>zachallison.design@gmail.com</span>
-          </div>
-        </div>
-
       </div>
+    </div>
+  </div>
+
+  <!-- Fixed Contact at Bottom -->
+  <div class="contact-section">
+    <div class="contact-email">
+      <img src="assets/contact/email.png" alt="Email Icon" />
+      <span>zachallison.design@gmail.com</span>
+    </div>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/zach-allison-92575b372/" target="_blank" rel="noopener noreferrer">
+        <img src="assets/contact/linkedin.png" alt="LinkedIn" />
+      </a>
+      <a href="https://www.artstation.com/zachallison" target="_blank" rel="noopener noreferrer">
+        <img src="assets/contact/artstation.png" alt="Art Station" />
+      </a>
+      <a href="https://www.instagram.com/zchllsn/" target="_blank" rel="noopener noreferrer">
+        <img src="assets/contact/instagram.png" alt="Instagram" />
+      </a>
     </div>
   </div>
 </body>
