@@ -9,16 +9,9 @@
     "rows": [
       {
         "columns": 1,
-        "images": ["projects/dioramas/images/wide1.jpg"]
-      },
-      {
-        "columns": 3,
-        "images": [
-          "projects/dioramas/images/detail1.jpg",
-          "projects/dioramas/images/detail2.jpg",
-          "projects/dioramas/images/detail3.jpg"
-        ]
+        "images": [""]
       }
+      
     ]
   },
   {
@@ -276,7 +269,7 @@
   
   {
     "slug": "title-card",
-    "title": "How to Actually Make a Good Title Card",
+    "title": "How to Make Title Cards",
     "thumbnail": "projects/title-card/images/thumb.png",
     "description": "Make sure to set the viewer to playback in 1080p!  This video was created as a study of title cards in film and TV.  It breaks down visual design choices, and film editing concepts/practices.  This video recorded, illustrated, animated, and edited by me.  There are no other collaborators.  This is an excellent example of capturing a viewer’s attention, and educating while providing entertainment that is engaging, visually interesting, cinematic, and comedic.",
     "closing": "",
