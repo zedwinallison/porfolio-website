@@ -3,7 +3,7 @@
     "slug": "dioramas",
     "title": "Historical 3D Dioramas",
     "thumbnail": "projects/dioramas/images/thumb.png",
-    "description": "This project showcases detailed diorama scenes with pristine and ruined states.  Each model is crafted with attention towards historical storytelling, lighting, and atmosphere.  For the sake of SketchFab display, each model’s lighting is fully baked.  The original Unity project is attached as well, showcasing using of particles, UI design, and model swapping interaction.  The models were created in Blender and texture in Substance Painter.",
+    "description": "This project showcases detailed diorama scenes with pristine and ruined states.  Each model is crafted with attention towards historical storytelling, lighting, and atmosphere.  For the sake of SketchFab display, each model’s lighting is fully baked.  The models were created in Blender and textured in Substance Painter.",
     "closing": "",
     "programs": ["unity", "blender", "substance-painter"],
     "rows": [
@@ -19,7 +19,7 @@
     "title": "Fantasy Illustrations",
     "thumbnail": "projects/fantasy-illustrations/images/thumb.png",
     "description": "These illustrations demonstrate a consistent visual style across 12 images, depicting 12 types of inhabitants found in a fantasy forest.  In the black-and-white ink style, legibility of form and silhouette is often a challenge.  In these works you will notice particular attention towards ensuring that nothing is lost against the black background, and strategic use of negative space to create interesting compositions.  All images are hand-drawn in Procreate.",
-    "closing": "There are several methods of shading to communicate midtones, that are strategically used to accentuate contours, implement optical flow, and communicate texture.  For example, tree bark involves parallel hatching, and stones involve basket/woven hatching.  There is particular emphasis on the thickness certain lines to communicate silhouette and visual clarity.  You'll notice some outlines of limbs, etc. are very thick to make the character more readable when objects or characters overlap.",
+    "closing": "There are several methods of shading to communicate midtones, that are strategically used to accentuate contours, implement optical flow, and communicate texture.  For example, tree bark involves parallel hatching, and stones involve basket/woven hatching.  There is particular emphasis on the thickness of certain lines to communicate silhouette and visual clarity.  You'll notice some outlines of limbs, etc. are very thick to make the character more readable when objects or characters overlap.",
     "programs": ["procreate","photoshop"],
     "rows": [
       {
@@ -60,7 +60,7 @@
     "slug": "courtyard",
     "title": "Courtyard Real Time Environment",
     "thumbnail": "projects/courtyard/images/thumb.png",
-    "description": "This project showcases all aspects of 3D level design.  This is a self-contained scene with consideration of sight lines, lighting, and atmosphere.  There is a particular emphasis on modular assets, including beams, walls, and roof components to create medieval buildings, and countless props to decorate the scene, like crates, weapons, and furniture.  The scene is modeled in Blender and textured in Substance Painter.",
+    "description": "This project showcases all aspects of 3D level design.  This is a self-contained scene with consideration of sight lines, lighting, and atmosphere.  There is a particular emphasis on modular assets, including beams, walls, and roof components to create medieval buildings. There are also countless props to decorate the scene, like crates, weapons, and furniture.  The scene is modeled in Blender and textured in Substance Painter.",
     "closing": "The scene economically makes use of few polygons, and uses deliberate texturing to introduce additional detail.  There are aspects of subtle visual storytelling, such as wagon tracks in the mud, worn-down brickwork on the stones in front of the stairs, and moss growth in areas that would see less foot-traffic.  The angle of the sunlight and the effects of the bounce-lighting were considered as well for creating appealing composition.",
     "programs": ["unreal", "blender", "substance-painter"],
     "rows": [
@@ -106,7 +106,7 @@
     "slug": "west-cover",
     "title": "Western Cover Design",
     "thumbnail": "projects/west-cover/images/thumb.png",
-    "description": "This project showcases intention combination of text and illustration in the context of a book cover.  The character is shaded using three tones, meaning which can be altered in value and color to create vastly differing appearances with consistent form and composition.  The dominance of the text, as well as the roughness, the dynamic character pose, and the vivid color all create a confrontational image with great visual interest.",
+    "description": "This project showcases combination of text and illustration in the context of a book cover.  The character is shaded using three tones, meaning each can be altered in value and color to create vastly differing appearances with consistent form and composition.  The dominance of the text, as well as the roughness, the dynamic character pose, and the vivid color all create a confrontational image with great visual interest.",
     "closing": "",
     "programs": ["procreate", "photoshop"],
     "rows": [
@@ -165,7 +165,7 @@
     "slug": "reaper",
     "title": "Reaper",
     "thumbnail": "projects/reaper/images/thumb.png",
-    "description": "This project combines well thought-out illustration with graphic design principles.  Using a circular composition, I had to consider visual balance and optical flow.  The curve of the scythe matches the curve of the enclosing circle, and the handle visually flows into the billowing fabric of the reaper’s cloak.  The secondary handle is exactly in line with the circular border as well.  The result is an image that feels both like a logo/symbol and a dynamic illustration.",
+    "description": "This project combines carefully considered illustration with graphic design principles.  Using a circular composition, I had to think about visual balance and optical flow.  The curve of the scythe matches the curve of the enclosing circle, and the handle visually flows into the billowing fabric of the reaper’s cloak.  The secondary handle is exactly in line with the circular border as well.  The result is an image that feels both like a logo/symbol and a dynamic illustration.",
     "closing": "",
     "programs": ["procreate", "photoshop"],
     "rows": [
@@ -180,7 +180,7 @@
     "slug": "old-man-comic",
     "title": "Old Man of the Forest Comic",
     "thumbnail": "projects/old-man-comic/images/thumb.png",
-    "description": "This project utilizes a dark ink art style to tell a brief story about a character, The Old Man of the Forest.  This was an exercise in sequential illustration, and I created a custom typeface to give a certain level of personality, or even a voice to the narration.  The placement of text within the panel, and properly deciding which panels include text lets me control the exact pacing of the scene.  I used dynamic and varying panel layouts to add visual interest.",
+    "description": "This project utilizes a dark ink art style to tell a brief story about a character, The Old Man of the Forest.  This was an exercise in sequential illustration, and I created a custom typeface for a certain level of personality and voice in the narration.  Deciding when and where text in placed lets me control the exact pacing of the scene.  I used dynamic and varying panel layouts to add visual interest.",
     "closing": "",
     "programs": ["photoshop"],
     "rows": [
@@ -228,8 +228,8 @@
       {
         "columns": 1,
         "images": [
-          "/projects/viz-graphic/images/image1.gif",
-          "/projects/viz-graphics/images/image2.png"
+          "/projects/viz-graphic/images/image1.gif"
+          
         ]
       }
     ]
@@ -238,8 +238,8 @@
     "slug": "blender-day-1-tutorial",
     "title": "Blender Day 1 Tutorial",
     "thumbnail": "projects/blender-day-1-tutorial/images/thumb.png",
-    "description": "Make sure to set the viewer to playback in 1080p!  I created this video as an introductory lesson to introduce Blender to someone who has never touched a 3D software before.  Many skills were deployed in the creation of this video.  Writing, editing, animation, illustration, voice-over, and expertise in structuring an entertaining video.  This was not a collaborative project whatsoever, every aspect was recorded and edited by me.",
-    "closing": "The structure of this video was very well thought out.  It's important to consider the viewer's perspective, and particularly their attention when structuring and editing a video.  The first few seconds are the most important, and as they watch, their likelihood to click away steadily decreases.  For an educational video, prioritizing entertainment, comedy, and appealing visuals means that the viewer will retain more information.  You will notice the sound design in this video as well.  Great care went into using sound to capture attention, and seamlessly transition between sections in interesting ways.  This is the video that I wish I had when I was initially learning how to use Blender.",
+    "description": "Make sure to set the viewer to playback in 1080p!  I created this video as an introductory lesson to introduce Blender to someone who has never touched a 3D software before.  Many skills were deployed in the creation of this video, including writing, editing, animation, illustration, voice-over, and expertise in structuring an entertaining video.  This was not a collaborative project whatsoever; every aspect was recorded and edited by me.",
+    "closing": "A great deal of planning went into the structure of this video.  It's important to consider the viewer's perspective, and particularly their attention when structuring and editing a video.  The first few seconds are the most important, and as they watch, their likelihood to click away steadily decreases.  For an educational video, prioritizing entertainment, comedy, and appealing visuals means that the viewer will retain more information.  You will notice the sound design in this video as well.  Great care went into using sound to capture attention, and seamlessly transition between sections in interesting ways.  This is the video that I wish I had when I was initially learning how to use Blender.",
     "programs": ["premier"],
     "rows": [
       {
@@ -271,7 +271,7 @@
     "slug": "title-card",
     "title": "How to Make Title Cards",
     "thumbnail": "projects/title-card/images/thumb.png",
-    "description": "Make sure to set the viewer to playback in 1080p!  This video was created as a study of title cards in film and TV.  It breaks down visual design choices, and film editing concepts/practices.  This video recorded, illustrated, animated, and edited by me.  There are no other collaborators.  This is an excellent example of capturing a viewer’s attention, and educating while providing entertainment that is engaging, visually interesting, cinematic, and comedic.",
+    "description": "Make sure to set the viewer to playback in 1080p!  This video was created as a study of title cards in film and TV.  It breaks down visual design choices, and film editing concepts/practices.  This video was recorded, illustrated, animated, and edited by me.  There are no other collaborators.  My goal was to capture a viewer’s attention and educate while providing entertainment that is engaging, visually interesting, cinematic, and comedic.",
     "closing": "",
     "programs": ["premier", "photoshop"],
     "rows": [
@@ -285,7 +285,7 @@
   },
   {
     "slug": "metal-logos",
-    "title": "Commission Metal Logos",
+    "title": "Metal Logo Commissions",
     "thumbnail": "projects/metal-logos/images/thumb.png",
     "description": "This body of work includes examples from 30+ individual commissions to create  logos for heavy metal, death metal, gore grind, and other genres of metal bands.  This is a very niche style of graphic design that is fundamentally tied to music.  Each logo is the title of a band, and the letters are stretched and distorted beyond recognition.  Some are more legible than others, and it can be fun to try to decipher any letters in the more complex logos.",
     "closing": "",
