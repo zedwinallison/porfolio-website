@@ -138,6 +138,22 @@
       height: 100%;
       border: 0;
     }
+
+.unity-wrapper {
+  width: 100%;
+  height: 70vh; /* This is where you define size */
+}
+
+.unity-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+
+
+
   </style>
   
   <script type="importmap">
@@ -187,6 +203,49 @@
   <!-- Three.js Script 
   <script type="module" src="courtyard.js"></script>
 -->
+
+</section> <!-- End of #work-preview -->
+
+<!-- Unity WebGL Section -->
+<section class="unity-section">
+  <div class="unity-wrapper" id="unity-wrapper" style="position: relative;">
+    <iframe 
+      src="assets/webglcourtyard/index.html" 
+      class="unity-frame" 
+      allowfullscreen
+      scrolling="no"
+      style="display: block;">
+    </iframe>
+    
+    <!-- Controls overlay, always visible -->
+    <img 
+      id="control-indicator" 
+      src="assets/controls.png" 
+      alt="Click to control, press ESC to release" 
+      style="
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 360px;
+        cursor: pointer;
+        user-select: none;
+        pointer-events: auto;
+        z-index: 10;
+      "
+    />
+  </div>
+</section>
+
+
+
+
+
+<section class="video-section">
+
+
+
+
   <script type="module">
     async function loadProjects() {
       const response = await fetch('assets/projects.json');
@@ -218,6 +277,8 @@
 
     loadProjects();
   </script>
+
+
 
   
 

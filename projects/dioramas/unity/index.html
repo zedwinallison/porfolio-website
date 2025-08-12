@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Unity WebGL Player | My project (1)</title>
+    <style>
+      /* Make body and html fill the screen, no margin/padding */
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #231F20;
+        text-align: center;
+      }
+      /* Canvas fills the window */
+      #unity-canvas {
+        width: 100vw;
+        height: 100vh;
+        display: block; /* removes inline spacing */
+        margin: 0 auto;
+        background: #231F20;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+
+    <script src="Build/web.loader.js"></script>
+    <script>
+      function resizeCanvas() {
+        const canvas = document.getElementById('unity-canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      // Resize canvas on window resize
+      window.addEventListener('resize', () => {
+        resizeCanvas();
+      });
+
+      // Initial resize before Unity instance creation
+      resizeCanvas();
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.position = "fixed";
+
+        document.body.style.textAlign = "left";
+      }
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/web.data",
+        frameworkUrl: "Build/web.framework.js",
+        codeUrl: "Build/web.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "My project (1)",
+        productVersion: "0.1.0",
+        // Let Unity match WebGL canvas render size to canvas DOM size (default behavior)
+        // You can uncomment matchWebGLToCanvasSize: true if needed
+      }).then((unityInstance) => {
+        // You could do stuff here with the unityInstance if needed
+      });
+    </script>
+  </body>
+</html>

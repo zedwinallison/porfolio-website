@@ -4,7 +4,7 @@
     "title": "Historical 3D Dioramas",
     "thumbnail": "projects/dioramas/images/thumb.png",
     "description": "This project showcases detailed diorama scenes with pristine and ruined states.  Each model is crafted with attention towards historical storytelling, lighting, and atmosphere.  For the sake of SketchFab display, each model’s lighting is fully baked.  The models were created in Blender and textured in Substance Painter.",
-    "closing": "",
+    "closing": "These models were created for my BFA Capstone project at the University of Wyoming.  The viewer is able to switch between the models, and quickly swap the ruined and pristine versions at the click of a button to compare them.  The viewer can also pull up an accompanying illustration which thematically ties the cycle of civilization to the cycle of life.  The Unity project is attached below:",
     "programs": ["unity", "blender", "substance-painter"],
     "rows": [
       {
@@ -61,7 +61,7 @@
     "title": "Courtyard Real Time Environment",
     "thumbnail": "projects/courtyard/images/thumb.png",
     "description": "This project showcases all aspects of 3D level design.  This is a self-contained scene with consideration of sight lines, lighting, and atmosphere.  There is a particular emphasis on modular assets, including beams, walls, and roof components to create medieval buildings. There are also countless props to decorate the scene, like crates, weapons, and furniture.  The scene is modeled in Blender and textured in Substance Painter.",
-    "closing": "The scene economically makes use of few polygons, and uses deliberate texturing to introduce additional detail.  There are aspects of subtle visual storytelling, such as wagon tracks in the mud, worn-down brickwork on the stones in front of the stairs, and moss growth in areas that would see less foot-traffic.  The angle of the sunlight and the effects of the bounce-lighting were considered as well for creating appealing composition.",
+    "closing": "The scene economically makes use of few polygons, and uses deliberate texturing to introduce additional detail.  There are aspects of subtle visual storytelling, such as wagon tracks in the mud, worn-down brickwork on the stones in front of the stairs, and moss growth in areas that would see less foot-traffic.  The angle of the sunlight and the effects of the bounce-lighting were considered as well for creating appealing composition.  There is a Unity build of this scene attached below:",
     "programs": ["unreal", "blender", "substance-painter"],
     "rows": [
       {

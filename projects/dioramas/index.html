@@ -31,6 +31,24 @@
       height: 100%;
       border: none;
     }
+
+    .launch-unity-button {
+  display: inline-block;
+  background-color: #1e90ff;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: 'SofiaProRegular';
+  transition: background-color 0.3s ease;
+}
+
+.launch-unity-button:hover {
+  background-color: #0f66d0;
+}
+
   </style>
 </head>
 <body>
@@ -78,6 +96,11 @@
 
     <!-- Optional extra description paragraph -->
     <p id="extra-description" class="extra-description"></p>
+
+    <div style="text-align: center; margin: 3rem 0;">
+  <a href="unity/index.html" class="launch-unity-button">Launch Unity Project →</a>
+</div>
+
   </main>
 
   <script type="module">

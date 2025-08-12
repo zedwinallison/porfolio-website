@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Courtyard</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background: #231F20;
+      }
+
+      #unity-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      #unity-canvas {
+        width: 100% !important;
+        height: 100% !important;
+        background: #231F20;
+        display: block;
+        pointer-events: none; /* Start disabled so it won't capture scroll */
+      }
+
+      #unity-overlay {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0);
+        cursor: pointer;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="unity-container">
+      <canvas id="unity-canvas" tabindex="-1"></canvas>
+      <div id="unity-overlay"></div>
+    </div>
+
+    <script src="Build/wide band web.loader.js"></script>
+    <script>
+      // Mobile scaling meta
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
+
+      const canvas = document.querySelector("#unity-canvas");
+      const overlay = document.querySelector("#unity-overlay");
+
+      function resizeCanvas() {
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      createUnityInstance(canvas, {
+        dataUrl: "Build/wide band web.data",
+        frameworkUrl: "Build/wide band web.framework.js",
+        codeUrl: "Build/wide band web.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Courtyard",
+        productVersion: "0.1.0",
+        matchWebGLToCanvasSize: true
+      });
+
+      // Click overlay to activate Unity and allow it to capture input
+      overlay.addEventListener("click", () => {
+        canvas.style.pointerEvents = "auto";
+        canvas.requestPointerLock?.();
+        overlay.remove(); // remove overlay so Unity is directly clickable
+      });
+
+      // Release control when pointer lock ends
+      document.addEventListener("pointerlockchange", () => {
+        if (document.pointerLockElement !== canvas) {
+          canvas.style.pointerEvents = "none";
+          document.body.appendChild(overlay);
+        }
+      });
+    </script>
+  </body>
+</html>
