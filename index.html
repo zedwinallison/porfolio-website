@@ -27,7 +27,8 @@
     }
 
     #work-preview {
-    margin-top: 40px;
+    margin-top: 0px;
+     padding-top: 40px;
   }
 
     .work-preview {
@@ -150,6 +151,44 @@
   border: none;
   display: block;
 }
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full screen height */
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Keeps aspect ratio, fills screen */
+}
+
+/* Scroll chevron (black V) */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg); 
+  width: 24px;
+  height: 24px;
+  border-bottom: 4px solid rgb(255, 255, 255);
+  border-right: 4px solid rgb(255, 255, 255);
+  background: transparent;   /* ensure no fill */
+  cursor: pointer;
+  animation: hover 2s ease-in-out infinite;
+  user-select: none;
+}
+
+
+/* Gentle hover animation */
+@keyframes hover {
+  0%   { transform: translate(-50%, 0) rotate(45deg); }
+  50%  { transform: translate(-50%, -6px) rotate(45deg); }
+  100% { transform: translate(-50%, 0) rotate(45deg); }
+}
+
 
 
 
@@ -176,6 +215,14 @@
         document.getElementById('navbar').innerHTML = data;
       });
   </script>
+<!-- Hero Section -->
+<section class="hero">
+  <img src="assets/hero.png" alt="Hero Image" class="hero-image">
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator" id="scroll-indicator"></div>
+
+</section>
 
   <!-- Hero Image Section 
   <div class="hero">
@@ -206,7 +253,7 @@
 
 </section> <!-- End of #work-preview -->
 
-<!-- Unity WebGL Section -->
+<!-- Unity WebGL Section
 <section class="unity-section">
   <div class="unity-wrapper" id="unity-wrapper" style="position: relative;">
     <iframe 
@@ -217,7 +264,7 @@
       style="display: block;">
     </iframe>
     
-    <!-- Controls overlay, always visible -->
+     Controls overlay, always visible 
     <img 
       id="control-indicator" 
       src="assets/controls.png" 
@@ -235,7 +282,7 @@
       "
     />
   </div>
-</section>
+</section> -->
 
 
 
@@ -310,6 +357,13 @@
     </div>
   </div>
 </section>
+<script>
+  document.getElementById("scroll-indicator").addEventListener("click", () => {
+    document.getElementById("work-preview").scrollIntoView({ 
+      behavior: "smooth" 
+    });
+  });
+</script>
 
 
 </body>

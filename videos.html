@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Video Page</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../projectstyle.css">
+  <style>
+.video-page-container {
+  max-width: 1100px;
+  margin: 10px auto 2rem auto; /* centers container */
+  padding: 1rem 1rem 2rem; /* added 6rem top padding */
+  text-align: center;
+}
+
+
+.video-block {
+  margin-bottom: 80px;          /* more space between video sections */
+  padding-bottom: 60px;         /* space before divider */
+  border-bottom: 1px solid #e0e0e0; /* faint grey dividing line */
+}
+
+.video-block:last-child {
+  border-bottom: none; /* no divider after the last one */
+}
+
+.video-block h2,
+.video-block p {
+  max-width: 100%;          /* allow text to fill container */
+  margin: 0 auto 1rem;      /* center within container */
+  text-align: center;       /* center text */
+}
+
+.video-block h2 {
+  font-family: 'SofiaProBold';
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: black;
+}
+
+.video-block p {
+  font-family: 'SofiaProRegular';
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #868686;
+}
+
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;      /* keeps video from being too wide */
+  margin: 2.5rem auto;    /* more vertical spacing above & below */
+  padding-top: 56.25%;    /* 16:9 aspect ratio */
+  border: 0px solid #ccc;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* subtle drop shadow */
+  border-radius: 0px;
+  overflow: hidden;
+}
+
+.video-block.no-divider {
+  border-bottom: none;
+  padding-bottom: 0; /* optional: reduce extra space */
+}
+
+
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-quality-tip-wrapper {
+  text-align: center; /* centers whatever is inside */
+  margin-bottom: 2.5rem;
+}
+
+.video-quality-tip {
+  display: inline-block;            /* wrap tightly around text */
+  border: 2px solid #ccc;           /* light grey outline */
+  color: #333;
+  font-family: 'SofiaProRegular';
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 100px;
+}
+
+
+
+/* Titles */
+
+
+
+  </style>
+</head>
+<body>
+  <div id="navbar-container"></div>
+<div class="video-quality-tip-wrapper">
+  <div class="video-quality-tip">
+    ℹ️ If the videos look blurry, make sure the player is set to 1080p!
+  </div>
+</div>
+
+
+  <main class="video-page-container">
+    <!-- Video 1 -->
+    <div class="video-block">
+      <h2>Blender Day 1 Tutorial</h2>
+      <div class="video-embed">
+        <iframe src="https://drive.google.com/file/d/1EP-55wR_GIuLm3rwX4QEbZBntHG44qCZ/preview" allow="autoplay" allowfullscreen></iframe>
+      </div>
+      <p>I created this video as an introductory lesson to introduce Blender to someone who has never touched a 3D software before. Many skills were deployed in the creation of this video, including writing, editing, animation, illustration, voice-over, and expertise in structuring an entertaining video. This was not a collaborative project whatsoever; every aspect was recorded and edited by me.</p>
+      <p>A great deal of planning went into the structure of this video. It's important to consider the viewer's perspective, and particularly their attention when structuring and editing a video. The first few seconds are the most important, and as they watch, their likelihood to click away steadily decreases. For an educational video, prioritizing entertainment, comedy, and appealing visuals means that the viewer will retain more information. You will notice the sound design in this video as well. Great care went into using sound to capture attention, and seamlessly transition between sections in interesting ways. This is the video that I wish I had when I was initially learning how to use Blender.  I wanted to make a seemingly complex software seem very approachable.</p>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="video-block no-divider">
+      <h2>State Parks Promotional Videos (Set of 3)</h2>
+      <div class="video-embed">
+        <iframe src="https://drive.google.com/file/d/1SAIgTlBaJsrj69zIXHzKglNfZyajzRz5/preview" allow="autoplay" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="video-block no-divider">
+
+      <div class="video-embed">
+        <iframe src="https://drive.google.com/file/d/1cEUl6vZ45U0bBiIxxrBFb33vLz-mLNKa/preview" allow="autoplay" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Video 4 -->
+    <div class="video-block">
+
+      <div class="video-embed">
+        <iframe src="https://drive.google.com/file/d/1VJK6q9zzTFmgo4Kgrgw-BZlON6JpBTHt/preview" allow="autoplay" allowfullscreen></iframe>
+      </div>
+      <p>This set of promotional films was created on contract with Wyoming State Parks to provide information about several historic sites. These films were directed, filmed, and edited by me, in accordance with certain information that State Parks wanted to communicate. They are consistently styled, and fit as a set of three, with identical formatting, visuals, and sound design.</p>
+    </div>
+
+    <!-- Video 5 -->
+    <div class="video-block">
+      <h2>How to Make Title Cards</h2>
+      <div class="video-embed">
+        <iframe src="https://drive.google.com/file/d/10fb8MQjdg1hwFwx0rZkZnzDPLPP2z-Ik/preview" allow="autoplay" allowfullscreen></iframe>
+      </div>
+      <p>This video was created as a study of title cards in film and TV. It breaks down visual design choices, and film editing concepts/practices. This video was recorded, illustrated, animated, and edited by me. There are no other collaborators. My goal was to capture a viewer’s attention and educate while providing entertainment that is engaging, visually interesting, cinematic, and comedic.  It's meant to be quite silly and not be taken too seriously, but still leave the viewer with a valuable takeaway.</p>
+    </div>
+  </main>
+
+  <script>
+    // Load navbar
+    fetch('../../components/navbar.html')
+      .then(res => res.text())
+      .then(html => document.getElementById('navbar-container').innerHTML = html);
+  </script>
+</body>
+</html>
