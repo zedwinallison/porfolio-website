@@ -5,24 +5,96 @@
   <title>Project</title>
   <link rel="stylesheet" href="../../style.css">
   <link rel="stylesheet" href="../../projectstyle.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
   <style>
-.launch-unity-button {
-  display: inline-block;
-  background-color: #1e90ff;
-  color: white;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.125rem;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
+    .launch-unity-button {
+      display: inline-block;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.125rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
 
-.launch-unity-button:hover {
-  background-color: #0f66d0;
-}
+    .launch-unity-button:hover {
+      background-color: #0f66d0;
+    }
 
+    /* --- Aspect Ratio Container (16:9) --- */
+    .aspect-16-9 {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9; 
+      margin: 2.5rem 0; 
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #000;
+    }
 
+    /* --- Fixed Image Comparison Slider Styling --- */
+    .comparison-container {
+      position: relative;
+      user-select: none;
+    }
+
+    .comparison-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .comparison-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%; 
+      height: 100%;
+      overflow: hidden;
+      z-index: 2;
+      border-right: 2px solid #fff; 
+    }
+
+    /* Locks top image position */
+    .comparison-overlay .comparison-img {
+      width: 100vw; 
+      max-width: none; 
+    }
+
+    .comparison-slider-input {
+      position: absolute;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      outline: none;
+      margin: 0;
+      z-index: 3;
+      cursor: ew-resize;
+    }
+
+    .comparison-slider-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 100vh;
+      width: 40px; 
+      background: transparent;
+    }
+
+    /* --- 360 Viewer Styling --- */
+    #panorama-container {
+      width: 100%;
+      height: 100%;
+    }
   </style>
 </head>
 <body>
@@ -32,154 +104,141 @@
     <div class="title-desc-wrapper">
       <div class="left-column">
         <h1 class="project-title" id="project-title"></h1>
-
         <div class="software-icons-wrapper">
           <div class="software-icons" id="software-icons"></div>
         </div>
       </div>
-
       <div class="right-column">
         <p class="project-description" id="project-description"></p>
       </div>
     </div>
 
-    <!-- Main images / gallery -->
     <div id="image-gallery"></div>
-
-    <!-- Optional extra description paragraph -->
     <p id="extra-description" class="extra-description"></p>
 
+    <div class="aspect-16-9 comparison-container" id="comparison-slider">
+      <img src="images/image6.png" class="comparison-img" alt="Final Render">
+      <div class="comparison-overlay" id="overlay">
+        <img src="images/image5.png" class="comparison-img" id="top-image" alt="Work in Progress">
+      </div>
+      <input type="range" min="0" max="100" value="50" class="comparison-slider-input" id="slider">
+    </div>
+
+    <div class="aspect-16-9">
+      <div id="panorama-container"></div>
+    </div>
 
     <div id="lightbox" class="hidden" style="position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center; z-index:2000;">
-    <button id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">×</button>
-    <button id="prev-img" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">‹</button>
-    <img id="lightbox-img" src="" alt="Large view" style="max-width:90vw; max-height:90vh; border-radius:8px;"/>
-    <button id="next-img" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">›</button>
-</div>
-<div style="text-align: center; margin: 3rem 0;">
-  <a href="https://play.unity.com/en/games/a24b189c-fbbe-478a-aa0e-97a3f00e49fb/courtyard-lighting-demo" class="launch-unity-button">Launch Unity Project →</a>
-</div>
-
-
+        <button id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">×</button>
+        <button id="prev-img" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">‹</button>
+        <img id="lightbox-img" src="" alt="Large view" style="max-width:90vw; max-height:90vh; border-radius:8px;"/>
+        <button id="next-img" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">›</button>
+    </div>
   </main>
 
-  
   <script type="module">
-  // Load navbar
-  fetch('../../components/navbar.html')
-    .then(res => res.text())
-    .then(html => document.getElementById('navbar-container').innerHTML = html);
+    fetch('../../components/navbar.html')
+      .then(res => res.text())
+      .then(html => document.getElementById('navbar-container').innerHTML = html);
 
-  const slug = "space-office";
+    const slug = "space-office";
 
-
-  const allImages = []; // Store all gallery images for lightbox navigation
-
-  // Load Project Data
-  fetch('../../assets/projects.json')
-    .then(res => {
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      return res.json();
-    })
-    .then(projects => {
-      const project = projects.find(p => p.slug === slug);
-      if (!project) {
-        document.getElementById('project-title').textContent = "Project Not Found";
-        return;
-      }
-
-      // Set page title and content
-      document.title = project.title;
-      document.getElementById('project-title').textContent = project.title;
-      document.getElementById('project-description').textContent = project.description || '';
-
-      // Load program icons
-      const iconContainer = document.getElementById('software-icons');
-      iconContainer.innerHTML = '';
-      (project.programs || []).forEach(prog => {
-        const img = document.createElement('img');
-        img.src = `../../assets/programs/${prog}.png`;
-        img.alt = prog;
-        iconContainer.appendChild(img);
-      });
-
-      // Load image gallery and add click listeners for lightbox
-      const gallery = document.getElementById('image-gallery');
-      gallery.innerHTML = '';
-      project.rows.forEach(row => {
-        const rowDiv = document.createElement('div');
-        rowDiv.className = 'image-row';
-        rowDiv.style.gridTemplateColumns = `repeat(${row.columns}, 1fr)`;
-
-        row.images.forEach(imgPath => {
-          const img = document.createElement('img');
-          img.src = imgPath;
-          img.alt = '';
-          img.dataset.index = allImages.length; // store index for lightbox
-          rowDiv.appendChild(img);
-
-          // Add click event to open lightbox at this image
-          img.addEventListener('click', () => openLightbox(parseInt(img.dataset.index)));
-          allImages.push(imgPath);
-        });
-
-        gallery.appendChild(rowDiv);
-      });
-
-      // Set extra closing paragraph if present
-      document.getElementById('extra-description').textContent = project.closing || '';
-    })
-    .catch(e => {
-      console.error('Fetch error:', e);
-      document.getElementById('project-title').textContent = "Failed to load project data";
+    // --- Initialize 360 Viewer ---
+    pannellum.viewer('panorama-container', {
+        "type": "equirectangular",
+        "panorama": "images/360office.jpg",
+        "autoLoad": true,
+        "autoRotate": -2,
+        "compass": false,
+        "showFullscreenCtrl": true,
+        "hfov": 110
     });
 
-  // Lightbox variables and functions
-  let currentIndex = 0;
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const closeBtn = document.getElementById('lightbox-close');
-  const prevBtn = document.getElementById('prev-img');
-  const nextBtn = document.getElementById('next-img');
+    // --- Comparison Slider Logic ---
+    const slider = document.getElementById('slider');
+    const overlay = document.getElementById('overlay');
+    const topImg = document.getElementById('top-image');
+    const container = document.getElementById('comparison-slider');
 
-  function openLightbox(index) {
-    currentIndex = index;
-    lightboxImg.src = allImages[currentIndex];
-    lightbox.classList.remove('hidden');
-  }
+    function syncImageWidth() {
+      if(container) topImg.style.width = container.offsetWidth + 'px';
+    }
 
-  function closeLightbox() {
-    lightbox.classList.add('hidden');
-  }
+    window.addEventListener('resize', syncImageWidth);
+    setTimeout(syncImageWidth, 100);
 
-  function showNext() {
-    currentIndex = (currentIndex + 1) % allImages.length;
-    lightboxImg.src = allImages[currentIndex];
-  }
+    slider.addEventListener('input', (e) => {
+      overlay.style.width = `${e.target.value}%`;
+      syncImageWidth();
+    });
 
-  function showPrev() {
-    currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
-    lightboxImg.src = allImages[currentIndex];
-  }
+    // --- Project Data Loading ---
+    const allImages = []; 
+    fetch('../../assets/projects.json')
+      .then(res => res.json())
+      .then(projects => {
+        const project = projects.find(p => p.slug === slug);
+        if (!project) return;
+        document.title = project.title;
+        document.getElementById('project-title').textContent = project.title;
+        document.getElementById('project-description').textContent = project.description || '';
+        const iconContainer = document.getElementById('software-icons');
+        (project.programs || []).forEach(prog => {
+          const img = document.createElement('img');
+          img.src = `../../assets/programs/${prog}.png`;
+          iconContainer.appendChild(img);
+        });
+        const gallery = document.getElementById('image-gallery');
+        project.rows.forEach(row => {
+          const rowDiv = document.createElement('div');
+          rowDiv.className = 'image-row';
+          rowDiv.style.gridTemplateColumns = `repeat(${row.columns}, 1fr)`;
+          row.images.forEach(imgPath => {
+            const img = document.createElement('img');
+            img.src = imgPath;
+            img.dataset.index = allImages.length;
+            rowDiv.appendChild(img);
+            img.addEventListener('click', () => openLightbox(parseInt(img.dataset.index)));
+            allImages.push(imgPath);
+          });
+          gallery.appendChild(rowDiv);
+        });
+        document.getElementById('extra-description').textContent = project.closing || '';
+        syncImageWidth(); 
+      });
 
-  // Event listeners for lightbox controls
-  closeBtn.addEventListener('click', closeLightbox);
-  nextBtn.addEventListener('click', showNext);
-  prevBtn.addEventListener('click', showPrev);
+    // --- Lightbox Logic ---
+    let currentIndex = 0;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('prev-img');
+    const nextBtn = document.getElementById('next-img');
 
-  // Clicking outside image closes lightbox
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (lightbox.classList.contains('hidden')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') showNext();
-    if (e.key === 'ArrowLeft') showPrev();
-  });
-</script>
-
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = allImages[currentIndex];
+      lightbox.classList.remove('hidden');
+    }
+    function closeLightbox() { lightbox.classList.add('hidden'); }
+    function showNext() { 
+      currentIndex = (currentIndex + 1) % allImages.length; 
+      lightboxImg.src = allImages[currentIndex]; 
+    }
+    function showPrev() { 
+      currentIndex = (currentIndex - 1 + allImages.length) % allImages.length; 
+      lightboxImg.src = allImages[currentIndex]; 
+    }
+    closeBtn.addEventListener('click', closeLightbox);
+    nextBtn.addEventListener('click', showNext);
+    prevBtn.addEventListener('click', showPrev);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+  </script>
 </body>
 </html>
