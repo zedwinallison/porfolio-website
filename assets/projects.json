@@ -1,5 +1,31 @@
 [
   {
+    "slug": "space-office",
+    "title": "Asteroid Office Environment",
+    "thumbnail": "projects/space-office/images/thumb.png",
+    "description": "This environment was create during a 24 hour Game Jam for our game Shareholder Value.  It depicts the office of a salesperson for a weapons company in the business of instigating and prolonging a galactic war between two of Mars' colonized moons.  The models were created in Blender and textured in Substance Painter.",
+    "closing": "",
+    "programs": [ "blender", "substance-painter", "unity"],
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          "/projects/fantasy-illustrations/images/image1.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/space-office/images/image2.png",
+          "/projects/space-office/images/image3.png",
+          "/projects/space-office/images/image4.png"
+        ]
+      }
+      
+      
+    ]
+  },
+  {
     "slug": "dioramas",
     "title": "Historical 3D Dioramas",
     "thumbnail": "projects/dioramas/images/thumb.png",
