@@ -1,5 +1,56 @@
 [
   {
+    "slug": "mummy",
+    "title": "Mummy Millions Multiplayer",
+    "thumbnail": "projects/mummy/images/thumb.png",
+    "description": "Mummy is a multiplayer cooperative exploration game.  Players delve into an ancient tomb to collect treasure, to pay for better equiptment to explore deeper levels.  This game includes fully original artwork, with stylized, yet realistic graphics and intense attention to lighting design.  The game is in the early stages of development.",
+    "closing": "",
+    "programs": [ "godot", "substance-painter", "blender"],
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          "/projects/mummy/images/image1.png"
+          
+        ]
+      },
+      {
+        "columns": 2,
+        "images": [
+          
+          "/projects/mummy/images/image2.png",
+          "/projects/mummy/images/image3.png"
+        ]
+      },
+      {
+        "columns": 2,
+        "images": [
+          "/projects/mummy/images/image4.png",
+          "/projects/mummy/images/image5.png"
+        ]
+      },
+      {
+        "columns": 2,
+        "images": [
+          
+          "/projects/mummy/images/image6.png",
+          "/projects/mummy/images/image7.png"
+        ]
+      },
+      {
+        "columns": 1,
+        "images": [
+          
+          "/projects/mummy/images/image8.png"
+          
+        ]
+      }
+      
+      
+    ]
+  },
+  
+  {
     "slug": "space-office",
     "title": "Asteroid Office Environment",
     "thumbnail": "projects/space-office/images/thumb.png",
