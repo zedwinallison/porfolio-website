@@ -3,80 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About / Contact</title>
+  <title>About / Contact | Zach Allison</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Fonts */
-    @font-face {
-      font-family: 'SofiaProBold';
-      src: url('assets/fonts/sofiaprobold.otf') format('opentype');
-    }
-
-    @font-face {
-      font-family: 'SofiaProRegular';
-      src: url('assets/fonts/sofiaproregular.otf') format('opentype');
-    }
-
-    /* Base Styles */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'SofiaProRegular', sans-serif;
-      background-color: white;
-      color: #333;
-    }
-
-    nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      background-color: black;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      z-index: 1000;
-      border-bottom: 1px solid #222;
-      font-family: 'SofiaProBold';
-    }
-
-    nav .logo {
-      font-weight: bold;
-      font-size: 1.5rem;
-      text-decoration: none;
-      color: white;
-      transition: color 0.3s;
-      font-family: 'SofiaProRegular';
-    }
-
-    nav .logo:hover {
-      color: lightgray;
-    }
-
-    nav .nav-links a {
-      margin-left: 30px;
-      text-decoration: none;
-      color: gray;
-      font-weight: 500;
-      transition: color 0.3s;
-      font-family: 'SofiaProRegular';
-    }
-
-    nav .nav-links a:hover,
-    nav .nav-links a.active {
-      color: white;
-    }
-
+    /* Desktop Spacing: Large padding to clear the 'fixed' floating navbar */
     .project-container {
       width: 90vw;
       max-width: 1600px;
-      margin: 240px auto 80px auto;
-      padding: 0 40px;
+      margin: 0 auto;
+      padding: 160px 40px 80px; /* Top padding clears the floating nav */
     }
 
     .project-title {
-      white-space: nowrap;
       font-size: 2.5rem;
       font-weight: bold;
       font-family: 'SofiaProBold';
@@ -89,7 +27,7 @@
       flex-wrap: wrap;
       gap: 60px;
       align-items: flex-start;
-      margin-bottom: 120px;
+      margin-bottom: 80px;
     }
 
     .about-text {
@@ -99,28 +37,21 @@
       color: #868686;
       font-size: 1.1rem;
       line-height: 1.6;
-      margin-bottom: 80px;
     }
 
     .about-image img {
       max-width: 100%;
       height: auto;
       border-radius: 8px;
-      max-height: 200px;
+      max-height: 300px; /* Increased slightly for better desktop presence */
       flex: 1 1 30%;
-    }
-
-    .section-title {
-      font-family: 'SofiaProBold';
-      font-size: 2rem;
-      margin-bottom: 20px;
     }
 
     .program-icons {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
-      margin-top: 60px;
+      margin-top: 40px;
     }
 
     .program-icons img {
@@ -128,17 +59,15 @@
       height: 40px;
     }
 
-    /* Contact Section at Bottom */
+    /* --- Contact Section (No longer fixed, to prevent mobile overlap) --- */
     .contact-section {
-      position: fixed;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
       text-align: center;
+      margin-top: 60px;
+      padding-bottom: 80px;
     }
 
     .contact-email {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       font-family: 'SofiaProRegular';
       font-size: 1.1rem;
       color: #868686;
@@ -146,7 +75,7 @@
       justify-content: center;
       align-items: center;
       gap: 10px;
-      opacity: 0.5;
+      opacity: 0.6;
       transition: opacity 0.3s;
     }
 
@@ -161,14 +90,14 @@
 
     .contact-links {
       display: flex;
-      gap: 20px;
+      gap: 25px;
       justify-content: center;
     }
 
     .contact-links img {
       width: 24px;
       height: 24px;
-      opacity: 0.5;
+      opacity: 0.6;
       transition: opacity 0.3s;
     }
 
@@ -176,17 +105,63 @@
       opacity: 1;
     }
 
+    /* --- MOBILE RESPONSIVENESS --- */
     @media (max-width: 768px) {
+      /* Navbar Reset for iPhone Centering */
+      #navbar, #navbar * {
+        box-sizing: border-box !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      #navbar nav, .navbar {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100vw !important;
+        padding: 20px 0 !important;
+        gap: 20px !important;
+      }
+
+      #navbar ul, .nav-links {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 20px !important;
+        padding: 0 !important;
+        list-style: none !important;
+        width: 100% !important;
+      }
+
+      /* Heavy padding to clear centered floating mobile nav */
+      .project-container {
+        padding-top: 180px !important;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
       .about-flex {
         flex-direction: column;
         align-items: center;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .about-text {
+        min-width: unset;
+        width: 100%;
+      }
+
+      .program-icons {
+        justify-content: center;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Navigation Bar -->
   <div id="navbar"></div>
   <script>
     fetch('/components/navbar.html')
@@ -196,7 +171,7 @@
       });
   </script>
 
-  <div class="project-container">
+  <main class="project-container">
     <div class="about-flex">
       <div class="about-image">
         <img src="assets/contact/portrait.png" alt="Portrait of Zach Allison" />
@@ -220,25 +195,24 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Fixed Contact at Bottom -->
-  <div class="contact-section">
-    <div class="contact-email">
-      <img src="assets/contact/email.png" alt="Email Icon" />
-      <span>zachallison.design@gmail.com</span>
+    <div class="contact-section">
+      <div class="contact-email">
+        <img src="assets/contact/email.png" alt="Email Icon" />
+        <span>zachallison.design@gmail.com</span>
+      </div>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/zach-allison-92575b372/" target="_blank" rel="noopener noreferrer">
+          <img src="assets/contact/linkedin.png" alt="LinkedIn" />
+        </a>
+        <a href="https://www.artstation.com/zachallison" target="_blank" rel="noopener noreferrer">
+          <img src="assets/contact/artstation.png" alt="Art Station" />
+        </a>
+        <a href="https://www.instagram.com/zchllsn/" target="_blank" rel="noopener noreferrer">
+          <img src="assets/contact/instagram.png" alt="Instagram" />
+        </a>
+      </div>
     </div>
-    <div class="contact-links">
-      <a href="https://www.linkedin.com/in/zach-allison-92575b372/" target="_blank" rel="noopener noreferrer">
-        <img src="assets/contact/linkedin.png" alt="LinkedIn" />
-      </a>
-      <a href="https://www.artstation.com/zachallison" target="_blank" rel="noopener noreferrer">
-        <img src="assets/contact/artstation.png" alt="Art Station" />
-      </a>
-      <a href="https://www.instagram.com/zchllsn/" target="_blank" rel="noopener noreferrer">
-        <img src="assets/contact/instagram.png" alt="Instagram" />
-      </a>
-    </div>
-  </div>
+  </main>
 </body>
 </html>

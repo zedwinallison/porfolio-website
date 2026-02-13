@@ -2,61 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All Projects | Zach Allison</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="projectstyle.css">
 
   <style>
-    /* Make sure navbar container takes up space */
-    #navbar-container {
-      min-height: 50px; /* Adjust to your navbar height */
-      margin-bottom: 20px;
-    }
-
-    /* Add padding on top of gallery */
+    /* Desktop: Matches Index */
     .project-gallery {
       padding-top: 7px !important;
+    }
+
+    #work-preview {
+      margin-top: 0px;
+      padding-top: 80px; 
+    }
+
+    /* --- MOBILE RESPONSIVENESS --- */
+    @media (max-width: 768px) {
+      /* 1. NAVBAR RESET: Centers Zach Allison on iPhone */
+      #navbar, #navbar * {
+        box-sizing: border-box !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      #navbar nav, .navbar {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100vw !important;
+        padding: 20px 0 !important;
+        gap: 20px !important;
+        /* Since the nav is 'fixed' in your CSS, we force it to stay centered here */
+        left: 0 !important;
+        top: 0 !important;
+      }
+
+      #navbar ul, .nav-links {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 20px !important;
+        padding: 0 !important;
+        list-style: none !important;
+        width: 100% !important;
+      }
+
+      /* 2. THE SPACE FIX: Use padding to force a gap below the floating nav */
+      #work-preview {
+        padding-top: 150px !important; /* Large buffer for the floating nav */
+      }
+
+      /* 3. WRAPPING FIX: One column grid */
+      #project-grid {
+        grid-template-columns: 1fr !important;
+        padding: 0 10px;
+        gap: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="navbar-container"></div>
+  <div id="navbar"></div>
 
-  <section class="project-gallery">
+  <script>
+    fetch('/components/navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+  <section id="work-preview">
     <div class="grid" id="project-grid"></div>
   </section>
 
   <script type="module">
-    // Load navbar
-    fetch('components/navbar.html')
-      .then(res => res.text())
-      .then(html => document.getElementById('navbar-container').innerHTML = html);
+    async function loadProjects() {
+      const response = await fetch('assets/projects.json');
+      const projects = await response.json();
+      const grid = document.getElementById('project-grid');
 
-    // Load project thumbnails
-    fetch('assets/projects.json')
-      .then(res => res.json())
-      .then(projects => {
-        const grid = document.getElementById('project-grid');
-        projects.forEach(project => {
-          const link = document.createElement('a');
-          link.href = `projects/${project.slug}/`;
-          
-          const item = document.createElement('div');
-          item.className = 'grid-item';
+      projects.forEach(project => {
+        const link = document.createElement('a');
+        link.href = `projects/${project.slug}/index.html`;
 
-          const img = document.createElement('img');
-          img.src = project.thumbnail;
-          img.alt = project.title;
+        const item = document.createElement('div');
+        item.className = 'grid-item';
 
-          const overlay = document.createElement('div');
-          overlay.className = 'overlay';
-          overlay.textContent = project.title;
+        const img = document.createElement('img');
+        img.src = project.thumbnail;
+        img.alt = project.title;
+        img.loading = "lazy";
 
-          item.appendChild(img);
-          item.appendChild(overlay);
-          link.appendChild(item);
-          grid.appendChild(link);
-        });
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
+        overlay.textContent = project.title;
+
+        item.appendChild(img);
+        item.appendChild(overlay);
+        link.appendChild(item);
+        grid.appendChild(link);
       });
+    }
+    loadProjects();
   </script>
 </body>
 </html>

@@ -2,25 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Project</title>
+  <title>Dioramas Project</title>
+  
   <link rel="stylesheet" href="../../style.css">
   <link rel="stylesheet" href="../../projectstyle.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <style>
-    .title-desc-wrapper {
-  margin-bottom: 1rem; /* Reduce space below title/description */
-}
-    
+    /* --- Unity Button --- */
+    .launch-unity-button {
+      display: inline-block;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.125rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-family: 'SofiaProRegular';
+      transition: background-color 0.3s ease;
+    }
+
+    .launch-unity-button:hover {
+      background-color: #0f66d0;
+    }
+
+    /* --- RESPONSIVE SKETCHFAB GRID --- */
     .sketchfab-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for desktop */
+      gap: 2rem;
       margin-top: 2rem;
+      margin-bottom: 2rem;
     }
 
     .sketchfab-embed-wrapper {
       position: relative;
-      padding-top: 56.25%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
       height: 0;
+      background: #000;
     }
 
     .sketchfab-embed-wrapper iframe {
@@ -32,23 +52,13 @@
       border: none;
     }
 
-    .launch-unity-button {
-  display: inline-block;
-  background-color: #1e90ff;
-  color: white;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.125rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-family: 'SofiaProRegular';
-  transition: background-color 0.3s ease;
-}
-
-.launch-unity-button:hover {
-  background-color: #0f66d0;
-}
-
+    /* Stack to 1 column on mobile/iPhone squish */
+    @media (max-width: 768px) {
+      .sketchfab-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -58,21 +68,17 @@
     <div class="title-desc-wrapper">
       <div class="left-column">
         <h1 class="project-title" id="project-title"></h1>
-
         <div class="software-icons-wrapper">
           <div class="software-icons" id="software-icons"></div>
         </div>
       </div>
-
       <div class="right-column">
         <p class="project-description" id="project-description"></p>
       </div>
     </div>
 
-    <!-- Main images / gallery -->
     <div id="image-gallery"></div>
 
-    <!-- Sketchfab Embeds (now above extra-description) -->
     <div class="sketchfab-grid">
       <div class="sketchfab-embed-wrapper">
         <iframe title="Egypt - Pristine State" src="https://sketchfab.com/models/b952454962004c7eab964731eb17b055/embed?camera=0&preload=1" allowfullscreen allow="autoplay; fullscreen; xr-spatial-tracking"></iframe>
@@ -94,13 +100,18 @@
       </div>
     </div>
 
-    <!-- Optional extra description paragraph -->
     <p id="extra-description" class="extra-description"></p>
 
     <div style="text-align: center; margin: 3rem 0;">
-  <a href="https://play.unity.com/en/games/5890faf0-91e0-48f3-b5cc-5b50a4ef23de/dioramas-project" class="launch-unity-button">Launch Unity Project →</a>
-</div>
+      <a href="https://play.unity.com/en/games/5890faf0-91e0-48f3-b5cc-5b50a4ef23de/dioramas-project" class="launch-unity-button">Launch Unity Project →</a>
+    </div>
 
+    <div id="lightbox" class="hidden">
+        <button id="lightbox-close">&times;</button>
+        <button id="prev-img">&#8249;</button>
+        <img id="lightbox-img" src="" alt="Large view">
+        <button id="next-img">&#8250;</button>
+    </div>
   </main>
 
   <script type="module">
@@ -109,10 +120,8 @@
       .then(res => res.text())
       .then(html => document.getElementById('navbar-container').innerHTML = html);
 
-    const urlParams = new URLSearchParams(window.location.search);
     const slug = 'dioramas';
-
-    const allImages = []; // Store all gallery images for lightbox navigation
+    const allImages = []; 
 
     // Load Project Data
     fetch('../../assets/projects.json')
@@ -122,19 +131,13 @@
       })
       .then(projects => {
         const project = projects.find(p => p.slug === slug);
-        if (!project) {
-          document.getElementById('project-title').textContent = "Project Not Found";
-          return;
-        }
+        if (!project) return;
 
-        // Set page title and content
         document.title = project.title;
         document.getElementById('project-title').textContent = project.title;
         document.getElementById('project-description').textContent = project.description || '';
 
-        // Load program icons
         const iconContainer = document.getElementById('software-icons');
-        iconContainer.innerHTML = '';
         (project.programs || []).forEach(prog => {
           const img = document.createElement('img');
           img.src = `../../assets/programs/${prog}.png`;
@@ -142,9 +145,7 @@
           iconContainer.appendChild(img);
         });
 
-        // Load image gallery and add click listeners for lightbox
         const gallery = document.getElementById('image-gallery');
-        gallery.innerHTML = '';
         project.rows.forEach(row => {
           const rowDiv = document.createElement('div');
           rowDiv.className = 'image-row';
@@ -153,27 +154,20 @@
           row.images.forEach(imgPath => {
             const img = document.createElement('img');
             img.src = imgPath;
-            img.alt = '';
-            img.dataset.index = allImages.length; // store index for lightbox
+            img.loading = "lazy";
+            img.dataset.index = allImages.length;
             rowDiv.appendChild(img);
 
-            // Add click event to open lightbox at this image
             img.addEventListener('click', () => openLightbox(parseInt(img.dataset.index)));
             allImages.push(imgPath);
           });
-
           gallery.appendChild(rowDiv);
         });
 
-        // Set extra closing paragraph if present
         document.getElementById('extra-description').textContent = project.closing || '';
-      })
-      .catch(e => {
-        console.error('Fetch error:', e);
-        document.getElementById('project-title').textContent = "Failed to load project data";
       });
 
-    // Lightbox variables and functions
+    // Lightbox Logic (Standardized)
     let currentIndex = 0;
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
@@ -186,32 +180,21 @@
       lightboxImg.src = allImages[currentIndex];
       lightbox.classList.remove('hidden');
     }
-
-    function closeLightbox() {
-      lightbox.classList.add('hidden');
+    function closeLightbox() { lightbox.classList.add('hidden'); }
+    function showNext() { 
+      currentIndex = (currentIndex + 1) % allImages.length; 
+      lightboxImg.src = allImages[currentIndex]; 
+    }
+    function showPrev() { 
+      currentIndex = (currentIndex - 1 + allImages.length) % allImages.length; 
+      lightboxImg.src = allImages[currentIndex]; 
     }
 
-    function showNext() {
-      currentIndex = (currentIndex + 1) % allImages.length;
-      lightboxImg.src = allImages[currentIndex];
-    }
-
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
-      lightboxImg.src = allImages[currentIndex];
-    }
-
-    // Event listeners for lightbox controls
     closeBtn.addEventListener('click', closeLightbox);
     nextBtn.addEventListener('click', showNext);
     prevBtn.addEventListener('click', showPrev);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
-    // Clicking outside image closes lightbox
-    document.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (lightbox.classList.contains('hidden')) return;
       if (e.key === 'Escape') closeLightbox();

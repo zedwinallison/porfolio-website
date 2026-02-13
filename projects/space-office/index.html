@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Project</title>
+  <title>Space Office - Project</title>
+  
   <link rel="stylesheet" href="../../style.css">
   <link rel="stylesheet" href="../../projectstyle.css">
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
+    /* --- Office-Specific Button --- */
     .launch-unity-button {
       display: inline-block;
       background-color: #1e90ff;
@@ -20,27 +23,26 @@
       border-radius: 6px;
       text-decoration: none;
       transition: background-color 0.3s ease;
+      margin-top: 20px;
     }
-
-    .launch-unity-button:hover {
-      background-color: #0f66d0;
-    }
+    .launch-unity-button:hover { background-color: #0f66d0; }
 
     /* --- Aspect Ratio Container (16:9) --- */
     .aspect-16-9 {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9; 
-      margin: 2.5rem 0; 
-      border-radius: 8px;
+      margin: 2rem 0; 
+      border-radius: 0px; /* Kept sharp to match your image style */
       overflow: hidden;
       background-color: #000;
     }
 
-    /* --- Fixed Image Comparison Slider Styling --- */
+    /* --- Comparison Slider Styling --- */
     .comparison-container {
       position: relative;
       user-select: none;
+      overflow: hidden;
     }
 
     .comparison-img {
@@ -64,10 +66,11 @@
       border-right: 2px solid #fff; 
     }
 
-    /* Locks top image position */
+    /* Force the top image to match the container width exactly */
     .comparison-overlay .comparison-img {
-      width: 100vw; 
+      width: 100%;
       max-width: none; 
+      height: 100%;
     }
 
     .comparison-slider-input {
@@ -114,7 +117,6 @@
     </div>
 
     <div id="image-gallery"></div>
-    <p id="extra-description" class="extra-description"></p>
 
     <div class="aspect-16-9 comparison-container" id="comparison-slider">
       <img src="images/image6.png" class="comparison-img" alt="Final Render">
@@ -128,11 +130,13 @@
       <div id="panorama-container"></div>
     </div>
 
-    <div id="lightbox" class="hidden" style="position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center; z-index:2000;">
-        <button id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">×</button>
-        <button id="prev-img" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">‹</button>
-        <img id="lightbox-img" src="" alt="Large view" style="max-width:90vw; max-height:90vh; border-radius:8px;"/>
-        <button id="next-img" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">›</button>
+    <p id="extra-description" class="extra-description"></p>
+
+    <div id="lightbox" class="hidden">
+        <button id="lightbox-close">&times;</button>
+        <button id="prev-img">&#8249;</button>
+        <img id="lightbox-img" src="" alt="Large view">
+        <button id="next-img">&#8250;</button>
     </div>
   </main>
 
@@ -161,11 +165,11 @@
     const container = document.getElementById('comparison-slider');
 
     function syncImageWidth() {
+      // Ensure the sliding top-image matches the actual width of the container
       if(container) topImg.style.width = container.offsetWidth + 'px';
     }
 
     window.addEventListener('resize', syncImageWidth);
-    setTimeout(syncImageWidth, 100);
 
     slider.addEventListener('input', (e) => {
       overlay.style.width = `${e.target.value}%`;
@@ -179,20 +183,24 @@
       .then(projects => {
         const project = projects.find(p => p.slug === slug);
         if (!project) return;
+
         document.title = project.title;
         document.getElementById('project-title').textContent = project.title;
         document.getElementById('project-description').textContent = project.description || '';
+        
         const iconContainer = document.getElementById('software-icons');
         (project.programs || []).forEach(prog => {
           const img = document.createElement('img');
           img.src = `../../assets/programs/${prog}.png`;
           iconContainer.appendChild(img);
         });
+
         const gallery = document.getElementById('image-gallery');
         project.rows.forEach(row => {
           const rowDiv = document.createElement('div');
           rowDiv.className = 'image-row';
           rowDiv.style.gridTemplateColumns = `repeat(${row.columns}, 1fr)`;
+          
           row.images.forEach(imgPath => {
             const img = document.createElement('img');
             img.src = imgPath;
@@ -203,8 +211,11 @@
           });
           gallery.appendChild(rowDiv);
         });
+
         document.getElementById('extra-description').textContent = project.closing || '';
-        syncImageWidth(); 
+        
+        // Initial sync once images/data are loaded
+        setTimeout(syncImageWidth, 200);
       });
 
     // --- Lightbox Logic ---
@@ -233,6 +244,7 @@
     nextBtn.addEventListener('click', showNext);
     prevBtn.addEventListener('click', showPrev);
     lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
     document.addEventListener('keydown', (e) => {
       if (lightbox.classList.contains('hidden')) return;
       if (e.key === 'Escape') closeLightbox();

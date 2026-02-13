@@ -1,188 +1,249 @@
+/* --- 1. FONTS --- */
+@font-face {
+  font-family: 'SofiaProBold';
+  src: url('assets/fonts/sofiaprobold.otf') format('opentype');
+  font-weight: normal; font-style: normal;
+}
+@font-face {
+  font-family: 'SofiaProRegular';
+  src: url('assets/fonts/sofiaproregular.otf') format('opentype');
+  font-weight: normal; font-style: normal;
+}
+
+/* --- 2. GLOBAL & LAYOUT --- */
+* {
+  box-sizing: border-box; /* Ensures padding doesn't break widths */
+}
+
+body {
+  margin: 0; padding: 0;
+  overflow-x: hidden; /* Prevents accidental sideways scrolling */
+  -webkit-font-smoothing: antialiased; /* Smoother text on Mac/iPhone */
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .project-container {
-      margin: 5%;
-      margin-top: 7%;
-      padding: 0 30px; /* wider horizontal padding */
-    }
+  margin: 5% auto;
+  margin-top: 7%;
+  padding: 0 30px;
+  max-width: 1800px; /* Cinematic ultra-wide desktop view */
+}
 
-    @font-face {
-        font-family: 'SofiaProBold';
-        src: url('assets/fonts/sofiaprobold.otf') format('opentype');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'SofiaProRegular';
-        src: url('assets/fonts/sofiaproregular.otf') format('opentype');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-
-
-    .title-desc-wrapper {
+/* --- 3. TITLE & DESCRIPTION WRAPPING --- */
+.title-desc-wrapper {
   display: flex;
-  flex-wrap: nowrap;      /* NO wrap by default */
-  gap: 120px;
-  align-items: center;    /* vertical center */
+  flex-wrap: wrap;       /* Essential for wrapping logic */
+  gap: 120px;            /* Your original wide spacing */
+  align-items: center;   /* Keeps title and text vertically balanced */
   margin-bottom: 3%;
   padding: 3%;
 }
 
-    .project-title {
-  white-space: nowrap; /* no wrapping of title */
+.left-column {
+  flex: 0 0 auto;        /* Prevents the title block from squishing */
+  display: flex;
+  flex-direction: column;
+}
+
+.right-column {
+  flex: 1;               /* Description fills remaining space */
+  min-width: 300px;      /* Prevents text from getting too skinny */
+}
+
+/* --- 4. TEXT STYLES --- */
+.project-title {
+  white-space: nowrap;   /* Kept for desktop aesthetic */
   font-size: 2.5rem;
   font-weight: bold;
   font-family: 'SofiaProBold';
   margin: 0;
+  line-height: 1.1;
 }
 
-    .project-description {
-      flex: 1;
-      font-size: 1.1rem;
-      font-family: 'SofiaProRegular';
-      line-height: 1.5;
-      color: #868686;
-      text-align: left;
-      max-width: 1500px; /* optional max width */
-      
-    }
-
-    .software-icons-wrapper {
-      display: flex;
-      margin-top: 30px; /* small vertical space below title */
-      margin-bottom: 30px;
-    }
-
-
-    
-    .software-icons {
-      display: flex;
-      gap: 15px;
-    }
-
-   
-
-    .software-icons img {
-      width: 40px;
-      height: 40px;
-    }
-
-    .main-image {
-      width: 100%;
-      margin-bottom: 40px;
-      
-    }
-
-.image-row {
-  display: grid;
-  gap: 32px; /* space between images */
-  margin-bottom: 32px; /* space between rows */
-}
-
-.image-row img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 0px; /* optional: nice styling */
-}
-
-.left-column, .right-column {
-  align-self: center;
-}
-
-.left-column {
-  flex-shrink: 0; /* prevent shrinking */
-}
-
-@media (max-width: 420px) {
-  .title-desc-wrapper {
-    flex-wrap: wrap;     /* allow wrapping */
-    gap: 20px;           /* smaller gap */
-  }
-
-  .right-column {
-    flex-basis: 100%;    /* full width below left column */
-    min-width: 100%;     /* force full width */
-  }
-}
-
-.extra-description {
-  flex: 1;
-  margin: 40px auto;       /* adds space above/below and centers it */
-  padding: 0 20px;  
+.project-description {
   font-size: 1.1rem;
   font-family: 'SofiaProRegular';
   line-height: 1.5;
   color: #868686;
-  text-align: center;
-  max-width: 1500px; /* optional max width */
-  
+  text-align: left;
+  max-width: 1500px;
+  margin: 0; 
 }
 
-.lightbox {
+.extra-description {
+  font-family: 'SofiaProRegular' !important;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #868686;
+  text-align: center;
+  margin: 60px auto;
+  max-width: 1500px;
+  display: block;
+}
+
+/* --- 5. SOFTWARE ICONS --- */
+.software-icons-wrapper {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.software-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.software-icons img {
+  width: 40px; height: 40px;
+}
+
+/* --- 6. IMAGE GALLERY & HOVER --- */
+.image-row {
+  display: grid;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.image-row img {
+  width: 100%; height: auto;
+  object-fit: cover;
+  border-radius: 0px; 
+  cursor: pointer;
+  
+  /* SMOOTH HOVER OPTIMIZATIONS */
+  transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: filter;      /* GPU Pre-optimization */
+  transform: translateZ(0); /* Force Hardware Acceleration */
+  backface-visibility: hidden;
+}
+
+/* Only apply hover on devices that actually have a mouse */
+@media (hover: hover) {
+  .image-row img:hover {
+    filter: brightness(70%);
+  }
+}
+
+/* --- 7. LIGHTBOX (Giant Arrows) --- */
+#lightbox {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: rgba(0,0,0,0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   z-index: 9999;
-  flex-direction: column;
 }
 
-.lightbox.hidden {
-  display: none;
-}
-
-.lightbox-img {
-  max-width: 90%;
-  max-height: 80%;
+#lightbox-img {
+  max-width: 90%; max-height: 80%;
   border-radius: 8px;
 }
 
-.lightbox-close {
-  position: absolute;
-  top: 30px;
-  right: 50px; /* moved further from right edge */
-  font-size: 3.5rem; /* bigger close button */
-  color: white;
-  cursor: pointer;
-  user-select: none;
+#lightbox-close {
+  position: absolute; top: 30px; right: 50px;
+  font-size: 3.5rem; color: white;
+  background: none; border: none; cursor: pointer;
 }
 
-.lightbox-nav {
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 100px; /* more padding from edges */
-  box-sizing: border-box;
-  transform: translateY(-50%); /* vertically center the nav */
+#prev-img, #next-img {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-size: 15rem; color: white;
+  background: none; border: none; cursor: pointer;
+  opacity: 0.5; transition: opacity 0.2s;
 }
 
-.nav-arrow {
-  font-size: 15rem; /* bigger arrows */
-  color: white;
-  cursor: pointer;
-  user-select: none;
-  transition: opacity 0.2s;
+#prev-img:hover, #next-img:hover { opacity: 1; }
+#prev-img { left: 40px; }
+#next-img { right: 40px; }
+
+/* --- 8. THE TARGETED MOBILE & NAVBAR FIXES --- */
+
+@media (max-width: 768px) {
+  
+  /* SCORCHED EARTH NAVBAR RESET: Fixes iPhone shunting issue */
+  #navbar-container, 
+  #navbar-container * {
+    box-sizing: border-box !important;
+    padding-left: 0 !important; 
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #navbar-container nav, 
+  .navbar {
+    display: flex !important;
+    flex-direction: column !important; /* Stack Brand over Links */
+    align-items: center !important;    /* Center everything */
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100vw !important;
+    padding: 20px 0 !important;
+    gap: 20px !important;              /* Space between Zach and Links */
+  }
+
+  #navbar-container ul, 
+  .nav-links {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 20px !important;              /* Touch-friendly button spacing */
+    list-style: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  #navbar-container li {
+    display: inline-block !important;
+    margin: 0 !important;
+  }
+
+  /* PROJECT CONTENT AREA */
+  .project-container {
+    margin-top: 140px !important; /* Safety zone for mobile nav */
+    padding: 0 20px;
+  }
+
+  .title-desc-wrapper {
+    flex-direction: column;
+    align-items: flex-start; /* Left-aligned content on mobile */
+    padding: 20px 10px 0px 10px !important; 
+    margin-bottom: 30px !important; 
+    gap: 0; 
+  }
+
+  .right-column {
+    flex: 0 0 auto; /* Kill flex-basis height on vertical stack */
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .project-title {
+    white-space: normal; /* Allow title wrap on mobile */
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .software-icons-wrapper {
+    margin-top: 10px;
+    margin-bottom: 32px; /* Extra breathing room above description */
+  }
+
+  .image-row {
+    grid-template-columns: 1fr !important; /* Forces vertical gallery stack */
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  /* Shrink Lightbox UI for thumb navigation */
+  #prev-img, #next-img {
+    font-size: 4rem;
+    opacity: 1;
+  }
+  #prev-img { left: 10px; }
+  #next-img { right: 10px; }
 }
 
-.nav-arrow:hover {
-  opacity: 0.7;
-}
-
-.hidden {
-  display: none !important;
-}
-
-#lightbox-close, #prev-img, #next-img {
-  cursor: pointer;
-}
-
-
-
-
+.hidden { display: none !important; }

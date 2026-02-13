@@ -23,13 +23,13 @@
     .sketchfab-embed-wrapper iframe {
       width: 100%;
       border: none;
-      border-radius: 0; /* remove rounding */
+      border-radius: 0; 
     }
 
     #work-preview {
-    margin-top: 0px;
-     padding-top: 40px;
-  }
+      margin-top: 0px;
+      padding-top: 40px;
+    }
 
     .work-preview {
       padding-top: 30px;
@@ -45,7 +45,7 @@
 
     .image-row img {
       width: 50%;
-      border-radius: 0; /* remove rounding */
+      border-radius: 0; 
     }
 
     .launch-button {
@@ -56,7 +56,7 @@
       background-color: black;
       color: white;
       text-decoration: none;
-      border-radius: 10px; /* remove rounding */
+      border-radius: 10px; 
       transition: background-color 0.3s;
       text-align: center;
       width: fit-content;
@@ -66,8 +66,59 @@
       background-color: #222;
     }
 
-    /* Responsive tweaks */
+    /* --- MOBILE RESPONSIVENESS --- */
     @media (max-width: 768px) {
+      /* Navbar Reset for iPhone Centering */
+      #navbar, #navbar * {
+        box-sizing: border-box !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      #navbar nav, .navbar {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100vw !important;
+        padding: 20px 0 !important;
+        gap: 20px !important;
+      }
+
+      #navbar ul, .nav-links {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 20px !important;
+        padding: 0 !important;
+        list-style: none !important;
+        width: 100% !important;
+      }
+
+      /* FIXED: Force Project Gallery to one column */
+      #project-grid {
+        grid-template-columns: 1fr !important; /* Stack thumbnails */
+        padding: 0 10px;
+      }
+
+      /* FIXED: Center and stack Video Grid to one column */
+      .video-grid {
+        grid-template-columns: 1fr !important;
+        padding: 0 10px;
+        align-items: center;
+        justify-items: center;
+      }
+
+      .video-wrapper {
+        width: 100% !important;
+        max-width: 500px; /* Prevents videos from getting too massive on mobile */
+        margin: 0 auto;
+        padding: 10px 0 !important;
+        text-align: center;
+      }
+
+      /* Keep title wrapper logic clean */
       .title-desc-wrapper {
         flex-direction: column;
         gap: 10px;
@@ -96,12 +147,6 @@
       .image-row img {
         width: 100%;
       }
-
-      /* Video Section responsive */
-      .video-grid {
-        grid-template-columns: 1fr;
-        padding: 0 10px;
-      }
     }
 
     /* Video Section Styles */
@@ -125,7 +170,7 @@
     .video-aspect-ratio {
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 aspect ratio */
+      padding-top: 56.25%; 
       background: #000;
       border-radius: 6px;
       overflow: hidden;
@@ -140,59 +185,51 @@
       border: 0;
     }
 
-.unity-wrapper {
-  width: 100%;
-  height: 70vh; /* This is where you define size */
-}
+    .unity-wrapper {
+      width: 100%;
+      height: 70vh; 
+    }
 
-.unity-frame {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-/* Hero Section */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* Full screen height */
-  overflow: hidden;
-}
+    .unity-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
 
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  /* Keeps aspect ratio, fills screen */
-}
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh; 
+      overflow: hidden;
+    }
 
-/* Scroll chevron (black V) */
-.scroll-indicator {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg); 
-  width: 24px;
-  height: 24px;
-  border-bottom: 4px solid rgb(255, 255, 255);
-  border-right: 4px solid rgb(255, 255, 255);
-  background: transparent;   /* ensure no fill */
-  cursor: pointer;
-  animation: hover 2s ease-in-out infinite;
-  user-select: none;
-}
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+    }
 
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg); 
+      width: 24px;
+      height: 24px;
+      border-bottom: 4px solid rgb(255, 255, 255);
+      border-right: 4px solid rgb(255, 255, 255);
+      background: transparent;   
+      cursor: pointer;
+      animation: hover 2s ease-in-out infinite;
+      user-select: none;
+    }
 
-/* Gentle hover animation */
-@keyframes hover {
-  0%   { transform: translate(-50%, 0) rotate(45deg); }
-  50%  { transform: translate(-50%, -6px) rotate(45deg); }
-  100% { transform: translate(-50%, 0) rotate(45deg); }
-}
-
-
-
-
-
+    @keyframes hover {
+      0%   { transform: translate(-50%, 0) rotate(45deg); }
+      50%  { transform: translate(-50%, -6px) rotate(45deg); }
+      100% { transform: translate(-50%, 0) rotate(45deg); }
+    }
   </style>
   
   <script type="importmap">
@@ -205,7 +242,6 @@
   </script>
 </head>
 <body>
-  <!-- Navigation Bar -->
   <div id="navbar"></div>
 
   <script>
@@ -215,89 +251,23 @@
         document.getElementById('navbar').innerHTML = data;
       });
   </script>
-<!-- Hero Section -->
-<section class="hero">
-  <img src="assets/hero.png" alt="Hero Image" class="hero-image">
 
-  <!-- Scroll Indicator -->
-  <div class="scroll-indicator" id="scroll-indicator"></div>
+  <section class="hero">
+    <img src="assets/hero.png" alt="Hero Image" class="hero-image">
+    <div class="scroll-indicator" id="scroll-indicator"></div>
+  </section>
 
-</section>
-
-  <!-- Hero Image Section 
-  <div class="hero">
-    <div class="scroll-indicator">&#x25BC;</div>
-  </div> -->
-
-  <!-- Spacer 
-  <div class="spacer"></div>-->
-
-  <!-- Work Preview Section -->
   <section id="work-preview">
     <div class="grid" id="project-grid"></div>
-
-    <!-- See More Projects button -->
     <a href="projects.html" class="see-more-button" style="display: block; margin: 0 auto; margin-top: 20px;">
       See More Projects →
     </a>
   </section>
 
-  <!-- Three.js Section 
-  <section id="threejs-section">
-    <div id="instructions">Click to control camera. Press ESC to release.</div>
-  </section>-->
-
-  <!-- Three.js Script 
-  <script type="module" src="courtyard.js"></script>
--->
-
-</section> <!-- End of #work-preview -->
-
-<!-- Unity WebGL Section
-<section class="unity-section">
-  <div class="unity-wrapper" id="unity-wrapper" style="position: relative;">
-    <iframe 
-      src="assets/webglcourtyard/index.html" 
-      class="unity-frame" 
-      allowfullscreen
-      scrolling="no"
-      style="display: block;">
-    </iframe>
-    
-     Controls overlay, always visible 
-    <img 
-      id="control-indicator" 
-      src="assets/controls.png" 
-      alt="Click to control, press ESC to release" 
-      style="
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 360px;
-        cursor: pointer;
-        user-select: none;
-        pointer-events: auto;
-        z-index: 10;
-      "
-    />
-  </div>
-</section> -->
-
-
-
-
-
-<section class="video-section">
-
-
-
-
   <script type="module">
     async function loadProjects() {
       const response = await fetch('assets/projects.json');
       const projects = await response.json();
-
       const grid = document.getElementById('project-grid');
 
       projects.slice(0, 8).forEach(project => {
@@ -321,50 +291,40 @@
         grid.appendChild(link);
       });
     }
-
     loadProjects();
   </script>
 
-
-
-  
-
-  <!-- Google Drive Video Section -->
   <section class="video-section">
-  <div class="video-grid">
-    <div class="video-wrapper">
-      <div class="video-aspect-ratio">
-        <iframe src="https://drive.google.com/file/d/1EP-55wR_GIuLm3rwX4QEbZBntHG44qCZ/preview" allow="autoplay" allowfullscreen></iframe>
+    <div class="video-grid">
+      <div class="video-wrapper">
+        <div class="video-aspect-ratio">
+          <iframe src="https://drive.google.com/file/d/1EP-55wR_GIuLm3rwX4QEbZBntHG44qCZ/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <a href="projects/blender-day-1-tutorial/index.html" class="see-more-button">See Project →</a>
       </div>
-      <a href="projects/blender-day-1-tutorial/index.html" class="see-more-button">See Project →</a>
 
-    </div>
-
-    <div class="video-wrapper">
-      <div class="video-aspect-ratio">
-        <iframe src="https://drive.google.com/file/d/10fb8MQjdg1hwFwx0rZkZnzDPLPP2z-Ik/preview" allow="autoplay" allowfullscreen></iframe>
+      <div class="video-wrapper">
+        <div class="video-aspect-ratio">
+          <iframe src="https://drive.google.com/file/d/10fb8MQjdg1hwFwx0rZkZnzDPLPP2z-Ik/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <a href="projects/title-card/index.html" class="see-more-button">See Project →</a>
       </div>
-      <a href="projects/title-card/index.html" class="see-more-button">See Project →</a>
 
-    </div>
-
-    <div class="video-wrapper">
-      <div class="video-aspect-ratio">
-        <iframe src="https://drive.google.com/file/d/1cEUl6vZ45U0bBiIxxrBFb33vLz-mLNKa/preview" allow="autoplay" allowfullscreen></iframe>
+      <div class="video-wrapper">
+        <div class="video-aspect-ratio">
+          <iframe src="https://drive.google.com/file/d/1cEUl6vZ45U0bBiIxxrBFb33vLz-mLNKa/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <a href="projects/state-parks-videos/index.html" class="see-more-button">See Project →</a>
       </div>
-      <a href="projects/state-parks-videos/index.html" class="see-more-button">See Project →</a>
-
     </div>
-  </div>
-</section>
-<script>
-  document.getElementById("scroll-indicator").addEventListener("click", () => {
-    document.getElementById("work-preview").scrollIntoView({ 
-      behavior: "smooth" 
+  </section>
+
+  <script>
+    document.getElementById("scroll-indicator").addEventListener("click", () => {
+      document.getElementById("work-preview").scrollIntoView({ 
+        behavior: "smooth" 
+      });
     });
-  });
-</script>
-
-
+  </script>
 </body>
 </html>
