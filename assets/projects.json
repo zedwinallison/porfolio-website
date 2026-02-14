@@ -3,7 +3,7 @@
     "slug": "mummy",
     "title": "Mummy Millions Multiplayer",
     "thumbnail": "projects/mummy/images/thumb.png",
-    "description": "Mummy is a multiplayer cooperative exploration game.  Players delve into an ancient tomb to collect treasure, to pay for better equiptment to explore deeper levels.  This game includes fully original artwork, with stylized, yet realistic graphics and intense attention to lighting design.  The game is in the early stages of development.",
+    "description": "Mummy is a multiplayer cooperative exploration game.  Players delve into an ancient tomb to collect treasure, and pay for better equiptment to explore deeper levels.  This game includes fully original artwork, with stylized, pixellated graphics and careful attention to lighting design.  The game is in the early stages of development.",
     "closing": "",
     "programs": [ "godot", "substance-painter", "blender"],
     "rows": [
