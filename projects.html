@@ -35,7 +35,7 @@
       padding: 0 20px;
     }
 
-    /* 3. DESKTOP HEADER (UNCHANGED) */
+    /* 3. DESKTOP HEADER */
     #navbar {
       position: sticky;
       top: 0;
@@ -89,16 +89,9 @@
     /* 4. ANIMATION LOGIC */
     .grid-link { display: block; opacity: 1; transform-origin: 0 0; }
     .grid-link.hidden { display: none; opacity: 0; }
-    .grid-link.fade-in { animation: rapidFade 0.2s ease forwards; }
 
-    @keyframes rapidFade {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* --- 5. MOBILE OVERRIDES (MATCHING ABOUT PAGE EXACTLY) --- */
+    /* 5. MOBILE OVERRIDES (RESTORED CENTERING) */
     @media (max-width: 768px) {
-      /* Navbar Reset for iPhone Centering from About Page */
       #navbar, #navbar * {
         box-sizing: border-box !important;
         padding-left: 0 !important;
@@ -106,9 +99,8 @@
         margin-right: 0 !important;
       }
 
-      /* Force navbar to scroll away but remain centered like About Page */
       #navbar nav, .navbar {
-        position: relative !important; /* Scrolls away */
+        position: relative !important; 
         top: auto !important;
         display: flex !important;
         flex-direction: column !important;
@@ -118,10 +110,9 @@
         width: 100vw !important;
         padding: 20px 0 !important;
         gap: 20px !important;
-        background-color: #000 !important; /* Match style.css black nav */
+        background-color: #000 !important; 
       }
 
-      /* Links Centering logic from About Page */
       #navbar ul, .nav-links {
         display: flex !important;
         justify-content: center !important;
@@ -136,7 +127,6 @@
         margin: 0 !important;
       }
 
-      /* Tabs remain sticky at the absolute top on mobile */
       .filter-nav {
         position: sticky !important;
         top: 0 !important; 
@@ -179,7 +169,7 @@
   </section>
 
   <script type="module">
-    // Shadow Trigger (Desktop Only)
+    // Scroll Shadow
     window.addEventListener('scroll', () => {
       const filterNav = document.querySelector('.filter-nav');
       if (window.innerWidth > 768) {
@@ -188,12 +178,11 @@
       }
     });
 
-    // Fetch Navbar
+    // Load Navbar
     fetch('/components/navbar.html')
       .then(res => res.text())
       .then(data => { document.getElementById('navbar').innerHTML = data; });
 
-    // Project Loading and Filtering Logic
     async function loadProjects() {
       try {
         const response = await fetch('assets/projects.json');
@@ -224,42 +213,65 @@
         const items = document.querySelectorAll('.grid-link');
 
         function filterSelection(filter) {
+          // 1. Mandatory Scroll To Top
+          requestAnimationFrame(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+
+          // 2. Capture positions for FLIP animation
           const initialPositions = new Map();
+          const currentScroll = window.scrollY;
+
           items.forEach(item => {
-            if (item.style.display !== 'none' && !item.classList.contains('hidden')) {
-              initialPositions.set(item, item.getBoundingClientRect());
+            if (item.offsetParent !== null) {
+              const rect = item.getBoundingClientRect();
+              initialPositions.set(item, {
+                top: rect.top + currentScroll,
+                left: rect.left
+              });
             }
           });
 
+          // 3. UI State
           buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
           history.replaceState(null, null, `#${filter}`);
 
+          // 4. Perform Filter
           items.forEach(item => {
             const semiTag = `semi${filter}`;
             const isMatch = filter === 'all' || item.classList.contains(filter) || item.classList.contains(semiTag);
             if (isMatch) {
               item.classList.remove('hidden');
               item.style.order = (filter !== 'all' && item.classList.contains(semiTag)) ? "1" : "0";
-            } else { item.classList.add('hidden'); }
-          });
-
-          items.forEach(item => {
-            if (!item.classList.contains('hidden') && initialPositions.has(item)) {
-              const oldRect = initialPositions.get(item);
-              const newRect = item.getBoundingClientRect();
-              const deltaX = oldRect.left - newRect.left;
-              const deltaY = oldRect.top - newRect.top;
-              if (deltaX !== 0 || deltaY !== 0) {
-                item.style.transition = 'none';
-                item.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-                requestAnimationFrame(() => {
-                  item.style.transition = 'transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1)';
-                  item.style.transform = '';
-                });
-              }
+            } else { 
+              item.classList.add('hidden'); 
             }
           });
+
+          // 5. Grid Animation
+          requestAnimationFrame(() => {
+            items.forEach(item => {
+              if (!item.classList.contains('hidden') && initialPositions.has(item)) {
+                const oldPos = initialPositions.get(item);
+                const newRect = item.getBoundingClientRect();
+                
+                const deltaX = oldPos.left - newRect.left;
+                const deltaY = oldPos.top - (newRect.top + window.scrollY);
+
+                if (deltaX !== 0 || deltaY !== 0) {
+                  item.style.transition = 'none';
+                  item.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+                  
+                  item.offsetHeight; // force repaint
+
+                  item.style.transition = 'transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                  item.style.transform = '';
+                }
+              }
+            });
+          });
         }
+        
         buttons.forEach(btn => btn.addEventListener('click', () => filterSelection(btn.dataset.filter)));
         if (window.location.hash) filterSelection(window.location.hash.substring(1));
       } catch (e) { console.error(e); }
