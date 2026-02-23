@@ -264,6 +264,20 @@
     ]
   },
   {
+    "slug": "fnaf",
+    "title": "Five Nights at Freddy's Custom Assets",
+    "thumbnail": "projects/fnaf/images/thumb.png",
+    "description": "These assets were created for a collaborative project called Brother Location.  This project is a multiplayer fan-game based on Five Nights at Freddy's. The assets are clearly based on characters from the original game, but are recreated as high-fidelity, game-ready models with performant topology.  Both Bonnie and the Endo Skeleton are playable characters, with several animations.  Other environmental and interactive assets were created with performance in mind.",
+    "closing": "These characters are fully original models.  No assets from the original Five Nights at Freddy's game were touched while creating these models from scratch.  They are both fully rigged, and have several animations.  Walking, attacking, and idle are shown here.  ",
+    "programs": ["blender", "unity"],
+    "category": "3dart",
+    "rows": [
+      {
+        
+      }
+    ]
+  },
+  {
     "slug": "old-man-comic",
     "title": "Old Man of the Forest Comic",
     "thumbnail": "projects/old-man-comic/images/thumb.png",
@@ -366,7 +380,24 @@
     "description": "Make sure to set the viewer to playback in 1080p!  This video was created as a study of title cards in film and TV.  It breaks down visual design choices, and film editing concepts/practices.  This video was recorded, illustrated, animated, and edited by me.  There are no other collaborators.  My goal was to capture a viewer’s attention and educate while providing entertainment that is engaging, visually interesting, cinematic, and comedic.",
     "closing": "",
     "programs": ["premier", "photoshop"],
-    "category": "video design",
+    "category": "video semidesign",
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "vizpromo",
+    "title": "3D Viz Center Promo Video",
+    "thumbnail": "projects/vizpromo/images/thumb.png",
+    "description": "Make sure to set the viewer to playback in 1080p!  This is a promotional short video I produced for the 3D Visualization Center at the University of Wyoming.  It was filmed, edited, and narrated by me.  This promo video uses fast paced editing and a tight, direct script to sell the most important facts about the Viz Center.  It is meant to be understandable to anyone and still communicate technological capabilities.",
+    "closing": "",
+    "programs": ["premier"],
+    "category": "video",
     "rows": [
       {
         "columns": 1,
@@ -455,6 +486,111 @@
           "/projects/metal-logos/images/25.png",
           "/projects/metal-logos/images/26.png",
           "/projects/metal-logos/images/27.png"
+        ]
+      }
+    ]
+  },
+
+  {
+    "slug": "creamer",
+    "title": "Coffee Creamer Life-Cycle Analysis",
+    "thumbnail": "projects/creamer/images/thumb.png",
+    "description": "This project demonstrates visual storytellling for environmental pitfalls in product manufacturing. The poster demonstrates the issues with individually packaged creamer cups on the left side, and highlights the benefits of the proposed alternative design. The composition is split into four sections, but does so without introducing rigidity and preserving optical flow.  The illustrative nature of the poster, in combination with careful typographical choices makes this an approachable and understandable infographic.  ",
+    "closing": "The proposed alternative packing design seeks to address all sustainability pitfalls that were problematic for the individual creamer cups.  A glass, reusable, single container that is optimized to make maximum use of space.  The models were created in blender and rendered in Adobe Dimension.",
+    "programs": [ "illustrator", "blender"],
+    "category": "design",
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          
+          "/projects/creamer/images/image1.png"
+          
+        ]
+      },
+      {
+        "columns": 2,
+        "images": [
+          
+          "/projects/creamer/images/image2.png",
+          "/projects/creamer/images/image3.png"
+          
+                ]
+      },
+      {
+        "columns": 2,
+        "images": [
+          
+          
+          "/projects/creamer/images/image4.png",
+          "/projects/creamer/images/image5.png"
+          
+        ]
+      }
+      
+      
+      
+      
+    ]
+  },
+
+  {
+    "slug": "quake",
+    "title": "Quake Typeface Design",
+    "thumbnail": "projects/quake/images/thumb.png",
+    "description": "This typeface was designed with rigid adherence to a grid for each letter, giving it a harsh, pixellated effect.  The challenge in this project was communicating the shape of each character under these limitations without sacrificing flair and personality. The upper and lower case fonts are stylistically distinct, but mesh as one typeface.  Their combination is visually appealing, without hindering readability.",
+    "closing": "The lower case fonts are inspired by medieval blackletter fonts, and the upper case fonts are designed to feel impactful, wide, and bouncy.  The resulting effect evokes the sense of concussive reverberation, and the resulting hairline cracking.",
+    "programs": [ "illustrator"],
+    "category": "design",
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          
+          "/projects/quake/images/image1.png"
+          
+        ]
+      },
+      {
+        "columns": 2,
+        "images": [
+          
+          "/projects/quake/images/image2.png",
+          "/projects/quake/images/image3.png"
+          
+                ]
+      },
+      {
+        "columns": 2,
+        "images": [
+          
+          
+          "/projects/quake/images/image4.png",
+          "/projects/quake/images/image5.png"
+          
+        ]
+      }
+      
+      
+      
+      
+    ]
+  },
+
+  {
+    "slug": "emojis",
+    "title": "Travel Emoji Communication Designs",
+    "thumbnail": "projects/emojis/images/thumb.png",
+    "description": "This set of emojis was created with ease of communication in mind.  The function of emojis like these would be to immediately communicate several phrases or requests that may come in handy when travelling.  Things like requests for directions, language translation, and a simple yes or no.  These designs are meant to be recognizable as commonplace emojis but still visually and stylistically distinct.  ",
+    "closing": "",
+    "programs": ["photoshop"],
+    "category": "design",
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          "/projects/emojis/images/image1.png"
+          
         ]
       }
     ]
