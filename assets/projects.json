@@ -61,18 +61,25 @@
     "category": "3dart",
     "rows": [
       {
+        "columns": 1,
+        "images": [
+          "/projects/space-office/images/image1.png"
+          
+        ]
+      },
+      {
         "columns": 2,
         "images": [
-          "/projects/space-office/images/image1.png",
-          "/projects/space-office/images/image2.png"
+          "/projects/space-office/images/image2.png",
+          "/projects/space-office/images/image3.png"
         ]
       },
       {
         "columns": 2,
         "images": [
           
-          "/projects/space-office/images/image3.png",
-          "/projects/space-office/images/image4.png"
+          "/projects/space-office/images/image4.png",
+          "/projects/space-office/images/image5.png"
         ]
       }
       
@@ -499,7 +506,7 @@
     "slug": "emojis",
     "title": "Travel Emoji Communication Designs",
     "thumbnail": "projects/emojis/images/thumb.png",
-    "description": "This set of emojis was created with ease of communication in mind.  The function of emojis like these would be to immediately communicate several phrases or requests that may come in handy when travelling.  Things like requests for directions, language translation, and a simple yes or no.  These designs are meant to be recognizable as commonplace emojis but still visually and stylistically distinct.  ",
+    "description": "This set of emojis was created with ease of communication in mind.  The function of emojis like these would be to immediately communicate several phrases or requests that may come in handy when travelling.  This includes things like requests for directions or requests for language translation.  These designs are meant to be recognizable as commonplace emojis but still visually and stylistically distinct.  ",
     "closing": "",
     "programs": ["photoshop"],
     "category": "design",

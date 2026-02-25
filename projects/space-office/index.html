@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="../../style.css">
   <link rel="stylesheet" href="../../projectstyle.css">
   
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,9 +35,29 @@
       width: 100%;
       aspect-ratio: 16 / 9; 
       margin: 2rem 0; 
-      border-radius: 0px; /* Kept sharp to match your image style */
+      border-radius: 0px;
       overflow: hidden;
       background-color: #000;
+    }
+
+    /* --- Centered Instruction & Description Formatting --- */
+    .fnaf-style-text {
+      text-align: center !important;
+      display: flex !important; /* Changed to flex for alignment */
+      align-items: center;
+      justify-content: center;
+      gap: 8px; /* Space between icon and text */
+      width: 100% !important;
+      max-width: 1000px !important;
+      margin: 4rem auto !important;
+      font-weight: normal !important;
+      line-height: 1.6;
+    }
+
+    .info-icon {
+      color: #1e90ff; /* Matches your theme blue */
+      font-size: 20px;
+      user-select: none;
     }
 
     /* --- Comparison Slider Styling --- */
@@ -66,7 +88,6 @@
       border-right: 2px solid #fff; 
     }
 
-    /* Force the top image to match the container width exactly */
     .comparison-overlay .comparison-img {
       width: 100%;
       max-width: none; 
@@ -118,17 +139,31 @@
 
     <div id="image-gallery"></div>
 
+    <p class="project-description fnaf-style-text">
+      Careful attention went to environmental storytelling in this scene. Sticky notes, posters, and the unusual clash of scifi and corporate aesthetics tell us a lot about who works here and the nature of the world this story takes place in. The texturing and material choices were a big focus of my work, to give a gritty, lived-in appearance.
+    </p>
+
     <div class="aspect-16-9 comparison-container" id="comparison-slider">
       <img src="images/image6.png" class="comparison-img" alt="Final Render">
       <div class="comparison-overlay" id="overlay">
-        <img src="images/image5.png" class="comparison-img" id="top-image" alt="Work in Progress">
+        <img src="images/image7.png" class="comparison-img" id="top-image" alt="Work in Progress">
       </div>
       <input type="range" min="0" max="100" value="50" class="comparison-slider-input" id="slider">
     </div>
+    
+    <p class="project-description fnaf-style-text">
+      <span class="material-symbols-outlined info-icon">info</span>
+      Move slider to show lighting
+    </p>
 
     <div class="aspect-16-9">
       <div id="panorama-container"></div>
     </div>
+    
+    <p class="project-description fnaf-style-text">
+      <span class="material-symbols-outlined info-icon">info</span>
+      Drag to look around environment
+    </p>
 
     <p id="extra-description" class="extra-description"></p>
 
@@ -165,8 +200,7 @@
     const container = document.getElementById('comparison-slider');
 
     function syncImageWidth() {
-      // Ensure the sliding top-image matches the actual width of the container
-      if(container) topImg.style.width = container.offsetWidth + 'px';
+      if(container && topImg) topImg.style.width = container.offsetWidth + 'px';
     }
 
     window.addEventListener('resize', syncImageWidth);
@@ -214,7 +248,6 @@
 
         document.getElementById('extra-description').textContent = project.closing || '';
         
-        // Initial sync once images/data are loaded
         setTimeout(syncImageWidth, 200);
       });
 
