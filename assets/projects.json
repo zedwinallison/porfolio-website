@@ -407,89 +407,7 @@
       }
     ]
   },
-  {
-    "slug": "metal-logos",
-    "title": "Metal Logo Commissions",
-    "thumbnail": "projects/metal-logos/images/thumb.png",
-    "description": "This body of work includes examples from 30+ individual commissions to create  logos for heavy metal, death metal, gore grind, and other genres of metal bands.  This is a very niche style of graphic design that is fundamentally tied to music.  Each logo is the title of a band, and the letters are stretched and distorted beyond recognition.  Some are more legible than others, and it can be fun to try to decipher any letters in the more complex logos.",
-    "closing": "",
-    "programs": ["photoshop"],
-    "category": "design",
-    "rows": [
-      {
-        "columns": 3,
-        "images": [
-          "/projects/metal-logos/images/1.png",
-          "/projects/metal-logos/images/2.png",
-          "/projects/metal-logos/images/3.png"
-        ]
-      },
-      {
-        "columns": 3,
-        "images": [
-          "/projects/metal-logos/images/4.png",
-          "/projects/metal-logos/images/5.png",
-          "/projects/metal-logos/images/6.png"
-        ]
-      },
-      {
-        "columns": 3,
-        "images": [
-          "/projects/metal-logos/images/7.png",
-          "/projects/metal-logos/images/8.png",
-          "/projects/metal-logos/images/9.png"
-        ]
-      },
-      {
-        "columns": 3,
-        "images": [
-          "/projects/metal-logos/images/10.png",
-          "/projects/metal-logos/images/11.png",
-          "/projects/metal-logos/images/12.png"
-        ]
-      },
-      {
-        "columns": 3,
-        "images": [
-          "/projects/metal-logos/images/13.png",
-          "/projects/metal-logos/images/14.png",
-          "/projects/metal-logos/images/15.png"
-        ]
-      },
-      {
-        "columns": 3,
-        "images": [
-          "/projects/metal-logos/images/16.png",
-          "/projects/metal-logos/images/17.png",
-          "/projects/metal-logos/images/18.png"
-        ]
-      },
-      {
-        "columns": 3,
-        "images": [
-          "/projects/metal-logos/images/19.png",
-          "/projects/metal-logos/images/20.png",
-          "/projects/metal-logos/images/21.png"
-        ]
-      },
-      {
-        "columns": 3,
-        "images": [
-          "/projects/metal-logos/images/22.png",
-          "/projects/metal-logos/images/23.png",
-          "/projects/metal-logos/images/24.png"
-        ]
-      },
-      {
-        "columns": 3,
-        "images": [
-          "/projects/metal-logos/images/25.png",
-          "/projects/metal-logos/images/26.png",
-          "/projects/metal-logos/images/27.png"
-        ]
-      }
-    ]
-  },
+  
 
   {
     "slug": "creamer",
@@ -591,6 +509,89 @@
         "images": [
           "/projects/emojis/images/image1.png"
           
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "metal-logos",
+    "title": "Metal Logo Commissions",
+    "thumbnail": "projects/metal-logos/images/thumb.png",
+    "description": "This body of work includes examples from 30+ individual commissions to create  logos for heavy metal, death metal, gore grind, and other genres of metal bands.  This is a very niche style of graphic design that is fundamentally tied to music.  Each logo is the title of a band, and the letters are stretched and distorted beyond recognition.  Some are more legible than others, and it can be fun to try to decipher any letters in the more complex logos.",
+    "closing": "",
+    "programs": ["photoshop"],
+    "category": "design",
+    "rows": [
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/1.png",
+          "/projects/metal-logos/images/2.png",
+          "/projects/metal-logos/images/3.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/4.png",
+          "/projects/metal-logos/images/5.png",
+          "/projects/metal-logos/images/6.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/7.png",
+          "/projects/metal-logos/images/8.png",
+          "/projects/metal-logos/images/9.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/10.png",
+          "/projects/metal-logos/images/11.png",
+          "/projects/metal-logos/images/12.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/13.png",
+          "/projects/metal-logos/images/14.png",
+          "/projects/metal-logos/images/15.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/16.png",
+          "/projects/metal-logos/images/17.png",
+          "/projects/metal-logos/images/18.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/19.png",
+          "/projects/metal-logos/images/20.png",
+          "/projects/metal-logos/images/21.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/22.png",
+          "/projects/metal-logos/images/23.png",
+          "/projects/metal-logos/images/24.png"
+        ]
+      },
+      {
+        "columns": 3,
+        "images": [
+          "/projects/metal-logos/images/25.png",
+          "/projects/metal-logos/images/26.png",
+          "/projects/metal-logos/images/27.png"
         ]
       }
     ]

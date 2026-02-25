@@ -27,8 +27,6 @@
       transition: opacity 0.2s ease;
     }
 
-    
-
     .stacked-images {
       display: flex;
       flex-direction: column;
@@ -45,13 +43,22 @@
       background-color: #000;
     }
 
+    /* Updated the existing class to handle centering and spacing.
+       It will now inherit color/font/size from your projectstyle.css.
+    */
+    .extra-description {
+      text-align: center;
+      margin: 40px auto; 
+      display: block;
+      width: 100%;
+    }
+
     @media (max-width: 768px) {
       .video-grid-three { grid-template-columns: 1fr; }
     }
 
     .hidden { display: none !important; }
 
-    /* Lightbox Content Styling */
     #lightbox-video {
         max-width: 90vw;
         max-height: 90vh;
@@ -85,14 +92,7 @@
         </video>
       </div>
 
-      <div class="stacked-images">
-        <img src="images/image1.png" alt="Image 1" class="lightbox-trigger">
-        <img src="images/image2.png" alt="Image 2" class="lightbox-trigger">
-        <img src="images/image3.png" alt="Image 3" class="lightbox-trigger">
-        <img src="images/image4.png" alt="Image 4" class="lightbox-trigger">
-        <img src="images/image5.png" alt="Image 5" class="lightbox-trigger">
-        <img src="images/image6.png" alt="Image 6" class="lightbox-trigger">
-      </div>
+      <p id="extra-description" class="extra-description"></p>
 
       <div class="video-grid-three">
         <video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
@@ -123,21 +123,30 @@
           <source src="images/endoattack.mp4" type="video/mp4">
         </video>
       </div>
-    </div>
 
-    <p id="extra-description" class="extra-description"></p>
+      <p class="extra-description">
+        These are game-ready character models that needed the depth of detail to still look appealing posed as renders. 
+        Careful consideration went into the topology to ensure that the game would be performant on PC.
+      </p>
+
+      <div class="stacked-images">
+        <img src="images/image1.png" alt="Image 1" class="lightbox-trigger">
+        <img src="images/image2.png" alt="Image 2" class="lightbox-trigger">
+        <img src="images/image3.png" alt="Image 3" class="lightbox-trigger">
+        <img src="images/image4.png" alt="Image 4" class="lightbox-trigger">
+        <img src="images/image5.png" alt="Image 5" class="lightbox-trigger">
+        <img src="images/image6.png" alt="Image 6" class="lightbox-trigger">
+      </div>
+    </div>
 
     <div id="lightbox" class="hidden" style="position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.9); display:flex; align-items:center; justify-content:center; z-index:2000;">
         <button id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">×</button>
         <button id="prev-img" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">‹</button>
-        
         <img id="lightbox-img" src="" alt="Large view" class="hidden" style="max-width:90vw; max-height:90vh; border-radius:8px;"/>
-        
         <video id="lightbox-video" controls autoplay loop class="hidden">
             <source id="video-source-webm" src="" type="video/webm">
             <source id="video-source-mp4" src="" type="video/mp4">
         </video>
-
         <button id="next-img" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">›</button>
     </div>
   </main>
@@ -148,7 +157,7 @@
       .then(html => document.getElementById('navbar-container').innerHTML = html);
 
     const slug = 'fnaf'; 
-    const galleryItems = []; // Array of objects {type: 'img'|'video', sources: []}
+    const galleryItems = []; 
 
     fetch('../../assets/projects.json')
       .then(res => res.json())
@@ -169,13 +178,11 @@
             });
         }
 
-        // Initialize Lightbox for all triggers (Images and Videos)
         const triggers = document.querySelectorAll('.lightbox-trigger');
         triggers.forEach((el, index) => {
             if (el.tagName === 'IMG') {
                 galleryItems.push({ type: 'img', src: el.src });
             } else if (el.tagName === 'VIDEO') {
-                // Collect all sources for the video
                 const sources = Array.from(el.querySelectorAll('source')).map(s => ({ src: s.src, type: s.type }));
                 galleryItems.push({ type: 'video', sources: sources });
             }
@@ -193,8 +200,6 @@
     function openLightbox(index) {
         currentIndex = index;
         const item = galleryItems[currentIndex];
-
-        // Reset visibility
         lightboxImg.classList.add('hidden');
         lightboxVid.classList.add('hidden');
         lightboxVid.pause();
@@ -203,23 +208,19 @@
             lightboxImg.src = item.src;
             lightboxImg.classList.remove('hidden');
         } else {
-            // Find WebM and MP4 sources from our saved array
             const webm = item.sources.find(s => s.type.includes('webm'));
             const mp4 = item.sources.find(s => s.type.includes('mp4'));
-            
             webmSource.src = webm ? webm.src : '';
             mp4Source.src = mp4 ? mp4.src : '';
-            
-            lightboxVid.load(); // Force video to reload new sources
+            lightboxVid.load(); 
             lightboxVid.classList.remove('hidden');
         }
-        
         lightbox.classList.remove('hidden');
     }
 
     function closeLightbox() {
         lightbox.classList.add('hidden');
-        lightboxVid.pause(); // Stop video audio/playback when closed
+        lightboxVid.pause();
     }
 
     function showNext() {

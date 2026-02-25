@@ -4,19 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>All Projects | Zach Allison</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="projectstyle.css">
+  
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../projectstyle.css">
 
   <style>
-    /* 1. FONT LOADING */
     @font-face {
       font-family: 'Sofia Pro Custom';
-      src: url('assets/fonts/sofiaproregular.otf') format('opentype');
+      src: url('../assets/fonts/sofiaproregular.otf') format('opentype');
       font-weight: normal;
       font-style: normal;
     }
 
-    /* 2. LAYOUT STABILITY */
     html, body {
       margin: 0;
       padding: 0;
@@ -35,7 +34,6 @@
       padding: 0 20px;
     }
 
-    /* 3. DESKTOP HEADER */
     #navbar {
       position: sticky;
       top: 0;
@@ -86,11 +84,9 @@
     .filter-btn:hover { color: #666; }
     .filter-btn.active { color: #000; font-weight: 500; }
 
-    /* 4. ANIMATION LOGIC */
     .grid-link { display: block; opacity: 1; transform-origin: 0 0; }
     .grid-link.hidden { display: none; opacity: 0; }
 
-    /* 5. MOBILE OVERRIDES (RESTORED CENTERING) */
     @media (max-width: 768px) {
       #navbar, #navbar * {
         box-sizing: border-box !important;
@@ -121,10 +117,6 @@
         list-style: none !important;
         width: 100% !important;
         margin-top: 0 !important;
-      }
-
-      #navbar nav .nav-links a, .nav-links a {
-        margin: 0 !important;
       }
 
       .filter-nav {
@@ -169,7 +161,6 @@
   </section>
 
   <script type="module">
-    // Scroll Shadow
     window.addEventListener('scroll', () => {
       const filterNav = document.querySelector('.filter-nav');
       if (window.innerWidth > 768) {
@@ -178,26 +169,25 @@
       }
     });
 
-    // Load Navbar
-    fetch('/components/navbar.html')
+    fetch('../components/navbar.html')
       .then(res => res.text())
       .then(data => { document.getElementById('navbar').innerHTML = data; });
 
     async function loadProjects() {
       try {
-        const response = await fetch('assets/projects.json');
+        const response = await fetch('../assets/projects.json');
         const projects = await response.json();
         const grid = document.getElementById('project-grid');
 
         projects.forEach(project => {
           const link = document.createElement('a');
-          link.href = `projects/${project.slug}/index.html`;
+          link.href = `${project.slug}/index.html`;
           const tags = project.category ? project.category.split(' ') : [];
           link.classList.add('grid-link', 'all', ...tags); 
           const item = document.createElement('div');
           item.className = 'grid-item';
           const img = document.createElement('img');
-          img.src = project.thumbnail;
+          img.src = `../${project.thumbnail}`;
           img.alt = project.title;
           img.loading = "lazy";
           const overlay = document.createElement('div');
@@ -212,13 +202,11 @@
         const buttons = document.querySelectorAll('.filter-btn');
         const items = document.querySelectorAll('.grid-link');
 
-        function filterSelection(filter) {
-          // 1. Mandatory Scroll To Top
-          requestAnimationFrame(() => {
+        function filterSelection(filter, isFirstLoad = false) {
+          if (!isFirstLoad) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-          });
+          }
 
-          // 2. Capture positions for FLIP animation
           const initialPositions = new Map();
           const currentScroll = window.scrollY;
 
@@ -232,11 +220,14 @@
             }
           });
 
-          // 3. UI State
           buttons.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
-          history.replaceState(null, null, `#${filter}`);
+          
+          if (filter === 'all') {
+            history.replaceState(null, null, window.location.pathname);
+          } else {
+            history.replaceState(null, null, `#${filter}`);
+          }
 
-          // 4. Perform Filter
           items.forEach(item => {
             const semiTag = `semi${filter}`;
             const isMatch = filter === 'all' || item.classList.contains(filter) || item.classList.contains(semiTag);
@@ -248,22 +239,17 @@
             }
           });
 
-          // 5. Grid Animation
           requestAnimationFrame(() => {
             items.forEach(item => {
               if (!item.classList.contains('hidden') && initialPositions.has(item)) {
                 const oldPos = initialPositions.get(item);
                 const newRect = item.getBoundingClientRect();
-                
                 const deltaX = oldPos.left - newRect.left;
                 const deltaY = oldPos.top - (newRect.top + window.scrollY);
-
                 if (deltaX !== 0 || deltaY !== 0) {
                   item.style.transition = 'none';
                   item.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-                  
-                  item.offsetHeight; // force repaint
-
+                  item.offsetHeight; 
                   item.style.transition = 'transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1)';
                   item.style.transform = '';
                 }
@@ -273,7 +259,17 @@
         }
         
         buttons.forEach(btn => btn.addEventListener('click', () => filterSelection(btn.dataset.filter)));
-        if (window.location.hash) filterSelection(window.location.hash.substring(1));
+
+        if (window.location.hash) {
+          const hashTag = window.location.hash.substring(1);
+          setTimeout(() => filterSelection(hashTag, true), 10);
+        }
+
+        window.addEventListener('popstate', () => {
+          const hashTag = window.location.hash.substring(1) || 'all';
+          filterSelection(hashTag);
+        });
+
       } catch (e) { console.error(e); }
     }
     loadProjects();

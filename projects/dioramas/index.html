@@ -36,6 +36,15 @@
       margin-bottom: 2rem;
     }
 
+    /* --- Banner Image Span --- */
+    .grid-banner {
+      grid-column: 1 / -1; /* Spans across both columns */
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
     .sketchfab-embed-wrapper {
       position: relative;
       padding-top: 56.25%; /* 16:9 Aspect Ratio */
@@ -80,6 +89,8 @@
     <div id="image-gallery"></div>
 
     <div class="sketchfab-grid">
+      <img src="images/banner.png" alt="Dioramas Banner" class="grid-banner">
+
       <div class="sketchfab-embed-wrapper">
         <iframe title="Egypt - Pristine State" src="https://sketchfab.com/models/b952454962004c7eab964731eb17b055/embed?camera=0&preload=1" allowfullscreen allow="autoplay; fullscreen; xr-spatial-tracking"></iframe>
       </div>
