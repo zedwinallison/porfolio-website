@@ -460,6 +460,57 @@
   },
 
   {
+    "slug": "model-viewer",
+    "title": "3D Model Viewer UI/UX Design",
+    "thumbnail": "projects/model-viewer/images/thumb.png",
+    "description": "This design for fullscreen, 16:9 model viewing interface was designed with two aesthetics in mind.  The purpose was to demonstrate that a functional and intuitive UX layout could be realized using multiple surface aesthetics and asset sets.  The design allows comprehensive study of any model uploaded to it, allowing different texture maps and wireframe to be viewable.",
+    "closing": "",
+    "programs": [ "illustrator", "photoshop", "blender"],
+    "category": "design semi3d",
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          
+          "/projects/model-viewer/images/image1.png"
+          
+        ]
+      },
+      {
+        "columns": 1,
+        "images": [
+          
+          "/projects/model-viewer/images/image2.png"
+          
+          
+                ]
+      },
+      {
+        "columns": 1,
+        "images": [                   
+          "/projects/model-viewer/images/image3.png"      
+        ]
+      },
+      {
+        "columns": 1,
+        "images": [                   
+          "/projects/model-viewer/images/image4.png"      
+        ]
+      },
+      {
+        "columns": 1,
+        "images": [                   
+          "/projects/model-viewer/images/image5.png"      
+        ]
+      }
+      
+      
+      
+      
+    ]
+  },
+
+  {
     "slug": "quake",
     "title": "Quake Typeface Design",
     "thumbnail": "projects/quake/images/thumb.png",
