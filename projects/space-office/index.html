@@ -43,10 +43,10 @@
     /* --- Centered Instruction & Description Formatting --- */
     .fnaf-style-text {
       text-align: center !important;
-      display: flex !important; /* Changed to flex for alignment */
+      display: flex !important;
       align-items: center;
       justify-content: center;
-      gap: 8px; /* Space between icon and text */
+      gap: 8px;
       width: 100% !important;
       max-width: 1000px !important;
       margin: 4rem auto !important;
@@ -55,7 +55,7 @@
     }
 
     .info-icon {
-      color: #1e90ff; /* Matches your theme blue */
+      color: #1e90ff;
       font-size: 20px;
       user-select: none;
     }
@@ -68,13 +68,10 @@
     }
 
     .comparison-img {
-      position: absolute;
-      top: 0;
-      left: 0;
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     .comparison-overlay {
@@ -85,17 +82,23 @@
       height: 100%;
       overflow: hidden;
       z-index: 2;
-      border-right: 2px solid #fff; 
+      border-right: 3px solid #fff; 
+      box-shadow: 5px 0 15px rgba(0,0,0,0.3);
     }
 
     .comparison-overlay .comparison-img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      max-width: none; 
       height: 100%;
+      max-width: none; 
     }
 
     .comparison-slider-input {
       position: absolute;
+      top: 0;
+      left: 0;
       -webkit-appearance: none;
       appearance: none;
       width: 100%;
@@ -114,10 +117,16 @@
       background: transparent;
     }
 
-    /* --- 360 Viewer Styling --- */
     #panorama-container {
       width: 100%;
       height: 100%;
+    }
+
+    /* Styling for the new image at the bottom */
+    .bottom-display-img {
+      width: 100%;
+      display: block;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -165,6 +174,11 @@
       Drag to look around environment
     </p>
 
+    <img src="images/image8.png" class="bottom-display-img" alt="Menu UI running in Unity 6">
+    <p class="project-description fnaf-style-text">
+      Menu UI running in Unity 6
+    </p>
+
     <p id="extra-description" class="extra-description"></p>
 
     <div id="lightbox" class="hidden">
@@ -182,7 +196,6 @@
 
     const slug = "space-office";
 
-    // --- Initialize 360 Viewer ---
     pannellum.viewer('panorama-container', {
         "type": "equirectangular",
         "panorama": "images/360office.jpg",
@@ -193,24 +206,24 @@
         "hfov": 110
     });
 
-    // --- Comparison Slider Logic ---
     const slider = document.getElementById('slider');
     const overlay = document.getElementById('overlay');
     const topImg = document.getElementById('top-image');
     const container = document.getElementById('comparison-slider');
 
     function syncImageWidth() {
-      if(container && topImg) topImg.style.width = container.offsetWidth + 'px';
+      if(container && topImg) {
+        topImg.style.width = container.offsetWidth + 'px';
+      }
     }
-
-    window.addEventListener('resize', syncImageWidth);
 
     slider.addEventListener('input', (e) => {
       overlay.style.width = `${e.target.value}%`;
-      syncImageWidth();
     });
 
-    // --- Project Data Loading ---
+    window.addEventListener('resize', syncImageWidth);
+    window.addEventListener('load', syncImageWidth);
+
     const allImages = []; 
     fetch('../../assets/projects.json')
       .then(res => res.json())
@@ -248,10 +261,9 @@
 
         document.getElementById('extra-description').textContent = project.closing || '';
         
-        setTimeout(syncImageWidth, 200);
+        setTimeout(syncImageWidth, 500);
       });
 
-    // --- Lightbox Logic ---
     let currentIndex = 0;
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
