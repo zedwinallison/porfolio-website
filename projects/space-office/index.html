@@ -60,20 +60,24 @@
       user-select: none;
     }
 
-    /* --- Comparison Slider Styling --- */
+    /* --- Bulletproof Comparison Slider Styling --- */
     .comparison-container {
       position: relative;
       user-select: none;
       overflow: hidden;
+      background-color: #111; /* Fallback */
     }
 
-    .comparison-img {
+    /* The "After" Image (Background) */
+    #comparison-slider > .comparison-img {
+      position: relative;
+      z-index: 1;
       display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
     }
 
+    /* The "Before" Container (Clipping Mask) */
     .comparison-overlay {
       position: absolute;
       top: 0;
@@ -83,16 +87,18 @@
       overflow: hidden;
       z-index: 2;
       border-right: 3px solid #fff; 
-      box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+      pointer-events: none; /* Allows clicks to pass to the range input */
     }
 
+    /* The "Before" Image inside the clip */
     .comparison-overlay .comparison-img {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
       height: 100%;
+      width: auto; /* Width set by JS */
       max-width: none; 
+      object-fit: cover;
     }
 
     .comparison-slider-input {
@@ -122,11 +128,26 @@
       height: 100%;
     }
 
-    /* Styling for the new image at the bottom */
     .bottom-display-img {
       width: 100%;
       display: block;
       margin-top: 2rem;
+    }
+
+    /* Responsive Scaling Fixes */
+    @media (max-width: 768px) {
+      .title-desc-wrapper {
+        flex-direction: column;
+        text-align: center;
+      }
+      .left-column, .right-column {
+        width: 100% !important;
+        padding: 0;
+      }
+      .fnaf-style-text {
+        margin: 2rem auto !important;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -153,10 +174,12 @@
     </p>
 
     <div class="aspect-16-9 comparison-container" id="comparison-slider">
-      <img src="images/image7.png" class="comparison-img" alt="Final Render">
+      <img src="./images/image7.png" class="comparison-img" alt="Final Render">
+      
       <div class="comparison-overlay" id="overlay">
-        <img src="images/image6.png" class="comparison-img" id="top-image" alt="Work in Progress">
+        <img src="./images/image6.png" class="comparison-img" id="top-image" alt="Work in Progress">
       </div>
+      
       <input type="range" min="0" max="100" value="50" class="comparison-slider-input" id="slider">
     </div>
     
@@ -174,7 +197,7 @@
       Drag to look around environment
     </p>
 
-    <img src="images/image8.png" class="bottom-display-img" alt="Menu UI running in Unity 6">
+    <img src="./images/image8.png" class="bottom-display-img" alt="Menu UI running in Unity 6">
     <p class="project-description fnaf-style-text">
       Menu UI running in Unity 6
     </p>
@@ -211,9 +234,16 @@
     const topImg = document.getElementById('top-image');
     const container = document.getElementById('comparison-slider');
 
+    // Advanced Sync Logic for live sites
     function syncImageWidth() {
       if(container && topImg) {
-        topImg.style.width = container.offsetWidth + 'px';
+        const containerWidth = container.offsetWidth;
+        if (containerWidth > 0) {
+          topImg.style.width = containerWidth + 'px';
+        } else {
+          // Retry if images aren't fully measured by the browser yet
+          requestAnimationFrame(syncImageWidth);
+        }
       }
     }
 
@@ -223,6 +253,7 @@
 
     window.addEventListener('resize', syncImageWidth);
     window.addEventListener('load', syncImageWidth);
+    window.addEventListener('orientationchange', () => setTimeout(syncImageWidth, 200));
 
     const allImages = []; 
     fetch('../../assets/projects.json')
@@ -261,9 +292,11 @@
 
         document.getElementById('extra-description').textContent = project.closing || '';
         
-        setTimeout(syncImageWidth, 500);
+        // Safety re-sync
+        setTimeout(syncImageWidth, 800);
       });
 
+    // Lightbox Logic
     let currentIndex = 0;
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
