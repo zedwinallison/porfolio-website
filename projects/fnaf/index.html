@@ -1,221 +1,384 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Mummy Project</title>
-  <link rel="stylesheet" href="../../style.css">
-  <link rel="stylesheet" href="../../projectstyle.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .custom-layout {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 100%;
-      margin-top: 2rem;
-    }
 
-    /* Standardizes style for static and dynamic items */
-    .full-width-row img,
-    .full-width-row video, 
-    .dynamic-stacked-images img {
-      width: 100%;
-      display: block;
-      height: auto;
-      border-radius: 4px;
-      cursor: pointer; 
-      transition: opacity 0.2s ease;
-    }
+<meta charset="UTF-8" />
 
-    .dynamic-stacked-images {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+<title>FNAF Project</title>
 
-    .extra-description {
-      text-align: center;
-      margin: 40px auto; 
-      display: block;
-      width: 100%;
-      max-width: 900px;
-      line-height: 1.6;
-    }
+<link rel="stylesheet" href="../../style.css">
 
-    .hidden { display: none !important; }
+<link rel="stylesheet" href="../../projectstyle.css">
 
-    #lightbox-video {
-        max-width: 90vw;
-        max-height: 90vh;
-        border-radius: 8px;
-        outline: none;
-    }
-  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+.custom-layout {
+
+display: flex;
+
+flex-direction: column;
+
+gap: 20px;
+
+width: 100%;
+
+margin-top: 2rem;
+
+}
+
+
+
+/* All gallery items now have a pointer to show they are clickable */
+
+.full-width-row video,
+
+.stacked-images img,
+
+.video-grid-three video {
+
+width: 100%;
+
+display: block;
+
+height: auto;
+
+border-radius: 4px;
+
+cursor: pointer;
+
+transition: opacity 0.2s ease;
+
+}
+
+
+
+.stacked-images {
+
+display: flex;
+
+flex-direction: column;
+
+gap: 20px;
+
+}
+
+
+
+.video-grid-three {
+
+display: grid;
+
+grid-template-columns: repeat(3, 1fr);
+
+gap: 15px;
+
+}
+
+
+
+.video-grid-three video {
+
+background-color: #000;
+
+}
+
+
+
+/* Updated the existing class to handle centering and spacing.
+
+It will now inherit color/font/size from your projectstyle.css.
+
+*/
+
+.extra-description {
+
+text-align: center;
+
+margin: 40px auto;
+
+display: block;
+
+width: 100%;
+
+}
+
+
+
+@media (max-width: 768px) {
+
+.video-grid-three { grid-template-columns: 1fr; }
+
+}
+
+
+
+.hidden { display: none !important; }
+
+
+
+#lightbox-video {
+
+max-width: 90vw;
+
+max-height: 90vh;
+
+border-radius: 8px;
+
+outline: none;
+
+}
+
+</style>
+
 </head>
+
 <body>
-  <div id="navbar-container"></div>
 
-  <main class="project-container">
-    <div class="title-desc-wrapper">
-      <div class="left-column">
-        <h1 class="project-title" id="project-title"></h1>
-        <div class="software-icons-wrapper">
-          <div class="software-icons" id="software-icons"></div>
-        </div>
-      </div>
-      <div class="right-column">
-        <p class="project-description" id="project-description"></p>
-      </div>
-    </div>
+<div id="navbar-container"></div>
 
-    <div id="image-gallery" class="custom-layout">
-      
-      <div class="full-width-row">
-        <img src="images/image1.png" alt="Mummy Artwork 1" class="lightbox-trigger">
-      </div>
 
-      <p class="extra-description">
-        The artwork in Mummy is all handled by me. From concepting to modeling, texturing, and lighting. 
-        The visual style of the environments is rooted in realism, with a big focus on vibrant indirect lighting. 
-        The visuals are pushed into a more stylized feel by the exaggerated color and character design.
-      </p>
 
-      <div class="full-width-row">
-        <video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
-          <source src="images/montage.mp4" type="video/mp4">
-          <source src="images/montage.webm" type="video/webm">
-        </video>
-      </div>
+<main class="project-container">
 
-      <div id="dynamic-stacked-images" class="dynamic-stacked-images"></div>
+<div class="title-desc-wrapper">
 
-    </div>
+<div class="left-column">
 
-    <p id="extra-closing-description" class="extra-description"></p>
+<h1 class="project-title" id="project-title"></h1>
 
-    <div id="lightbox" class="hidden" style="position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.9); display:flex; align-items:center; justify-content:center; z-index:2000;">
-        <button id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">×</button>
-        <button id="prev-img" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">‹</button>
-        <img id="lightbox-img" src="" alt="Large view" class="hidden" style="max-width:90vw; max-height:90vh; border-radius:8px;"/>
-        <video id="lightbox-video" controls autoplay loop class="hidden">
-            <source id="video-source-mp4" src="" type="video/mp4">
-            <source id="video-source-webm" src="" type="video/webm">
-        </video>
-        <button id="next-img" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">›</button>
-    </div>
-  </main>
+<div class="software-icons-wrapper">
 
-  <script type="module">
-    fetch('../../components/navbar.html')
-      .then(res => res.text())
-      .then(html => document.getElementById('navbar-container').innerHTML = html);
+<div class="software-icons" id="software-icons"></div>
 
-    const slug = 'mummy'; 
-    const galleryItems = []; 
+</div>
 
-    fetch('../../assets/projects.json')
-      .then(res => res.json())
-      .then(projects => {
-        const project = projects.find(p => p.slug === slug);
-        if (project) {
-            document.title = project.title;
-            document.getElementById('project-title').textContent = project.title;
-            document.getElementById('project-description').textContent = project.description || '';
-            document.getElementById('extra-closing-description').textContent = project.closing || '';
+</div>
 
-            const iconContainer = document.getElementById('software-icons');
-            (project.programs || []).forEach(prog => {
-                const img = document.createElement('img');
-                img.src = `../../assets/programs/${prog}.png`;
-                img.alt = prog;
-                iconContainer.appendChild(img);
-            });
+<div class="right-column">
 
-            // Fill the dynamic image section
-            const dynamicContainer = document.getElementById('dynamic-stacked-images');
-            project.rows.forEach(row => {
-                row.images.forEach(imgPath => {
-                    // Skip image1.png because we already hardcoded it at the top
-                    if (imgPath.includes('image1.png')) return;
+<p class="project-description" id="project-description"></p>
 
-                    const img = document.createElement('img');
-                    img.src = imgPath;
-                    img.className = 'lightbox-trigger';
-                    dynamicContainer.appendChild(img);
-                });
-            });
-        }
+</div>
 
-        // Initialize Lightbox Triggers (Exactly like FNAF)
-        const triggers = document.querySelectorAll('.lightbox-trigger');
-        triggers.forEach((el, index) => {
-            if (el.tagName === 'IMG') {
-                galleryItems.push({ type: 'img', src: el.src });
-            } else if (el.tagName === 'VIDEO') {
-                const sources = Array.from(el.querySelectorAll('source')).map(s => ({ src: s.src, type: s.type }));
-                galleryItems.push({ type: 'video', sources: sources });
-            }
-            el.addEventListener('click', () => openLightbox(index));
-        });
-      });
+</div>
 
-    let currentIndex = 0;
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxVid = document.getElementById('lightbox-video');
-    const mp4Source = document.getElementById('video-source-mp4');
-    const webmSource = document.getElementById('video-source-webm');
 
-    function openLightbox(index) {
-        currentIndex = index;
-        const item = galleryItems[currentIndex];
-        lightboxImg.classList.add('hidden');
-        lightboxVid.classList.add('hidden');
-        lightboxVid.pause();
 
-        if (item.type === 'img') {
-            lightboxImg.src = item.src;
-            lightboxImg.classList.remove('hidden');
-        } else {
-            const mp4 = item.sources.find(s => s.type.includes('mp4'));
-            const webm = item.sources.find(s => s.type.includes('webm'));
-            mp4Source.src = mp4 ? mp4.src : '';
-            webmSource.src = webm ? webm.src : '';
-            lightboxVid.load(); 
-            lightboxVid.classList.remove('hidden');
-        }
-        lightbox.classList.remove('hidden');
-    }
+<div id="image-gallery" class="custom-layout">
 
-    function closeLightbox() {
-        lightbox.classList.add('hidden');
-        lightboxVid.pause();
-    }
 
-    function showNext() {
-        currentIndex = (currentIndex + 1) % galleryItems.length;
-        openLightbox(currentIndex);
-    }
+<div class="full-width-row">
 
-    function showPrev() {
-        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-        openLightbox(currentIndex);
-    }
+<video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
 
-    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-    document.getElementById('next-img').addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
-    document.getElementById('prev-img').addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
-    
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-    });
+<source src="images/bonnieidle.webm" type="video/webm">
 
-    document.addEventListener('keydown', (e) => {
-        if (lightbox.classList.contains('hidden')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') showNext();
-        if (e.key === 'ArrowLeft') showPrev();
-    });
-  </script>
-</body>
-</html>
+<source src="images/bonnieidle.mp4" type="video/mp4">
+
+</video>
+
+</div>
+
+
+
+<p id="extra-description" class="extra-description"></p>
+
+
+
+<div class="video-grid-three">
+
+<video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
+
+<source src="images/bonniewalk.webm" type="video/webm">
+
+<source src="images/bonniewalk.mp4" type="video/mp4">
+
+</video>
+
+<video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
+
+<source src="images/bonnieidlevert.webm" type="video/webm">
+
+<source src="images/bonnieidlevert.mp4" type="video/mp4">
+
+</video>
+
+<video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
+
+<source src="images/bonniedownswing.webm" type="video/webm">
+
+<source src="images/bonniedownswing.mp4" type="video/mp4">
+
+</video>
+
+</div>
+
+
+
+<div class="video-grid-three">
+
+<video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
+
+<source src="images/endowalk.webm" type="video/webm">
+
+<source src="images/endowalk.mp4" type="video/mp4">
+
+</video>
+
+<video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
+
+<source src="images/endoidle.webm" type="video/webm">
+
+<source src="images/endoidle.mp4" type="video/mp4">
+
+</video>
+
+<video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
+
+<source src="images/endoattack.webm" type="video/webm">
+
+<source src="images/endoattack.mp4" type="video/mp4">
+
+</video>
+
+</div>
+
+
+
+<p class="extra-description">
+
+These are game-ready character models that needed the depth of detail to still look appealing posed as renders.
+
+Careful consideration went into the topology to ensure that the game would be performant on PC.
+
+</p>
+
+
+
+<div class="stacked-images">
+
+<img src="images/image1.png" alt="Image 1" class="lightbox-trigger">
+
+<img src="images/image2.png" alt="Image 2" class="lightbox-trigger">
+
+<img src="images/image3.png" alt="Image 3" class="lightbox-trigger">
+
+<img src="images/image4.png" alt="Image 4" class="lightbox-trigger">
+
+<img src="images/image5.png" alt="Image 5" class="lightbox-trigger">
+
+<img src="images/image6.png" alt="Image 6" class="lightbox-trigger">
+
+</div>
+
+</div>
+
+
+
+<div id="lightbox" class="hidden" style="position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.9); display:flex; align-items:center; justify-content:center; z-index:2000;">
+
+<button id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">×</button>
+
+<button id="prev-img" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">‹</button>
+
+<img id="lightbox-img" src="" alt="Large view" class="hidden" style="max-width:90vw; max-height:90vh; border-radius:8px;"/>
+
+<video id="lightbox-video" controls autoplay loop class="hidden">
+
+<source id="video-source-webm" src="" type="video/webm">
+
+<source id="video-source-mp4" src="" type="video/mp4">
+
+</video>
+
+<button id="next-img" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">›</button>
+
+</div>
+
+</main>
+
+
+
+<script type="module">
+
+fetch('../../components/navbar.html')
+
+.then(res => res.text())
+
+.then(html => document.getElementById('navbar-container').innerHTML = html);
+
+
+
+const slug = 'fnaf';
+
+const galleryItems = [];
+
+
+
+fetch('../../assets/projects.json')
+
+.then(res => res.json())
+
+.then(projects => {
+
+const project = projects.find(p => p.slug === slug);
+
+if (project) {
+
+document.title = project.title;
+
+document.getElementById('project-title').textContent = project.title;
+
+document.getElementById('project-description').textContent = project.description || '';
+
+document.getElementById('extra-description').textContent = project.closing || '';
+
+
+
+const iconContainer = document.getElementById('software-icons');
+
+(project.programs || []).forEach(prog => {
+
+const img = document.createElement('img');
+
+img.src = `../../assets/programs/${prog}.png`;
+
+img.alt = prog;
+
+iconContainer.appendChild(img);
+
+});
+
+}
+
+
+
+const triggers = document.querySelectorAll('.lightbox-trigger');
+
+triggers.forEach((el, index) => {
+
+if (el.tagName === 'IMG') {
+
+galleryItems.push({ type: 'img', src: el.src });
+
+} else if (el.tagName === 'VIDEO') {
+
+const sources = Array.from(el.querySelectorAll('source')).map(s => ({ src: s.src, type: s.type }));
+
+galleryItems.push({ type: 'video', sources: sources });
+
+}
+
+el.addEventListener('click', () => openLightbox(index));
+
+});
+
+});
+
+
+
+let currentIndex = 0;
