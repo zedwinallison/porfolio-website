@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FNAF Project</title>
+  <title>Mummy Project</title>
   <link rel="stylesheet" href="../../style.css">
   <link rel="stylesheet" href="../../projectstyle.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +15,10 @@
       margin-top: 2rem;
     }
 
-    /* All gallery items now have a pointer to show they are clickable */
+    /* Standardizes style for static and dynamic items */
+    .full-width-row img,
     .full-width-row video, 
-    .stacked-images img,
-    .video-grid-three video {
+    .dynamic-stacked-images img {
       width: 100%;
       display: block;
       height: auto;
@@ -27,34 +27,19 @@
       transition: opacity 0.2s ease;
     }
 
-    .stacked-images {
+    .dynamic-stacked-images {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    .video-grid-three {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-    }
-
-    .video-grid-three video {
-      background-color: #000;
-    }
-
-    /* Updated the existing class to handle centering and spacing.
-       It will now inherit color/font/size from your projectstyle.css.
-    */
     .extra-description {
       text-align: center;
       margin: 40px auto; 
       display: block;
       width: 100%;
-    }
-
-    @media (max-width: 768px) {
-      .video-grid-three { grid-template-columns: 1fr; }
+      max-width: 900px;
+      line-height: 1.6;
     }
 
     .hidden { display: none !important; }
@@ -86,66 +71,35 @@
     <div id="image-gallery" class="custom-layout">
       
       <div class="full-width-row">
-        <video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
-          <source src="images/bonnieidle.webm" type="video/webm">
-          <source src="images/bonnieidle.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <p id="extra-description" class="extra-description"></p>
-
-      <div class="video-grid-three">
-        <video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
-          <source src="images/bonniewalk.webm" type="video/webm">
-          <source src="images/bonniewalk.mp4" type="video/mp4">
-        </video>
-        <video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
-          <source src="images/bonnieidlevert.webm" type="video/webm">
-          <source src="images/bonnieidlevert.mp4" type="video/mp4">
-        </video>
-        <video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
-          <source src="images/bonniedownswing.webm" type="video/webm">
-          <source src="images/bonniedownswing.mp4" type="video/mp4">
-        </video>
-      </div>
-
-      <div class="video-grid-three">
-        <video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
-          <source src="images/endowalk.webm" type="video/webm">
-          <source src="images/endowalk.mp4" type="video/mp4">
-        </video>
-        <video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
-          <source src="images/endoidle.webm" type="video/webm">
-          <source src="images/endoidle.mp4" type="video/mp4">
-        </video>
-        <video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
-          <source src="images/endoattack.webm" type="video/webm">
-          <source src="images/endoattack.mp4" type="video/mp4">
-        </video>
+        <img src="images/image1.png" alt="Mummy Artwork 1" class="lightbox-trigger">
       </div>
 
       <p class="extra-description">
-        These are game-ready character models that needed the depth of detail to still look appealing posed as renders. 
-        Careful consideration went into the topology to ensure that the game would be performant on PC.
+        The artwork in Mummy is all handled by me. From concepting to modeling, texturing, and lighting. 
+        The visual style of the environments is rooted in realism, with a big focus on vibrant indirect lighting. 
+        The visuals are pushed into a more stylized feel by the exaggerated color and character design.
       </p>
 
-      <div class="stacked-images">
-        <img src="images/image1.png" alt="Image 1" class="lightbox-trigger">
-        <img src="images/image2.png" alt="Image 2" class="lightbox-trigger">
-        <img src="images/image3.png" alt="Image 3" class="lightbox-trigger">
-        <img src="images/image4.png" alt="Image 4" class="lightbox-trigger">
-        <img src="images/image5.png" alt="Image 5" class="lightbox-trigger">
-        <img src="images/image6.png" alt="Image 6" class="lightbox-trigger">
+      <div class="full-width-row">
+        <video autoplay loop muted playsinline class="gallery-video lightbox-trigger">
+          <source src="images/montage.mp4" type="video/mp4">
+          <source src="images/montage.webm" type="video/webm">
+        </video>
       </div>
+
+      <div id="dynamic-stacked-images" class="dynamic-stacked-images"></div>
+
     </div>
+
+    <p id="extra-closing-description" class="extra-description"></p>
 
     <div id="lightbox" class="hidden" style="position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.9); display:flex; align-items:center; justify-content:center; z-index:2000;">
         <button id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">×</button>
         <button id="prev-img" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">‹</button>
         <img id="lightbox-img" src="" alt="Large view" class="hidden" style="max-width:90vw; max-height:90vh; border-radius:8px;"/>
         <video id="lightbox-video" controls autoplay loop class="hidden">
-            <source id="video-source-webm" src="" type="video/webm">
             <source id="video-source-mp4" src="" type="video/mp4">
+            <source id="video-source-webm" src="" type="video/webm">
         </video>
         <button id="next-img" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">›</button>
     </div>
@@ -156,7 +110,7 @@
       .then(res => res.text())
       .then(html => document.getElementById('navbar-container').innerHTML = html);
 
-    const slug = 'fnaf'; 
+    const slug = 'mummy'; 
     const galleryItems = []; 
 
     fetch('../../assets/projects.json')
@@ -167,7 +121,7 @@
             document.title = project.title;
             document.getElementById('project-title').textContent = project.title;
             document.getElementById('project-description').textContent = project.description || '';
-            document.getElementById('extra-description').textContent = project.closing || '';
+            document.getElementById('extra-closing-description').textContent = project.closing || '';
 
             const iconContainer = document.getElementById('software-icons');
             (project.programs || []).forEach(prog => {
@@ -176,8 +130,23 @@
                 img.alt = prog;
                 iconContainer.appendChild(img);
             });
+
+            // Fill the dynamic image section
+            const dynamicContainer = document.getElementById('dynamic-stacked-images');
+            project.rows.forEach(row => {
+                row.images.forEach(imgPath => {
+                    // Skip image1.png because we already hardcoded it at the top
+                    if (imgPath.includes('image1.png')) return;
+
+                    const img = document.createElement('img');
+                    img.src = imgPath;
+                    img.className = 'lightbox-trigger';
+                    dynamicContainer.appendChild(img);
+                });
+            });
         }
 
+        // Initialize Lightbox Triggers (Exactly like FNAF)
         const triggers = document.querySelectorAll('.lightbox-trigger');
         triggers.forEach((el, index) => {
             if (el.tagName === 'IMG') {
@@ -194,8 +163,8 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxVid = document.getElementById('lightbox-video');
-    const webmSource = document.getElementById('video-source-webm');
     const mp4Source = document.getElementById('video-source-mp4');
+    const webmSource = document.getElementById('video-source-webm');
 
     function openLightbox(index) {
         currentIndex = index;
@@ -208,10 +177,10 @@
             lightboxImg.src = item.src;
             lightboxImg.classList.remove('hidden');
         } else {
-            const webm = item.sources.find(s => s.type.includes('webm'));
             const mp4 = item.sources.find(s => s.type.includes('mp4'));
-            webmSource.src = webm ? webm.src : '';
+            const webm = item.sources.find(s => s.type.includes('webm'));
             mp4Source.src = mp4 ? mp4.src : '';
+            webmSource.src = webm ? webm.src : '';
             lightboxVid.load(); 
             lightboxVid.classList.remove('hidden');
         }

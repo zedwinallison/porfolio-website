@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hotel Bathroom Environment</title>
+  
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../projectstyle.css">
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* --- Office-Specific Button --- */
+    .launch-unity-button {
+      display: inline-block;
+      background-color: #1e90ff;
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.125rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+    }
+    .launch-unity-button:hover { background-color: #0f66d0; }
+
+    /* --- Aspect Ratio Container (16:9) --- */
+    .aspect-16-9 {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9; 
+      margin: 2rem 0; 
+      border-radius: 0px;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    /* --- Centered Instruction & Description Formatting --- */
+    .fnaf-style-text {
+      text-align: center !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100% !important;
+      max-width: 1000px !important;
+      margin: 4rem auto !important;
+      font-weight: normal !important;
+      line-height: 1.6;
+    }
+
+    .info-icon {
+      color: #1e90ff;
+      font-size: 20px;
+      user-select: none;
+    }
+
+    /* --- Bulletproof Comparison Slider Styling --- */
+    .comparison-container {
+      position: relative;
+      user-select: none;
+      overflow: hidden;
+      background-color: #111; 
+    }
+
+    #comparison-slider > .comparison-img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .comparison-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%; 
+      height: 100%;
+      overflow: hidden;
+      z-index: 2;
+      border-right: 3px solid #fff; 
+      pointer-events: none; 
+    }
+
+    .comparison-overlay .comparison-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: auto; 
+      max-width: none; 
+      object-fit: cover;
+    }
+
+    .comparison-slider-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      outline: none;
+      margin: 0;
+      z-index: 3;
+      cursor: ew-resize;
+    }
+
+    .comparison-slider-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 100vh;
+      width: 40px; 
+      background: transparent;
+    }
+
+    #panorama-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .bottom-display-img {
+      width: 100%;
+      display: block;
+      margin-top: 2rem;
+    }
+
+    /* --- MOBILE STYLING FIXES --- */
+    @media (max-width: 768px) {
+      .title-desc-wrapper {
+        flex-direction: column;
+        text-align: left; /* NO LONGER CENTERED */
+        padding: 0 20px; /* Gives it some breathing room from the edge */
+      }
+      .left-column, .right-column {
+        width: 100% !important;
+        padding: 0;
+      }
+      .project-title {
+        font-size: 2rem; /* Adjusted for smaller screens */
+        margin-bottom: 10px;
+      }
+      .fnaf-style-text {
+        margin: 2rem auto !important;
+        font-size: 0.9rem;
+        /* Kept descriptions centered for that 'FNAF prompt' look, 
+           but we can change this too if you want! */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <main class="project-container">
+    <div class="title-desc-wrapper">
+      <div class="left-column">
+        <h1 class="project-title" id="project-title"></h1>
+        <div class="software-icons-wrapper">
+          <div class="software-icons" id="software-icons"></div>
+        </div>
+      </div>
+      <div class="right-column">
+        <p class="project-description" id="project-description"></p>
+      </div>
+    </div>
+
+    <div id="image-gallery"></div>
+
+    <p class="project-description fnaf-style-text">
+      Careful attention went towards the lighting and materials in this environment.  Subtle differences in tile shapes/textures and realistic tile placement and grout lines were especially important.  Given that the walls and floor are visually similar, unique and interesting lighting placement was crucial to add depth to this scene.
+    </p>
+
+    <div class="aspect-16-9 comparison-container" id="comparison-slider">
+      <img src="./images/image6.png" class="comparison-img" alt="Final Render">
+      <div class="comparison-overlay" id="overlay">
+        <img src="./images/image1.png" class="comparison-img" id="top-image" alt="Work in Progress">
+      </div>
+      <input type="range" min="0" max="100" value="50" class="comparison-slider-input" id="slider">
+    </div>
+    
+    <p class="project-description fnaf-style-text">
+      <span class="material-symbols-outlined info-icon">info</span>
+      Move slider to show lighting
+    </p>
+
+    <div class="aspect-16-9">
+      <div id="panorama-container"></div>
+    </div>
+    
+    <p class="project-description fnaf-style-text">
+      <span class="material-symbols-outlined info-icon">info</span>
+      Drag to look around environment
+    </p>
+
+    
+
+    <p id="extra-description" class="extra-description"></p>
+
+    <div id="lightbox" class="hidden">
+        <button id="lightbox-close">&times;</button>
+        <button id="prev-img">&#8249;</button>
+        <img id="lightbox-img" src="" alt="Large view">
+        <button id="next-img">&#8250;</button>
+    </div>
+  </main>
+
+  <script type="module">
+    fetch('../../components/navbar.html')
+      .then(res => res.text())
+      .then(html => document.getElementById('navbar-container').innerHTML = html);
+
+    const slug = "bathroom";
+
+    pannellum.viewer('panorama-container', {
+        "type": "equirectangular",
+        "panorama": "images/image5.jpg",
+        "autoLoad": true,
+        "autoRotate": -2,
+        "compass": false,
+        "showFullscreenCtrl": true,
+        "hfov": 110
+    });
+
+    const slider = document.getElementById('slider');
+    const overlay = document.getElementById('overlay');
+    const topImg = document.getElementById('top-image');
+    const container = document.getElementById('comparison-slider');
+
+    function syncImageWidth() {
+      if(container && topImg) {
+        const containerWidth = container.offsetWidth;
+        if (containerWidth > 0) {
+          topImg.style.width = containerWidth + 'px';
+        } else {
+          requestAnimationFrame(syncImageWidth);
+        }
+      }
+    }
+
+    slider.addEventListener('input', (e) => {
+      overlay.style.width = `${e.target.value}%`;
+    });
+
+    window.addEventListener('resize', syncImageWidth);
+    window.addEventListener('load', syncImageWidth);
+    window.addEventListener('orientationchange', () => setTimeout(syncImageWidth, 200));
+
+    const allImages = []; 
+    fetch('../../assets/projects.json')
+      .then(res => res.json())
+      .then(projects => {
+        const project = projects.find(p => p.slug === slug);
+        if (!project) return;
+
+        document.title = project.title;
+        document.getElementById('project-title').textContent = project.title;
+        document.getElementById('project-description').textContent = project.description || '';
+        
+        const iconContainer = document.getElementById('software-icons');
+        (project.programs || []).forEach(prog => {
+          const img = document.createElement('img');
+          img.src = `../../assets/programs/${prog}.png`;
+          iconContainer.appendChild(img);
+        });
+
+        const gallery = document.getElementById('image-gallery');
+        project.rows.forEach(row => {
+          const rowDiv = document.createElement('div');
+          rowDiv.className = 'image-row';
+          rowDiv.style.gridTemplateColumns = `repeat(${row.columns}, 1fr)`;
+          
+          row.images.forEach(imgPath => {
+            const img = document.createElement('img');
+            img.src = imgPath;
+            img.dataset.index = allImages.length;
+            rowDiv.appendChild(img);
+            img.addEventListener('click', () => openLightbox(parseInt(img.dataset.index)));
+            allImages.push(imgPath);
+          });
+          gallery.appendChild(rowDiv);
+        });
+
+        document.getElementById('extra-description').textContent = project.closing || '';
+        
+        setTimeout(syncImageWidth, 500);
+        setTimeout(syncImageWidth, 1500);
+      });
+
+    let currentIndex = 0;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('prev-img');
+    const nextBtn = document.getElementById('next-img');
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lightboxImg.src = allImages[currentIndex];
+      lightbox.classList.remove('hidden');
+    }
+    function closeLightbox() { lightbox.classList.add('hidden'); }
+    function showNext() { 
+      currentIndex = (currentIndex + 1) % allImages.length; 
+      lightboxImg.src = allImages[currentIndex]; 
+    }
+    function showPrev() { 
+      currentIndex = (currentIndex - 1 + allImages.length) % allImages.length; 
+      lightboxImg.src = allImages[currentIndex]; 
+    }
+    closeBtn.addEventListener('click', closeLightbox);
+    nextBtn.addEventListener('click', showNext);
+    prevBtn.addEventListener('click', showPrev);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+  </script>
+</body>
+</html>
