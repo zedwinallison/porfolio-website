@@ -7,33 +7,34 @@
   <link rel="stylesheet" href="../../projectstyle.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    .custom-layout {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 100%;
+    .custom-layout { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+    .full-width-row img, .full-width-row video, .image-row img {
+      width: 100%; display: block; height: auto; border-radius: 4px; cursor: pointer;
     }
-
-    .full-width-row img,
-    .full-width-row video,
-    .image-row img {
-      width: 100%;
-      display: block;
-      height: auto;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
     .extra-description {
-      text-align: center;
-      margin: 40px auto; 
-      display: block;
-      width: 100%;
-      max-width: 900px;
-      line-height: 1.6;
+      text-align: center; margin: 40px auto; display: block; width: 100%; max-width: 900px; line-height: 1.6;
     }
 
+    /* Lightbox Styles */
+    #lightbox {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.95); display: flex; align-items: center;
+      justify-content: center; z-index: 2000;
+    }
+    #lightbox-img, #lightbox-video {
+      max-width: 90vw; max-height: 80vh; border-radius: 4px; display: block;
+    }
     .hidden { display: none !important; }
+    .nav-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      font-size: 3rem; color: white; background: none; border: none; cursor: pointer; padding: 20px;
+    }
+    #prev-img { left: 10px; }
+    #next-img { right: 10px; }
+    #lightbox-close {
+      position: absolute; top: 20px; right: 30px; font-size: 3rem;
+      background: none; border: none; color: white; cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -42,10 +43,8 @@
   <main class="project-container">
     <div class="title-desc-wrapper">
       <div class="left-column">
-        <h1 class="project-title" id="project-title">Mummy</h1>
-        <div class="software-icons-wrapper">
-          <div class="software-icons" id="software-icons"></div>
-        </div>
+        <h1 class="project-title">Mummy</h1>
+        <div class="software-icons" id="software-icons"></div>
       </div>
       <div class="right-column">
         <p class="project-description" id="project-description"></p>
@@ -53,19 +52,16 @@
     </div>
 
     <div id="image-gallery" class="custom-layout">
-      
       <div class="full-width-row">
         <img src="images/image1.png" alt="Mummy Artwork 1" class="lightbox-trigger">
       </div>
 
       <p class="extra-description">
-        The artwork in Mummy is all handled by me. From concepting to modeling, texturing, and lighting. 
-        The visual style of the environments is rooted in realism, with a big focus on vibrant indirect lighting. 
-        The visuals are pushed into a more stylized feel by the exaggerated color and character design.
+        The artwork in Mummy is all handled by me. From concepting to modeling, texturing, and lighting.
       </p>
 
       <div class="full-width-row">
-        <video autoplay loop muted playsinline class="lightbox-trigger">
+        <video autoplay loop muted playsinline preload="auto" class="lightbox-trigger">
           <source src="images/montage.mp4" type="video/mp4">
           <source src="images/montage.webm" type="video/webm">
         </video>
@@ -76,23 +72,33 @@
 
     <p id="closing-text" class="extra-description"></p>
 
-    <div id="lightbox" class="hidden" style="position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.9); display:flex; align-items:center; justify-content:center; z-index:2000;">
-        <button id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">&times;</button>
-        <button id="prev-img" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; color:white; background:none; border:none; cursor:pointer;">&#8249;</button>
-        <img id="lightbox-img" src="" class="hidden" style="max-width:90vw; max-height:90vh; border-radius:8px;"/>
-        <video id="lightbox-video" controls autoplay loop class="hidden">
-            <source id="lb-source-mp4" src="" type="video/mp4">
+    <div id="lightbox" class="hidden">
+        <button id="lightbox-close">&times;</button>
+        <button id="prev-img" class="nav-btn">&#8249;</button>
+        
+        <img id="lightbox-img" src="" class="hidden" />
+        
+        <video id="lightbox-video" controls playsinline loop muted class="hidden">
+            <p>Your browser does not support HTML5 video.</p>
         </video>
-        <button id="next-img" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2rem; color:white; background:none; border:none; cursor:pointer;">&#8250;</button>
+        
+        <button id="next-img" class="nav-btn">&#8250;</button>
     </div>
   </main>
 
   <script type="module">
+    // 1. Setup Navbar
     fetch('../../components/navbar.html').then(res => res.text()).then(html => document.getElementById('navbar-container').innerHTML = html);
 
     const slug = 'mummy'; 
-    const galleryItems = []; 
+    let galleryItems = []; 
+    let currentIndex = 0;
 
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbVid = document.getElementById('lightbox-video');
+
+    // 2. Fetch Project Data
     fetch('../../assets/projects.json').then(res => res.json()).then(projects => {
       const project = projects.find(p => p.slug === slug);
       if (project) {
@@ -116,7 +122,7 @@
           rowDiv.style.marginBottom = '20px';
           
           row.images.forEach(imgPath => {
-            if (imgPath.includes('image1.png')) return; // Skip image1
+            if (imgPath.includes('image1.png')) return;
             const img = document.createElement('img');
             img.src = imgPath;
             img.className = 'lightbox-trigger';
@@ -125,35 +131,94 @@
           dynamicContainer.appendChild(rowDiv);
         });
       }
-
-      // Re-initialize Lightbox triggers after JSON load
-      const triggers = document.querySelectorAll('.lightbox-trigger');
-      triggers.forEach((el, index) => {
-        if (el.tagName === 'IMG') {
-          galleryItems.push({ type: 'img', src: el.src });
-        } else {
-          galleryItems.push({ type: 'video', src: el.querySelector('source').src });
-        }
-        el.addEventListener('click', () => openLightbox(index));
-      });
+      initializeLightbox();
     });
 
-    // Lightbox Logic
-    let currentIndex = 0;
-    const lightbox = document.getElementById('lightbox'), lbImg = document.getElementById('lightbox-img'), lbVid = document.getElementById('lightbox-video'), lbSource = document.getElementById('lb-source-mp4');
+    // 3. Robust Lightbox Initialization
+    function initializeLightbox() {
+      const triggers = document.querySelectorAll('.lightbox-trigger');
+      galleryItems = [];
+
+      triggers.forEach((el, index) => {
+        if (el.tagName === 'IMG') {
+          galleryItems.push({ type: 'img', content: el.src });
+        } else if (el.tagName === 'VIDEO') {
+          // CLONING METHOD: Store the actual source elements to preserve MIME types
+          galleryItems.push({ 
+            type: 'video', 
+            content: el.innerHTML, // Captures all <source> tags
+            poster: el.getAttribute('poster') || '' 
+          });
+        }
+        el.onclick = () => openLightbox(index);
+      });
+    }
 
     function openLightbox(index) {
       currentIndex = index;
       const item = galleryItems[currentIndex];
-      lbImg.classList.add('hidden'); lbVid.classList.add('hidden'); lbVid.pause();
-      if (item.type === 'img') { lbImg.src = item.src; lbImg.classList.remove('hidden'); }
-      else { lbSource.src = item.src; lbVid.load(); lbVid.classList.remove('hidden'); }
+
+      // Reset
+      lbImg.classList.add('hidden');
+      lbVid.classList.add('hidden');
+      lbVid.pause();
+      lbVid.innerHTML = ""; // Clear old sources
+      lbVid.removeAttribute('src'); // Clear direct src if any
+
+      if (item.type === 'img') {
+        lbImg.src = item.content;
+        lbImg.classList.remove('hidden');
+      } else {
+        // Inject the cloned sources
+        lbVid.innerHTML = item.content; 
+        lbVid.classList.remove('hidden');
+        
+        // Critical for Safari & Firefox: Load and Play
+        lbVid.load(); 
+        
+        // Browsers block autoplay with sound. We use muted by default, 
+        // but try to play and handle errors gracefully.
+        const playPromise = lbVid.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.log("Autoplay blocked, user must click play.");
+          });
+        }
+      }
+      
       lightbox.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     }
 
-    document.getElementById('lightbox-close').onclick = () => { lightbox.classList.add('hidden'); lbVid.pause(); };
-    document.getElementById('next-img').onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex + 1) % galleryItems.length; openLightbox(currentIndex); };
-    document.getElementById('prev-img').onclick = (e) => { e.stopPropagation(); currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length; openLightbox(currentIndex); };
+    // 4. Controls
+    const closeLB = () => {
+      lightbox.classList.add('hidden');
+      lbVid.pause();
+      lbVid.innerHTML = ""; // Stop network activity
+      document.body.style.overflow = 'auto';
+    };
+
+    document.getElementById('lightbox-close').onclick = closeLB;
+    document.getElementById('next-img').onclick = (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      openLightbox(currentIndex);
+    };
+    document.getElementById('prev-img').onclick = (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      openLightbox(currentIndex);
+    };
+
+    lightbox.onclick = (e) => { if (e.target === lightbox) closeLB(); };
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('hidden')) return;
+      if (e.key === "Escape") closeLB();
+      if (e.key === "ArrowRight") document.getElementById('next-img').click();
+      if (e.key === "ArrowLeft") document.getElementById('prev-img').click();
+    });
   </script>
 </body>
 </html>
