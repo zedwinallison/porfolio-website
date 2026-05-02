@@ -91,6 +91,46 @@
     ]
   },
   {
+    "slug": "viz-brochure",
+    "title": "3D Viz Center Trifold Brochure",
+    "thumbnail": "projects/viz-brochure/images/thumb.png",
+    "description": "This promotional brochure was created to share information about the University of Wyoming's 3D Visualization Center.  It makes use of brand colors, and visual identity so that it will fit in with other promotional material for the department.  The red, blue, and green colors as well as the futuristic aesthetic all fit with the Viz Center's existing theming.",
+    "closing": "",
+    "programs": [ "illustrator", "photoshop"],
+    "category": "design",
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          "/projects/viz-brochure/images/image1.png"
+          
+        ]
+      }
+      
+      
+    ]
+  },
+  {
+    "slug": "yellowstone-brochure",
+    "title": "Yellowstone National Park Brochure",
+    "thumbnail": "projects/yellowstone-brochure/images/thumb.png",
+    "description": "This promotional brochure was created as a concept to promote Yellowstone National Park.  It makes use of a diverse color palette, custom logo created in Illustrator, and several unique visual elements such as a topographic map texture and treeline silhouette. My goal was to allow text to be clear and communicative with unifying visual elements.",
+    "closing": "",
+    "programs": [ "illustrator", "photoshop"],
+    "category": "design",
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          "/projects/yellowstone-brochure/images/image1.png"
+          
+        ]
+      }
+      
+      
+    ]
+  },
+  {
     "slug": "dioramas",
     "title": "Historical 3D Dioramas",
     "thumbnail": "projects/dioramas/images/thumb.png",
@@ -104,6 +144,23 @@
         "images": [""]
       }
       
+    ]
+  },
+  {
+    "slug": "state-parks-videos",
+    "title": "Wyoming State Parks Promotional Videos",
+    "thumbnail": "projects/state-parks-videos/images/thumb.png",
+    "description": "Make sure to set the viewer to playback in 1080p!  This set of promotional videos was created on contract with Wyoming State Parks to provide information about several historic sites.  These videos were directed, filmed, and edited by me, in accordance with certain information that State Parks managers wanted to communicate.  They are consistently styled, and fit as a set of three, with identical formatting, visuals, and sound design.",
+    "closing": "",
+    "programs": ["premier"],
+    "category": "design video",
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          
+        ]
+      }
     ]
   },
   {
@@ -149,6 +206,7 @@
       }
     ]
   },
+  
   {
     "slug": "courtyard",
     "title": "Courtyard Real Time Environment",
@@ -220,25 +278,7 @@
       }
     ]
   },
-  {
-    "slug": "movie-posters",
-    "title": "Movie Posters",
-    "thumbnail": "projects/movie-posters/images/thumb.png",
-    "description": "These are examples of reimagined movie posters that each demonstrate a different design style.  The Godzilla poster is dynamic in composition, but flat with dominant Japanese characters and careful consideration of silhouette.  The Alien poster is rough and aggressive, and refuses to shy away from the grit of pencil on paper and fluid gestural drawing.  The Shining poster is minimalist, and makes use of repetition and recognizable pattern to draw a viewer in.",
-    "closing": "",
-    "programs": ["photoshop","illustrator"],
-    "category": "design semiillustration",
-    "rows": [
-      {
-        "columns": 3,
-        "images": [
-          "/projects/movie-posters/images/image1.png",
-          "/projects/movie-posters/images/image2.png",
-          "/projects/movie-posters/images/image3.png"
-        ]
-      }
-    ]
-  },
+  
   
   {
     "slug": "character-designs",
@@ -401,23 +441,7 @@
       }
     ]
   },
-  {
-    "slug": "state-parks-videos",
-    "title": "Wyoming State Parks Promotional Videos",
-    "thumbnail": "projects/state-parks-videos/images/thumb.png",
-    "description": "Make sure to set the viewer to playback in 1080p!  This set of promotional videos was created on contract with Wyoming State Parks to provide information about several historic sites.  These videos were directed, filmed, and edited by me, in accordance with certain information that State Parks managers wanted to communicate.  They are consistently styled, and fit as a set of three, with identical formatting, visuals, and sound design.",
-    "closing": "",
-    "programs": ["premier"],
-    "category": "video",
-    "rows": [
-      {
-        "columns": 1,
-        "images": [
-          
-        ]
-      }
-    ]
-  },
+  
   
   {
     "slug": "title-card",
@@ -436,23 +460,7 @@
       }
     ]
   },
-  {
-    "slug": "vizpromo",
-    "title": "3D Viz Center Promo Video",
-    "thumbnail": "projects/vizpromo/images/thumb.png",
-    "description": "Make sure to set the viewer to playback in 1080p!  This is a promotional short video I produced for the 3D Visualization Center at the University of Wyoming.  It was filmed, edited, and narrated by me.  This promo video uses fast-paced editing and a tight, direct script to sell the most important facts about the Viz Center.  It is meant to be understandable to anyone and still communicate technological capabilities.",
-    "closing": "",
-    "programs": ["premier"],
-    "category": "video",
-    "rows": [
-      {
-        "columns": 1,
-        "images": [
-          
-        ]
-      }
-    ]
-  },
+  
   
 
   {
@@ -497,7 +505,42 @@
       
     ]
   },
-
+{
+    "slug": "movie-posters",
+    "title": "Movie Posters",
+    "thumbnail": "projects/movie-posters/images/thumb.png",
+    "description": "These are examples of reimagined movie posters that each demonstrate a different design style.  The Godzilla poster is dynamic in composition, but flat with dominant Japanese characters and careful consideration of silhouette.  The Alien poster is rough and aggressive, and refuses to shy away from the grit of pencil on paper and fluid gestural drawing.  The Shining poster is minimalist, and makes use of repetition and recognizable pattern to draw a viewer in.",
+    "closing": "",
+    "programs": ["photoshop","illustrator"],
+    "category": "design semiillustration",
+    "rows": [
+      {
+        "columns": 3,
+        "images": [
+          "/projects/movie-posters/images/image1.png",
+          "/projects/movie-posters/images/image2.png",
+          "/projects/movie-posters/images/image3.png"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "vizpromo",
+    "title": "3D Viz Center Promo Video",
+    "thumbnail": "projects/vizpromo/images/thumb.png",
+    "description": "Make sure to set the viewer to playback in 1080p!  This is a promotional short video I produced for the 3D Visualization Center at the University of Wyoming.  It was filmed, edited, and narrated by me.  This promo video uses fast-paced editing and a tight, direct script to sell the most important facts about the Viz Center.  It is meant to be understandable to anyone and still communicate technological capabilities.",
+    "closing": "",
+    "programs": ["premier"],
+    "category": "design video",
+    "rows": [
+      {
+        "columns": 1,
+        "images": [
+          
+        ]
+      }
+    ]
+  },
   {
     "slug": "model-viewer",
     "title": "3D Model Viewer UI/UX Design",
