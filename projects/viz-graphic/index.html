@@ -25,13 +25,10 @@
       </div>
     </div>
 
-    <!-- Main images / gallery -->
     <div id="image-gallery"></div>
 
-    <!-- Optional extra description paragraph -->
     <p id="extra-description" class="extra-description"></p>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="hidden" style="position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center; z-index:2000;">
       <button id="lightbox-close" style="position:absolute; top:20px; right:30px; font-size:2rem; background:none; border:none; color:white; cursor:pointer;">×</button>
       <button id="prev-img" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2rem; background:none; border:none; color:white; cursor:pointer;">‹</button>
@@ -40,7 +37,7 @@
     </div>
   </main>
 
-  <!-- Script -->
+
   <script type="module">
   window.addEventListener('DOMContentLoaded', () => {
     // Load navbar
@@ -51,9 +48,9 @@
     const urlParams = new URLSearchParams(window.location.search);
     const slug = 'viz-graphic';
 
-    const allImages = []; // Store all gallery media
+    const allImages = []; 
 
-    // Load Project Data
+
     fetch('../../assets/projects.json')
       .then(res => {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -66,12 +63,12 @@
           return;
         }
 
-        // Set page title and content
+
         document.title = project.title;
         document.getElementById('project-title').textContent = project.title;
         document.getElementById('project-description').textContent = project.description || '';
 
-        // Load program icons
+
         const iconContainer = document.getElementById('software-icons');
         iconContainer.innerHTML = '';
         (project.programs || []).forEach(prog => {
@@ -81,7 +78,7 @@
           iconContainer.appendChild(img);
         });
 
-        // Load image/video gallery
+
         const gallery = document.getElementById('image-gallery');
         gallery.innerHTML = '';
         project.rows.forEach(row => {
@@ -119,7 +116,7 @@
           gallery.appendChild(rowDiv);
         });
 
-        // Optional closing paragraph
+
         document.getElementById('extra-description').textContent = project.closing || '';
       })
       .catch(e => {
@@ -128,7 +125,7 @@
         if (titleEl) titleEl.textContent = "Failed to load project data";
       });
 
-    // Lightbox logic
+
     let currentIndex = 0;
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');

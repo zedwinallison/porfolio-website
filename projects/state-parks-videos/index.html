@@ -52,10 +52,10 @@
       </div>
     </div>
 
-    <!-- Main images / gallery -->
+
     <div id="image-gallery"></div>
 
-    <!-- Google Drive Video Embeds -->
+
 <div class="video-embed-grid">
   <div class="video-embed">
     <iframe src="https://drive.google.com/file/d/1cEUl6vZ45U0bBiIxxrBFb33vLz-mLNKa/preview" allow="autoplay" allowfullscreen></iframe>
@@ -69,7 +69,7 @@
 </div>
 
 
-    <!-- Optional extra description paragraph -->
+
     <p id="extra-description" class="extra-description"></p>
   </main>
 
@@ -82,7 +82,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const slug = 'state-parks-videos';
 
-    const allImages = []; // Store all gallery images for lightbox navigation
+    const allImages = [];
 
     // Load Project Data
     fetch('../../assets/projects.json')
@@ -112,7 +112,7 @@
           iconContainer.appendChild(img);
         });
 
-        // Load image gallery and add click listeners for lightbox
+ 
         const gallery = document.getElementById('image-gallery');
         gallery.innerHTML = '';
         project.rows.forEach(row => {

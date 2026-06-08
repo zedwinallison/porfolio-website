@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    /* --- Office-Specific Button --- */
+    
     .launch-unity-button {
       display: inline-block;
       background-color: #1e90ff;
@@ -29,7 +29,7 @@
     }
     .launch-unity-button:hover { background-color: #0f66d0; }
 
-    /* --- Aspect Ratio Container (16:9) --- */
+    
     .aspect-16-9 {
       position: relative;
       width: 100%;
@@ -40,7 +40,7 @@
       background-color: #000;
     }
 
-    /* --- Centered Instruction & Description Formatting --- */
+
     .fnaf-style-text {
       text-align: center !important;
       display: flex !important;
@@ -60,7 +60,7 @@
       user-select: none;
     }
 
-    /* --- Bulletproof Comparison Slider Styling --- */
+
     .comparison-container {
       position: relative;
       user-select: none;
@@ -131,26 +131,25 @@
       margin-top: 2rem;
     }
 
-    /* --- MOBILE STYLING FIXES --- */
+
     @media (max-width: 768px) {
       .title-desc-wrapper {
         flex-direction: column;
-        text-align: left; /* NO LONGER CENTERED */
-        padding: 0 20px; /* Gives it some breathing room from the edge */
+        text-align: left;
+        padding: 0 20px; 
       }
       .left-column, .right-column {
         width: 100% !important;
         padding: 0;
       }
       .project-title {
-        font-size: 2rem; /* Adjusted for smaller screens */
+        font-size: 2rem; 
         margin-bottom: 10px;
       }
       .fnaf-style-text {
         margin: 2rem auto !important;
         font-size: 0.9rem;
-        /* Kept descriptions centered for that 'FNAF prompt' look, 
-           but we can change this too if you want! */
+
       }
     }
   </style>

@@ -25,10 +25,10 @@
       </div>
     </div>
 
-    <!-- Main images / gallery -->
+
     <div id="image-gallery"></div>
 
-    <!-- Optional extra description paragraph -->
+
     <p id="extra-description" class="extra-description"></p>
 
 
@@ -52,7 +52,7 @@
   const urlParams = new URLSearchParams(window.location.search);
   const slug = urlParams.get('slug');
 
-  const allImages = []; // Store all gallery images for lightbox navigation
+  const allImages = []; 
 
   // Load Project Data
   fetch('../../assets/projects.json')
